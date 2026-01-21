@@ -1,7 +1,20 @@
 <template>
     <Head>
-                <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'" />
-        <title>{{custom_page.title[locale]}} | {{seo.website_name}}</title>
+        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'" />
+        <title>{{ metaTitle }}</title>
+        <meta name="description" :content="metaDescription">
+        <meta name="keywords" :content="metaKeywords">
+        <meta name="robots" :content="metaRobots">
+        <link v-if="metaCanonical" rel="canonical" :href="metaCanonical">
+        <meta property="og:title" :content="metaTitle">
+        <meta property="og:description" :content="metaDescription">
+        <meta v-if="metaImage" property="og:image" :content="metaImage">
+        <meta v-if="metaCanonical" property="og:url" :content="metaCanonical">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" :content="metaTitle">
+        <meta name="twitter:description" :content="metaDescription">
+        <meta v-if="metaImage" name="twitter:image" :content="metaImage">
     </Head>
     <app-layout>
 
@@ -23,7 +36,7 @@
                                     <i class="fas fa-home"></i>{{ trans('Home') }}
                                 </a>
                             </li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`""></span></li>
+                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
                             <li>{{ custom_page.title[locale] }}</li>
                         </ul>
                     </div>
@@ -44,16 +57,34 @@
 </template>
 
 <script setup>
-import {computed, onMounted, nextTick, ref} from 'vue'
-import {usePage, useForm, router, Head, Link} from '@inertiajs/vue3'
+import {computed} from 'vue'
+import {usePage, Head, Link} from '@inertiajs/vue3'
 
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;
 const seo = computed(() => page.props.seo)
+const settings = computed(() => page.props.settings || {})
 const custom_page = computed(() => page.props.custom_page)
 const asset_path = computed(() => page.props.asset_path || '')
 const locale = computed(() => page.props.locale || 'en')
 const banner = computed(() => page.props.banner)
+const meta = computed(() => page.props.meta || {})
+
+const metaTitle = computed(() => {
+    const pageTitle = custom_page.value?.title?.[locale.value] || ''
+    return meta.value.title || `${pageTitle} | ${seo.value.website_name || ''}`.trim()
+})
+const metaDescription = computed(() => {
+    return meta.value.description || custom_page.value?.description || seo.value.website_desc || ''
+})
+const metaKeywords = computed(() => {
+    return meta.value.keywords || custom_page.value?.keywords || seo.value.website_keywords || ''
+})
+const metaImage = computed(() => {
+    return meta.value?.og?.image || meta.value?.twitter?.image || banner.value || settings.value?.meta_img || ''
+})
+const metaCanonical = computed(() => meta.value.canonical || '')
+const metaRobots = computed(() => meta.value.robots || 'index, follow')
 </script>
 <script>
 
@@ -67,65 +98,3 @@ export default {
 
 };
 </script>
-
-<style scoped>
-
-
-/* Page banner styling */
-.page-banner {
-    position: relative;
-    height: 600px !important;
-    min-height: 600px !important;
-    padding: 0 !important;
-    display: flex;
-    align-items: center;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-    background-position: center !important;
-    background-attachment: fixed;
-}
-
-.breadcrumb__area {
-    position: relative;
-    min-height: 600px !important;
-    height: 600px !important;
-}
-
-.banner-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index: 1;
-    pointer-events: none;
-}
-
-.breadcrumb__area .container {
-    position: relative;
-    z-index: 2;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.breadcrumb__area .banner-home__middel-shape {
-    position: relative;
-    z-index: 2;
-}
-
-
-/* Fix white spots - ensure overlay covers everything with ::before as backup */
-.breadcrumb__area::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.3);
-    z-index: 1;
-    pointer-events: none;
-}
-</style>

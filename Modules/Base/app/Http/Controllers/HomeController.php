@@ -10,17 +10,19 @@ use Modules\Services\Models\Service;
 use Modules\Services\Models\ServiceCategory;
 use Modules\Team\Models\Team;
 use Modules\Testimonial\Models\Testimonial;
+use Vdhicts\ReadTime\ReadTime;
 
 class HomeController extends Controller {
 
     public function index() {
         // Note: cache key versioned to avoid stale cached structure after we map fields for the new UI.
+        $locale = app()->getLocale();
         $posts =  Blog::featured()
                 ->with('category')
                 ->latest()
                 ->take(6)
                 ->get()
-                ->map(function ($blog) {
+                ->map(function ($blog) use ($locale) {
                     return [
                         'id' => $blog->id,
                         'title' => $blog->title,
@@ -28,6 +30,7 @@ class HomeController extends Controller {
                         'image_link' => $blog->image_link,
                         'description' => $blog->description,
                         'keywords' => $blog->keywords,
+                        'reading_time' => $this->getReadingTimeMinutes($blog, $locale),
                         'created_at' => $blog->created_at ? $blog->created_at->format('d M Y') : null,
                         'category' => $blog->category ? [
                             'id' => $blog->category->id,
@@ -58,5 +61,18 @@ class HomeController extends Controller {
             'testimonials' => $testimonials,
             'teams' => $teams,
         ]);
+    }
+
+    private function getReadingTimeMinutes(Blog $blog, string $locale): int
+    {
+        $content = $blog->getTranslation('content', $locale)
+            ?: $blog->getTranslation('description', $locale)
+            ?: '';
+
+        if (trim(strip_tags((string) $content)) === '') {
+            return 0;
+        }
+
+        return (new ReadTime($content))->minutes();
     }
 }

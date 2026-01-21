@@ -1,12 +1,25 @@
 <template>
     <Head>
         <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'"/>
-        <title>{{ trans("Our Services") }} | {{ seo.website_name }}</title>
+        <title>{{ metaTitle }}</title>
+        <meta name="description" :content="metaDescription">
+        <meta name="keywords" :content="metaKeywords">
+        <meta name="robots" :content="metaRobots">
+        <link v-if="metaCanonical" rel="canonical" :href="metaCanonical">
+        <meta property="og:title" :content="metaTitle">
+        <meta property="og:description" :content="metaDescription">
+        <meta v-if="metaImage" property="og:image" :content="metaImage">
+        <meta v-if="metaCanonical" property="og:url" :content="metaCanonical">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" :content="metaTitle">
+        <meta name="twitter:description" :content="metaDescription">
+        <meta v-if="metaImage" name="twitter:image" :content="metaImage">
     </Head>
     <app-layout>
         <div class="page-header">
             <div class="page-header__bg"
-                 :style="{ backgroundImage: `url(${asset_path}site/images/backgrounds/page-header-bg.jpg)`}">
+                 :style="{ backgroundImage: `url(${asset_path}images/backgrounds/services-bg.jpg)`}">
             </div>
             <div class="container">
                 <div class="page-header__inner">
@@ -30,18 +43,18 @@
 
         <!-- Services Two Start -->
         <section class="services-two">
-            <div class="services-two__shape-1"></div>
+
             <div class="container">
                 <div class="services-two__top">
                     <div class="section-title text-left sec-title-animation animation-style2">
                         <div class="section-title__tagline-box">
                             <div class="section-title__tagline-shape-1"></div>
                             <span class="section-title__tagline">{{ trans("Our Services") }}</span>
-                            <div class="section-title__tagline-shape-2"></div>
+
                         </div>
                         <h2 class="section-title__title title-animation">
-                            {{ trans("Your Business with Cutting-Edge IT Solutions") }}
-                            <span>{{ trans("Innovative IT Services") }}</span>
+                            {{ trans("Scale Your Business Smarter with Next-Gen IT Solutions") }}
+                            <span></span>
                         </h2>
                     </div>
                 </div>
@@ -147,10 +160,27 @@ import AppLayout from '@/Layouts/App.vue'
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;
 const seo = computed(() => page.props.seo)
+const settings = computed(() => page.props.settings || {})
 const asset_path = computed(() => page.props.asset_path || '')
 const locale = computed(() => page.props.locale || 'en')
 const categories = computed(() => page.props.categories || [])
 const filters = computed(() => page.props.filters || {})
+const meta = computed(() => page.props.meta || {})
+
+const metaTitle = computed(() => {
+    return meta.value.title || `${trans("Our Services")} | ${seo.value.website_name || ''}`.trim()
+})
+const metaDescription = computed(() => {
+    return meta.value.description || seo.value.website_desc || ''
+})
+const metaKeywords = computed(() => {
+    return meta.value.keywords || seo.value.website_keywords || ''
+})
+const metaImage = computed(() => {
+    return meta.value?.og?.image || meta.value?.twitter?.image || settings.value?.meta_img || ''
+})
+const metaCanonical = computed(() => meta.value.canonical || '')
+const metaRobots = computed(() => meta.value.robots || 'index, follow')
 
 // Search and filter state
 const searchQuery = ref(filters.value.search || '')
@@ -198,13 +228,6 @@ const getServiceTitle = (service) => {
 // Helper function to get category name (handles translatable)
 const getCategoryName = (category) => {
     return translateField(category?.title)
-}
-
-// Helper function to get service description (handles translatable)
-const getServiceDescription = (service) => {
-    const desc = translateField(service?.description)
-    if (!desc) return ''
-    return desc.length > 140 ? `${desc.substring(0, 140)}...` : desc
 }
 
 const normalizeKeywords = (rawKeywords) => {
@@ -338,5 +361,11 @@ export default {
 
 .services-two__services-list-single {
     margin-bottom: 30px;
+}
+
+.services-two__meta {
+    margin: 8px 0 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.75);
 }
 </style>

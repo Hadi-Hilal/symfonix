@@ -10,7 +10,7 @@
                     </div>
                 </div>
                 <div class="main-menu-two__main-menu-box">
-                    <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
+                    <a href="#" class="mobile-nav__toggler" aria-label="Open mobile menu"><i class="fa fa-bars"></i></a>
                     <MainMenuList />
                 </div>
                 <div class="main-menu-two__right d-none d-md-flex align-items-center">
@@ -18,11 +18,12 @@
                         <a
                             href="#"
                             class="main-menu-two__search searcher-toggler-box icon-search-interface-symbol"
+                            aria-label="Open search"
                         ></a>
                     </div>
 
                     <div class="main-menu-two__nav-sidebar-icon">
-                        <a class="navSidebar-button" href="#">
+                        <a class="navSidebar-button" href="#" aria-label="Open sidebar">
                             <span class="icon-dots-menu-one"></span>
                             <span class="icon-dots-menu-two"></span>
                             <span class="icon-dots-menu-three"></span>

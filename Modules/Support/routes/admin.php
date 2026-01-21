@@ -7,6 +7,7 @@ use Modules\Support\app\Http\Controllers\Admin\FirewallController;
 use Modules\Support\app\Http\Controllers\Admin\BlockedIpController;
 use Modules\Support\app\Http\Controllers\Admin\FirewallLogController;
 use Modules\Support\app\Http\Controllers\Admin\ComplaintController;
+use Modules\Support\app\Http\Controllers\Admin\LeadController;
 
 Route::middleware('can:Support Management')->group(function () {
     // Subscriber routes
@@ -36,4 +37,12 @@ Route::middleware('can:Support Management')->group(function () {
     Route::get('complaints/export', [ComplaintController::class, 'export'])->name('complaints.export');
     Route::delete('complaints', [ComplaintController::class, 'deleteMulti'])->name('complaints.deleteMulti');
     Route::post('complaints/{complaint}/resolve', [ComplaintController::class, 'resolve'])->name('complaints.resolve');
+
+    // Leads routes
+    Route::delete('leads', [LeadController::class, 'deleteMulti'])->name('leads.deleteMulti');
+    Route::get('leads', [LeadController::class, 'index'])->name('leads.index');
+    Route::get('leads/{lead}', [LeadController::class, 'show'])->name('leads.show');
+    Route::delete('leads/{lead}', [LeadController::class, 'destroy'])->name('leads.destroy');
+    Route::post('leads/{lead}/block', [LeadController::class, 'block'])->name('leads.block');
+    Route::post('leads/{lead}/unblock', [LeadController::class, 'unblock'])->name('leads.unblock');
 });

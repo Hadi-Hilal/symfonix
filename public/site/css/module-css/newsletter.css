@@ -197,7 +197,7 @@
     font-size: 40px;
     font-weight: 500;
     line-height: 40px;
-    background: linear-gradient(270deg, var(--techguru-accent) 0%, var(--techguru-base) 100%);
+    background: #ffffff;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
@@ -336,7 +336,7 @@
     opacity: 0;
 }
 
-.newsletter-two__form.checked-box input[type="checkbox"]:checked+label span {
+.newsletter-two__form .checked-box input[type="checkbox"]:checked+label span {
     border-color: var(--techguru-white);
 }
 

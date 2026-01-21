@@ -27,6 +27,46 @@ return [
 
     'contact.ask_branch' => 'Choose a branch below to contact directly on WhatsApp:',
     'contact.hint' => 'You can click any button above to open WhatsApp with the selected branch.',
+
+    'lead.greeting' => 'Hi! I can help qualify your project and connect you with our team.',
+    'lead.ask_problem' => 'What specific problem are you trying to solve?',
+    'lead.recommended_service' => 'Recommended service: :service.',
+    'lead.validate_service' => 'Does this service align with what you\'re looking for?',
+    'lead.confirm' => 'Confirm',
+    'lead.no' => 'No',
+    'lead.pick_category' => 'Please choose a service category:',
+    'lead.service_match' => 'Based on what you shared, these services are a good fit: :services.',
+    'lead.pick_service' => 'Which service area best matches your needs?',
+    'lead.service_unknown' => 'Sorry, I did not catch that. Please choose a service from the list.',
+    'lead.no_services' => 'No services are available right now.',
+    'lead.lead_intro' => 'Great — I will grab a few details so our team can follow up.',
+    'lead.get_started_prompt' => 'Ready to get started?',
+    'lead.get_started' => 'Get Started',
+    'lead.ask_name' => 'What is your full name?',
+    'lead.ask_email' => 'What is the best email to reach you?',
+    'lead.email_invalid' => 'That email address does not look valid. Please enter a valid email.',
+    'lead.ask_company' => 'What is your company name?',
+    'lead.ask_budget' => 'What is your estimated project budget?',
+    'lead.thank_you' => 'Thanks! Your details are captured. We will reach out shortly.',
+
+    'lead.services.web' => 'Web Development',
+    'lead.services.mobile' => 'Mobile Development',
+    'lead.services.cloud' => 'Cloud Solutions',
+    'lead.services.ai' => 'AI & Automation',
+
+    'lead.value.web' => 'We build fast, scalable web experiences that improve performance, conversions, and user experience.',
+    'lead.value.mobile' => 'We deliver reliable mobile apps with smooth UX, secure integrations, and scalable architecture.',
+    'lead.value.cloud' => 'We help you modernize infrastructure, optimize costs, and deploy resilient cloud platforms.',
+    'lead.value.ai' => 'We design AI solutions that automate workflows, unlock insights, and accelerate decision-making.',
+    'lead.value.general' => 'Our team blends strategy and execution to deliver measurable digital outcomes.',
+
+    'lead.widget_about' => 'Chat with our team about your next project.',
+    'lead.widget_intro' => 'Hi! Tell us about your project and we will guide you.',
+
+    'launcher.ask_me' => 'Ask me',
+    'launcher.open' => 'Open chat',
+    'launcher.title' => 'Symfonix Bot',
+    'launcher.placeholder' => 'Send a message...',
 ];
 
 

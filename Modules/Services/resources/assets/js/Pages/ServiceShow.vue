@@ -1,12 +1,25 @@
 <template>
     <Head>
         <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'"/>
-        <title>{{ getServiceTitle(service) }} | {{ seo.website_name }}</title>
+        <title>{{ metaTitle }}</title>
+        <meta name="description" :content="metaDescription">
+        <meta name="keywords" :content="metaKeywords">
+        <meta name="robots" :content="metaRobots">
+        <link v-if="metaCanonical" rel="canonical" :href="metaCanonical">
+        <meta property="og:title" :content="metaTitle">
+        <meta property="og:description" :content="metaDescription">
+        <meta v-if="metaImage" property="og:image" :content="metaImage">
+        <meta v-if="metaCanonical" property="og:url" :content="metaCanonical">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" :content="metaTitle">
+        <meta name="twitter:description" :content="metaDescription">
+        <meta v-if="metaImage" name="twitter:image" :content="metaImage">
     </Head>
     <app-layout>
         <div class="page-header">
             <div class="page-header__bg"
-                 :style="{ backgroundImage: `url(${asset_path}site/images/backgrounds/page-header-bg.jpg)`}">
+                :style="{ backgroundImage: `url(${asset_path}images/backgrounds/services-bg.jpg)`}">
             </div>
             <div class="container">
                 <div class="page-header__inner">
@@ -32,16 +45,13 @@
 
         <!-- Service Details Start -->
         <section class="services-details">
-            <div class="services-details__shape-1"></div>
-            <div class="services-details__shape-2">
-                <img :src="asset_path + 'site/images/shapes/services-details-shape-2.png'" alt="">
-            </div>
+
             <div class="container">
                 <div class="row">
                     <div class="col-xl-4 col-lg-5">
                         <div class="services-details__left">
                             <div class="services-details__services-list-box">
-                                <h3 class="services-details__services-list-title">{{ trans("More Services") }}</h3>
+                                <h3 class="services-details__services-list-title">{{ trans("Service Categories") }}</h3>
                                 <ul class="services-details__services-list list-unstyled">
                                     <li v-for="recentService in recentServices.slice(0, 6)" :key="recentService.id">
                                         <Link
@@ -49,20 +59,20 @@
                                             :class="{ 'active': recentService.id === service.id }"
                                         >
                                             {{ getServiceTitle(recentService) }}
-                                            <span class="icon-right-arrow-2"></span>
+                                            <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-2`"></span>
                                         </Link>
                                     </li>
                                 </ul>
                             </div>
                             <div class="services-details__need-help">
                                 <div class="services-details__need-help-img">
-                                    <img :src="asset_path + 'site/images/services/services-details-need-help-img.jpg'"
-                                         alt="">
+                                    <img :src="asset_path + 'images/need_help.jpg'"
+                                         :alt="trans('Need help')">
                                     <div class="services-details__need-help-content">
                                         <div class="services-details__need-help-bdr"></div>
                                         <h3 class="services-details__need-help-title">{{ trans("Need Help?") }}</h3>
                                         <p class="services-details__need-help-number">
-                                            <a :href="`tel:${settings.website_phone || settings.phone}`">
+                                            <a dir="ltr" :href="`tel:${settings.website_phone || settings.phone}`">
                                                 {{ settings.website_phone || settings.phone || '+12 (00) 345 789034' }}
                                             </a>
                                         </p>
@@ -73,8 +83,17 @@
                     </div>
                     <div class="col-xl-8 col-lg-7">
                         <div class="services-details__right">
-                            <h3 class="services-details__title-1">{{ getServiceTitle(service) }}</h3>
+
+                                <h3 class="services-details__title-1">{{ getServiceTitle(service) }}</h3>
                             <div class="services-details__bdr"></div>
+                                  <ul class="blog-details__meta list-unstyled" v-if="service.reading_time">
+                                    <li>
+                                        <Link>
+                                            <span class="far fa-clock"></span>{{ service.reading_time }}
+                                            {{ trans('min read') }}
+                                        </Link>
+                                    </li>
+                                </ul>
                             <p class="services-details__text-1">
                                 {{ getServiceDescription(service) || getServiceExcerpt(service, 220, 0) }}
                             </p>
@@ -116,6 +135,8 @@
                             :image="relatedService.image_link"
                             :button-label="trans('Read More')"
                             :is-rtl="locale === 'ar'"
+                            :reading-time="relatedService.reading_time"
+                            :reading-time-label="trans('min read')"
                         />
                     </div>
                 </div>
@@ -125,8 +146,7 @@
 
         <!-- Testimonial Two Start -->
         <section class="testimonial-two" v-if="testimonials && testimonials.length">
-            <div class="testimonial-two__shape-1"></div>
-            <div class="testimonial-two__shape-2"></div>
+
             <div class="container">
                 <div class="section-title text-center sec-title-animation animation-style1">
                     <div class="section-title__tagline-box">
@@ -192,20 +212,29 @@ import ServiceCardThree from '@/Components/Services/ServiceCardThree.vue'
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;
 const seo = computed(() => page.props.seo)
-const settings = computed(() => page.props.settings)
+const settings = computed(() => page.props.settings || {})
 const asset_path = computed(() => page.props.asset_path || '')
 const locale = computed(() => page.props.locale || 'en')
 const service = computed(() => page.props.service)
 const relatedServices = computed(() => page.props.relatedServices || [])
 const recentServices = computed(() => page.props.recentServices || [])
 const testimonials = computed(() => page.props.testimonials || [])
+const meta = computed(() => page.props.meta || {})
 
-const benefitIcons = [
-    'icon-idea',
-    'icon-strategy',
-    'icon-target',
-    'icon-transparency'
-]
+const metaTitle = computed(() => {
+    return meta.value.title || `${getServiceTitle(service.value)} | ${seo.value.website_name || ''}`.trim()
+})
+const metaDescription = computed(() => {
+    return meta.value.description || getServiceDescription(service.value) || seo.value.website_desc || ''
+})
+const metaKeywords = computed(() => {
+    return meta.value.keywords || service.value?.keywords || seo.value.website_keywords || ''
+})
+const metaImage = computed(() => {
+    return meta.value?.og?.image || meta.value?.twitter?.image || service.value?.image_link || settings.value?.meta_img || ''
+})
+const metaCanonical = computed(() => meta.value.canonical || '')
+const metaRobots = computed(() => meta.value.robots || 'index, follow')
 
 const translateField = (value) => {
     if (!value) return ''
@@ -322,49 +351,8 @@ const getServiceHighlights = (serviceItem) => {
     ]
 }
 
-const getServiceBenefits = (serviceItem) => {
-    const highlights = getServiceHighlights(serviceItem)
-    return benefitIcons.map((icon, index) => ({
-        icon,
-        title: highlights[index] || trans("Tailored Strategies"),
-        description: getServiceExcerpt(serviceItem, 120, index * 120) || notingDefaultDescription(index),
-    }))
-}
-
-const notingDefaultDescription = (index) => {
-    const defaults = [
-        trans("Customized plans designed for your business goals and target audience."),
-        trans("End-to-end delivery that keeps every detail aligned."),
-        trans("Insights-driven optimization for measurable growth."),
-        trans("Transparent reporting at every milestone."),
-    ]
-    return defaults[index] || defaults[0]
-}
-
 onMounted(() => {
     nextTick(() => {
-        // Initialize FAQ accordion
-        if (typeof $ !== 'undefined' && $('.accrodion-grp').length) {
-            $('.accrodion-grp').each(function () {
-                const accrodionName = $(this).data('grp-name')
-                const Self = $(this)
-                const accordion = Self.find('.accrodion')
-                Self.addClass(accrodionName)
-                Self.find('.accrodion .accrodion-content').hide()
-                Self.find('.accrodion.active').find('.accrodion-content').show()
-                accordion.each(function () {
-                    $(this).find('.accrodion-title').on('click', function () {
-                        if ($(this).parent().hasClass('active') === false) {
-                            $(`.accrodion-grp.${accrodionName}`).find('.accrodion').removeClass('active')
-                            $(`.accrodion-grp.${accrodionName}`).find('.accrodion').find('.accrodion-content').slideUp()
-                            $(this).parent().addClass('active')
-                            $(this).parent().find('.accrodion-content').slideDown()
-                        }
-                    })
-                })
-            })
-        }
-
         // Initialize Testimonials Owl Carousel
         if (typeof $ !== 'undefined' && $('.testimonial-two__carousel').length && testimonials.value.length) {
             $('.testimonial-two__carousel').owlCarousel({
@@ -375,6 +363,7 @@ onMounted(() => {
                 smartSpeed: 500,
                 autoplay: true,
                 autoplayTimeout: 7000,
+                rtl: locale.value === 'ar',
                 responsive: {
                     0: {items: 1},
                     768: {items: 1},

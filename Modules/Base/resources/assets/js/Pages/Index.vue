@@ -1,8 +1,20 @@
 <!-- resources/js/Pages/Index.vue -->
 <template>
     <Head>
-
-        <title>{{trans("Home") }} | {{seo.website_name}}</title>
+        <title>{{ metaTitle }}</title>
+        <meta name="description" :content="metaDescription">
+        <meta name="keywords" :content="metaKeywords">
+        <meta name="robots" :content="metaRobots">
+        <link v-if="metaCanonical" rel="canonical" :href="metaCanonical">
+        <meta property="og:title" :content="metaTitle">
+        <meta property="og:description" :content="metaDescription">
+        <meta v-if="metaImage" property="og:image" :content="metaImage">
+        <meta v-if="metaCanonical" property="og:url" :content="metaCanonical">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" :content="metaTitle">
+        <meta name="twitter:description" :content="metaDescription">
+        <meta v-if="metaImage" name="twitter:image" :content="metaImage">
     </Head>
     <app-layout>
         <!--Banner One Start -->
@@ -49,7 +61,7 @@
                              data-wow-duration="2500ms">
                             <div class="about-three__img-box">
                                 <div class="about-three__img">
-                                    <img :src="asset_path + 'images/home/about_us.jpg'" alt="">
+                                    <img :src="asset_path + 'images/home/about_us.jpg'" :alt="trans('About us')">
                                 </div>
                             </div>
                         </div>
@@ -118,8 +130,7 @@
 
         <!--Services Three Start -->
         <section class="services-three" v-if="servicesCategories && servicesCategories.length">
-            <div class="services-three__shape-1"></div>
-            <div class="services-three__shape-2"></div>
+
             <div class="container">
                 <div class="section-title text-center sec-title-animation animation-style1">
                     <div class="section-title__tagline-box">
@@ -127,7 +138,7 @@
                         <span class="section-title__tagline">{{ trans('Our Services') }}</span>
                         <div class="section-title__tagline-shape-2"></div>
                     </div>
-                    <h2 class="section-title__title title-animation">
+                    <h2 class="section-title__title title-animation core-services-title">
                         {{ trans('What We Do') }}! <span>{{ trans('Core Services') }}</span>
                     </h2>
                 </div>
@@ -161,10 +172,9 @@
         <!--Why Choose Two Start -->
         <section class="why-choose-two">
             <div class="why-choose-two__shape-1 float-bob-y">
-                <img :src="asset_path + 'site/images/shapes/why-choose-two-shape-1.png'" alt="">
+                <img :src="asset_path + 'site/images/shapes/why-choose-two-shape-1.png'" :alt="trans('Decorative shape')">
             </div>
-            <div class="why-choose-two__shape-2"></div>
-            <div class="why-choose-two__shape-3"></div>
+
             <div class="container">
                 <div class="row">
                     <div class="col-xl-6">
@@ -253,7 +263,7 @@
             <div class="team-two__bg-shape float-bob-y"
                  :style="{ backgroundImage: `url(${asset_path}images/shapes/team-two-bg-shape.png)` }">
             </div>
-            <div class="team-two__shape-1"></div>
+
             <div class="container">
                 <div class="row">
                     <div class="col-xl-5">
@@ -319,9 +329,9 @@
 
         <!--Feature One Start -->
         <section class="feature-one">
-            <div class="feature-one__shape-1"></div>
+
             <div class="feature-one__shape-2 float-bob-y">
-                <img :src="asset_path + 'site/images/shapes/feature-one-shape-2.png'" alt="">
+                <img :src="asset_path + 'site/images/shapes/feature-one-shape-2.png'" :alt="trans('Decorative shape')">
             </div>
             <div class="container">
                 <div class="row">
@@ -329,7 +339,7 @@
                     <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                         <div class="feature-one__single">
                             <div class="feature-one__img">
-                                <img :src="asset_path + 'images/home/website.png'" alt="">
+                                <img :src="asset_path + 'images/home/website.png'" :alt="trans('Web Development')">
                             </div>
                             <h3 class="feature-one__title">
                                 <a href="#">
@@ -348,7 +358,7 @@
                     <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
                         <div class="feature-one__single">
                             <div class="feature-one__img">
-                                <img :src="asset_path + 'images/home/app-development.png'" alt="">
+                                <img :src="asset_path + 'images/home/app-development.png'" :alt="trans('Mobile Development')">
                             </div>
                             <h3 class="feature-one__title">
                                 <a href="#">
@@ -367,7 +377,7 @@
                     <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="500ms">
                         <div class="feature-one__single">
                             <div class="feature-one__img">
-                                <img :src="asset_path + 'images/home/microchip.png'" alt="">
+                                <img :src="asset_path + 'images/home/microchip.png'" :alt="trans('AI Agents & Automation')">
                             </div>
                             <h3 class="feature-one__title">
                                 <a href="#">
@@ -386,7 +396,7 @@
                     <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="700ms">
                         <div class="feature-one__single">
                             <div class="feature-one__img">
-                                <img :src="asset_path + 'images/home/cloud.png'" alt="">
+                                <img :src="asset_path + 'images/home/cloud.png'" :alt="trans('Cloud & Infrastructure')">
                             </div>
                             <h3 class="feature-one__title">
                                 <a href="#">
@@ -430,9 +440,7 @@
         <!--CTA One End -->
 
         <!-- Testimonial Two Start -->
-        <section class="testimonial-two" v-if="testimonials && testimonials.length">
-            <div class="testimonial-two__shape-1"></div>
-            <div class="testimonial-two__shape-2"></div>
+        <section class="testimonial-one pb-5" v-if="testimonials && testimonials.length">
             <div class="container">
                 <div class="section-title text-center sec-title-animation animation-style1">
                     <div class="section-title__tagline-box">
@@ -578,9 +586,9 @@
             >
             </div>
             <div class="contact-two__shape-1 float-bob-y">
-                <img :src="asset_path + 'site/images/shapes/contact-two-shape-1.png'" alt="">
+                <img :src="asset_path + 'site/images/shapes/contact-two-shape-1.png'" :alt="trans('Decorative shape')">
             </div>
-            <div class="contact-two__shape-2"></div>
+
             <div class="container">
                 <div class="row">
                     <div class="col-xl-6">
@@ -788,14 +796,29 @@ import ServiceCardThree from '@/Components/Services/ServiceCardThree.vue'
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;
 const seo = computed(() => page.props.seo)
-const settings = computed(() => page.props.settings)
+const settings = computed(() => page.props.settings || {})
 const asset_path = computed(() => page.props.asset_path || '')
-const storage_path = computed(() => page.props.storage_path || '')
 const locale = computed(() => page.props.locale)
 const posts = computed(() => page.props.posts || [])
 const servicesCategories = computed(() => page.props.servicesCategories || [])
 const testimonials = computed(() => page.props.testimonials || [])
 const teams = computed(() => page.props.teams || [])
+const meta = computed(() => page.props.meta || {})
+
+const metaTitle = computed(() => {
+    return meta.value.title || `${trans("Home")} | ${seo.value.website_name || ''}`.trim()
+})
+const metaDescription = computed(() => {
+    return meta.value.description || seo.value.website_desc || ''
+})
+const metaKeywords = computed(() => {
+    return meta.value.keywords || seo.value.website_keywords || ''
+})
+const metaImage = computed(() => {
+    return meta.value?.og?.image || meta.value?.twitter?.image || settings.value?.meta_img || ''
+})
+const metaCanonical = computed(() => meta.value.canonical || '')
+const metaRobots = computed(() => meta.value.robots || 'index, follow')
 
 const featuredPost = computed(() => posts.value?.[0] || null)
 const sidePosts = computed(() => (posts.value || []).slice(1, 4))
@@ -854,19 +877,7 @@ const handleContactSubmit = () => {
     if (!contactForm.subject || !contactForm.subject.trim()) return false;
     if (!contactForm.message || !contactForm.message.trim()) return false;
 
-    let contactUrl = '/contact-us';
-    try {
-        if (typeof route !== 'undefined' && route) {
-            contactUrl = route('contact-us.store');
-        } else {
-            const currentLocale = page.props.locale || '';
-            contactUrl = currentLocale ? `/${currentLocale}/contact-us` : '/contact-us';
-        }
-    } catch (e) {
-        const currentLocale = page.props.locale || '';
-        contactUrl = currentLocale ? `/${currentLocale}/contact-us` : '/contact-us';
-    }
-
+    let contactUrl = route('contact-us.store');
     contactForm.post(contactUrl, {
         preserveScroll: true,
         preserveState: true,
@@ -887,18 +898,6 @@ const handleContactSubmit = () => {
     });
 
     return false;
-};
-
-// Helper functions for services & blogs
-const getServiceUrl = (service) => {
-    if (!service || !service.slug) {
-        return '#';
-    }
-    try {
-        return route('services.show', service.slug);
-    } catch (e) {
-        return '#';
-    }
 };
 
 onMounted(() => {

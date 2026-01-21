@@ -47,6 +47,26 @@ class SitemapController extends Controller
             'priority' => '0.8',
         ];
 
+        // Static informational pages
+        $urls[] = [
+            'loc' => URL::to('/privacy-policy'),
+            'lastmod' => now()->toAtomString(),
+            'changefreq' => 'yearly',
+            'priority' => '0.5',
+        ];
+        $urls[] = [
+            'loc' => URL::to('/team'),
+            'lastmod' => now()->toAtomString(),
+            'changefreq' => 'monthly',
+            'priority' => '0.6',
+        ];
+        $urls[] = [
+            'loc' => URL::to('/testimonials'),
+            'lastmod' => now()->toAtomString(),
+            'changefreq' => 'monthly',
+            'priority' => '0.6',
+        ];
+
         // Static pages (about-us, etc.) via Page model
         try {
             if (class_exists(Page::class)) {

@@ -16,6 +16,16 @@
                         <span class="far fa-calendar-alt"></span>{{ post.created_at }}
                     </Link>
                 </li>
+                <li v-if="post.comments_count">
+                    <Link :href="postUrl">
+                        <span class="far fa-comments"></span>{{ post.comments_count }} {{ trans('Comments') }}
+                    </Link>
+                </li>
+                <li v-else-if="showReadingTime && post.reading_time">
+                    <Link :href="postUrl">
+                        <span class="far fa-clock"></span>{{ post.reading_time }} {{ trans('min read') }}
+                    </Link>
+                </li>
 
             </ul>
             <h3 class="blog-two__title">
@@ -61,6 +71,16 @@
                         <span class="far fa-calendar-alt"></span>{{ post.created_at }}
                     </Link>
                 </li>
+                <li v-if="post.comments_count">
+                    <Link :href="postUrl">
+                        <span class="far fa-comments"></span>{{ post.comments_count }} {{ trans('Comments') }}
+                    </Link>
+                </li>
+                <li v-else-if="showReadingTime && post.reading_time">
+                    <Link :href="postUrl">
+                        <span class="far fa-clock"></span>{{ post.reading_time }} {{ trans('min read') }}
+                    </Link>
+                </li>
 
             </ul>
             <div class="blog-two__btn-box-two">
@@ -101,6 +121,10 @@ const props = defineProps({
     avatarSeed: {
         type: Number,
         default: 0
+    },
+    showReadingTime: {
+        type: Boolean,
+        default: true
     },
     animationClass: {
         type: String,
@@ -154,14 +178,6 @@ const translateField = (value) => {
 
     return ''
 }
-
-
-const userAvatar = computed(() => {
-    const n = ((Number(props.avatarSeed) || 0) % 4) + 1
-    return `${props.assetPath}site/images/blog/blog-two-user-${n}.jpg`
-})
-
-
 
 const truncate = (text, length) => {
     if (!text) return ''

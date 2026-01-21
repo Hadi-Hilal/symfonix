@@ -170,10 +170,10 @@
         <!-- Newsletter Two Start -->
         <section class="newsletter-two">
             <div class="newsletter-two__shape-1">
-                <img :src="asset_path + 'site/images/shapes/newsletter-two-shape-1.png'" alt="">
+                <img :src="asset_path + 'site/images/shapes/newsletter-two-shape-1.png'" :alt="trans('Newsletter decoration')">
             </div>
             <div class="newsletter-two__shape-2 float-bob-x">
-                <img :src="asset_path + 'site/images/shapes/newsletter-two-shape-2.png'" alt="">
+                <img :src="asset_path + 'site/images/shapes/newsletter-two-shape-2.png'" :alt="trans('Newsletter decoration')">
             </div>
             <div class="container">
                 <div class="newsletter-two__inner">
@@ -234,9 +234,6 @@
 
         <!--Site Footer Two Start-->
         <footer class="site-footer-two">
-            <div class="site-footer-two__shape-1"></div>
-            <div class="site-footer-two__shape-2"></div>
-            <div class="site-footer-two__shape-3"></div>
             <div class="site-footer-two__top">
                 <div class="container">
                     <div class="row">
@@ -411,6 +408,7 @@
                                             :href="settings.facebook"
                                             target="_blank"
                                             rel="noopener"
+                                            aria-label="Facebook"
                                         >
                                             <span class="icon-facebook"></span>
                                         </a>
@@ -419,6 +417,7 @@
                                             :href="settings.instagram"
                                             target="_blank"
                                             rel="noopener"
+                                            aria-label="Instagram"
                                         >
                                             <span class="icon-dribble"></span>
                                         </a>
@@ -427,6 +426,7 @@
                                             :href="settings.linkedin"
                                             target="_blank"
                                             rel="noopener"
+                                            aria-label="LinkedIn"
                                         >
                                             <span class="icon-linkedin"></span>
                                         </a>
@@ -479,6 +479,7 @@
                         class="fab fa-twitter"
                         target="_blank"
                         rel="noopener"
+                        aria-label="Twitter"
                     ></a>
                     <a
                         v-if="settings.facebook"
@@ -486,14 +487,16 @@
                         class="fab fa-facebook-square"
                         target="_blank"
                         rel="noopener"
+                        aria-label="Facebook"
                     ></a>
-                    <a href="#" class="fab fa-pinterest-p"></a>
+                    <a href="#" class="fab fa-pinterest-p" aria-label="Pinterest"></a>
                     <a
                         v-if="settings.instagram"
                         :href="settings.instagram"
                         class="fab fa-instagram"
                         target="_blank"
                         rel="noopener"
+                        aria-label="Instagram"
                     ></a>
                 </div><!-- /.mobile-nav__social -->
             </div><!-- /.mobile-nav__top -->
@@ -526,7 +529,7 @@
 </template>
 
 <script setup>
-import {computed, onMounted, ref, nextTick} from 'vue'
+import {computed, onMounted, ref} from 'vue'
 import {Link, useForm, usePage} from '@inertiajs/vue3'
 import MainMenuList from '@/Components/MainMenuList.vue'
 import MainMenuNav from '@/Components/MainMenuNav.vue'
@@ -575,19 +578,7 @@ const handleContactSubmit = () => {
     if (!contactForm.subject || !contactForm.subject.trim()) return false;
     if (!contactForm.message || !contactForm.message.trim()) return false;
 
-    let contactUrl = '/contact-us';
-    try {
-        if (typeof route !== 'undefined' && route) {
-            contactUrl = route('contact-us.store');
-        } else {
-            const currentLocale = page.props.locale || '';
-            contactUrl = currentLocale ? `/${currentLocale}/contact-us` : '/contact-us';
-        }
-    } catch (e) {
-        const currentLocale = page.props.locale || '';
-        contactUrl = currentLocale ? `/${currentLocale}/contact-us` : '/contact-us';
-    }
-
+    let contactUrl = route('contact-us.store');
     contactForm.post(contactUrl, {
         preserveScroll: true,
         preserveState: true,
@@ -620,19 +611,7 @@ const handleSearchSubmit = () => {
         return false;
     }
 
-    let blogsUrl = '/blogs';
-    try {
-        if (typeof route !== 'undefined' && route) {
-            blogsUrl = route('blogs.index');
-        } else {
-            const currentLocale = page.props.locale || '';
-            blogsUrl = currentLocale ? `/${currentLocale}/blogs` : '/blogs';
-        }
-    } catch (e) {
-        const currentLocale = page.props.locale || '';
-        blogsUrl = currentLocale ? `/${currentLocale}/blogs` : '/blogs';
-    }
-
+    let blogsUrl = route('blogs.index');
     searchForm.get(blogsUrl, {
         preserveScroll: true,
         preserveState: true,
@@ -656,19 +635,7 @@ const handleSubscribeSubmit = () => {
         return false;
     }
 
-    let subscribeUrl = '/subscribe';
-    try {
-        if (typeof route !== 'undefined' && route) {
-            subscribeUrl = route('subscribe');
-        } else {
-            const currentLocale = page.props.locale || '';
-            subscribeUrl = currentLocale ? `/${currentLocale}/subscribe` : '/subscribe';
-        }
-    } catch (e) {
-        const currentLocale = page.props.locale || '';
-        subscribeUrl = currentLocale ? `/${currentLocale}/subscribe` : '/subscribe';
-    }
-
+    let subscribeUrl = route('subscribe');
     subscribeForm.post(subscribeUrl, {
         preserveScroll: true,
         preserveState: true,

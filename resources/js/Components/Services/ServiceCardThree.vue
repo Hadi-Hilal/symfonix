@@ -10,6 +10,9 @@
             <Link :href="link">{{ title }}</Link>
         </h3>
         <p v-if="shortDescription" class="services-three__text">{{ shortDescription }}</p>
+        <p v-if="readingTime" class="services-three__meta">
+            <span class="far fa-clock mx-1"></span>{{ readingTime }} {{ readingTimeLabel }}
+        </p>
         <ul v-if="safeHighlights.length" class="list-unstyled services-three__list">
             <li v-for="(item, index) in safeHighlights" :key="index">
                 <div class="icon">
@@ -39,6 +42,8 @@ const props = defineProps({
     image: { type: String, default: '' },
     buttonLabel: { type: String, default: 'Read More' },
     isRtl: { type: Boolean, default: false },
+    readingTime: { type: [Number, String], default: 0 },
+    readingTimeLabel: { type: String, default: 'min read' },
 })
 
 const parseMaybeJson = (value) => {
@@ -129,5 +134,11 @@ const shortDescription = computed(() => {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.services-three__meta {
+    margin: 0 0 12px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.75);
 }
 </style>

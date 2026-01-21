@@ -354,6 +354,7 @@
 
 .why-choose-two__img img {
     width: 100%;
+    border-radius: 18px;
 }
 
 .why-choose-two__right {

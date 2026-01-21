@@ -12,6 +12,7 @@ use Modules\Services\Models\Service;
 use Modules\Services\Models\ServiceCategory;
 use Modules\SearchEngine\Models\SearchKeyword;
 use Modules\Testimonial\Models\Testimonial;
+use Vdhicts\ReadTime\ReadTime;
 
 class ServiceController extends Controller {
     public function index(Request $request) {
@@ -53,7 +54,7 @@ class ServiceController extends Controller {
             });
         }
 
-        $services = $query->paginate(12)->through(function ($service) {
+        $services = $query->paginate(12)->through(function ($service) use ($locale) {
             return [
                 'id' => $service->id,
                 'title' => $service->title,
@@ -61,6 +62,7 @@ class ServiceController extends Controller {
                 'image_link' => $service->image_link,
                 'description' => $service->description,
                 'keywords' => $service->keywords,
+                'reading_time' => $this->getReadingTimeMinutes($service, $locale),
                 'created_at' => $service->created_at->format('d M Y'),
                 'category' => $service->category ? [
                     'id' => $service->category->id,
@@ -110,6 +112,7 @@ class ServiceController extends Controller {
     }
 
     public function show($slug) {
+        $locale = app()->getLocale();
         $service = Service::published()
             ->where('slug', $slug)
             ->with('category')
@@ -225,6 +228,7 @@ class ServiceController extends Controller {
                 'description' => $service->description,
                 'content' => $service->content,
                 'keywords' => $service->keywords,
+                'reading_time' => $this->getReadingTimeMinutes($service, $locale),
                 'created_at' => $service->created_at->format('d M Y'),
                 'created_at_formatted' => $service->created_at->format('d M Y'),
                 'category' => $service->category ? [
@@ -233,7 +237,7 @@ class ServiceController extends Controller {
                     'slug' => $service->category->slug,
                 ] : null,
             ],
-            'relatedServices' => $relatedServices->map(function ($service) {
+            'relatedServices' => $relatedServices->map(function ($service) use ($locale) {
                 return [
                     'id' => $service->id,
                     'title' => $service->title,
@@ -241,6 +245,7 @@ class ServiceController extends Controller {
                     'image_link' => $service->image_link,
                     'description' => $service->description,
                     'keywords' => $service->keywords,
+                    'reading_time' => $this->getReadingTimeMinutes($service, $locale),
                     'created_at' => $service->created_at->format('d M Y'),
                     'category' => $service->category ? [
                         'id' => $service->category->id,
@@ -265,6 +270,19 @@ class ServiceController extends Controller {
             'testimonials' => $testimonials,
             'meta' => $meta,
         ]);
+    }
+
+    private function getReadingTimeMinutes(Service $service, string $locale): int
+    {
+        $content = $service->getTranslation('content', $locale)
+            ?: $service->getTranslation('description', $locale)
+            ?: '';
+
+        if (trim(strip_tags((string) $content)) === '') {
+            return 0;
+        }
+
+        return (new ReadTime($content))->minutes();
     }
 }
 

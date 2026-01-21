@@ -20,37 +20,6 @@
   });
 
 
-  // AOS Animation
-  if ($("[data-aos]").length) {
-    AOS.init({
-      duration: '1200',
-      disable: 'false',
-      easing: 'ease',
-      mirror: true
-    });
-  }
-
-
-
-
-  function thmSwiperInit() {
-    // swiper slider
-    if ($(".thm-swiper__slider").length) {
-      $(".thm-swiper__slider").each(function () {
-        let elm = $(this);
-        let options = elm.data('swiper-options') || {};
-        // Check if RTL (Arabic)
-        const isRTL = $('html').attr('dir') === 'rtl' || $('body').attr('dir') === 'rtl';
-        if (isRTL) {
-          options.direction = 'rtl';
-        }
-        let thmSwiperSlider = new Swiper(elm, options);
-      });
-    }
-
-  }
-
-
 
 
   /*--------------------------------------------------------------
@@ -839,144 +808,6 @@
 
 
 
-  if ($(".contact-form-validated").length) {
-    $(".contact-form-validated").each(function () {
-      let self = $(this);
-      self.validate({
-        // initialize the plugin
-        rules: {
-          name: {
-            required: true
-          },
-          email: {
-            required: true,
-            email: true
-          },
-          message: {
-            required: true
-          },
-          subject: {
-            required: true
-          }
-        },
-        submitHandler: function (form) {
-          // sending value with ajax request
-          $.post(
-            $(form).attr("action"),
-            $(form).serialize(),
-            function (response) {
-              $(form).parent().find(".result").append(response);
-              $(form).find('input[type="text"]').val("");
-              $(form).find('input[type="email"]').val("");
-              $(form).find("textarea").val("");
-            }
-          );
-          return false;
-        }
-      });
-    });
-  }
-
-  // mailchimp form
-  if ($(".mc-form").length) {
-    $(".mc-form").each(function () {
-      var Self = $(this);
-      var mcURL = Self.data("url");
-      var mcResp = Self.parent().find(".mc-form__response");
-
-      Self.ajaxChimp({
-        url: mcURL,
-        callback: function (resp) {
-          // appending response
-          mcResp.append(function () {
-            return '<p class="mc-message">' + resp.msg + "</p>";
-          });
-          // making things based on response
-          if (resp.result === "success") {
-            // Do stuff
-            Self.removeClass("errored").addClass("successed");
-            mcResp.removeClass("errored").addClass("successed");
-            Self.find("input").val("");
-
-            mcResp.find("p").fadeOut(10000);
-          }
-          if (resp.result === "error") {
-            Self.removeClass("successed").addClass("errored");
-            mcResp.removeClass("successed").addClass("errored");
-            Self.find("input").val("");
-
-            mcResp.find("p").fadeOut(10000);
-          }
-        }
-      });
-    });
-  }
-
-  if ($(".video-popup").length) {
-    $(".video-popup").magnificPopup({
-      type: "iframe",
-      mainClass: "mfp-fade",
-      removalDelay: 160,
-      preloader: true,
-
-      fixedContentPos: false
-    });
-  }
-
-  if ($(".img-popup").length) {
-    var groups = {};
-    $(".img-popup").each(function () {
-      var id = parseInt($(this).attr("data-group"), 10);
-
-      if (!groups[id]) {
-        groups[id] = [];
-      }
-
-      groups[id].push(this);
-    });
-
-    $.each(groups, function () {
-      $(this).magnificPopup({
-        type: "image",
-        closeOnContentClick: true,
-        closeBtnInside: false,
-        gallery: {
-          enabled: true
-        }
-      });
-    });
-  }
-
-
-
-
-
-  //=== CountDownTimer===
-  if ($('.coming-soon-countdown').length) {
-    $('.coming-soon-countdown').each(function () {
-      var Self = $(this);
-      var countDate = Self.data('countdown-time'); // getting date
-
-      Self.countdown(countDate, function (event) {
-        $(this).html('<li> <div class="box"> <span class="days">' + event.strftime('%D') + '</span> <span class="timeRef">days</span> </div> </li> <li> <div class="box"> <span class="hours">' + event.strftime('%H') + '</span> <span class="timeRef clr-1">hrs</span> </div> </li> <li> <div class="box"> <span class="minutes">' + event.strftime('%M') + '</span> <span class="timeRef clr-2">mins</span> </div> </li> <li> <div class="box"> <span class="seconds">' + event.strftime('%S') + '</span> <span class="timeRef clr-3">secs</span> </div> </li>');
-      });
-    });
-  };
-
-
-
-
-  //=== CountDownTimer===
-  if ($('.event-one-countdown').length) {
-    $('.event-one-countdown').each(function () {
-      var Self = $(this);
-      var countDate = Self.data('countdown-time'); // getting date
-
-      Self.countdown(countDate, function (event) {
-        $(this).html('<li> <div class="box"> <span class="days">' + event.strftime('%D') + '</span> <span class="timeRef">days</span> </div> </li> <li> <div class="box"> <span class="hours">' + event.strftime('%H') + '</span> <span class="timeRef clr-1">hrs</span> </div> </li> <li> <div class="box"> <span class="minutes">' + event.strftime('%M') + '</span> <span class="timeRef clr-2">mins</span> </div> </li> <li> <div class="box"> <span class="seconds">' + event.strftime('%S') + '</span> <span class="timeRef clr-3">secs</span> </div> </li>');
-      });
-    });
-  };
 
 
 
@@ -1135,110 +966,7 @@
 
 
 
-  // ===Portfolio===
-  function projectMasonaryLayout() {
-    if ($(".masonary-layout").length) {
-      $(".masonary-layout").isotope({
-        layoutMode: "masonry"
-      });
-    }
-    if ($(".post-filter").length) {
-      $(".post-filter li")
-        .children(".filter-text")
-        .on("click", function () {
-          var Self = $(this);
-          var selector = Self.parent().attr("data-filter");
-          $(".post-filter li").removeClass("active");
-          Self.parent().addClass("active");
-          $(".filter-layout").isotope({
-            filter: selector,
-            animationOptions: {
-              duration: 500,
-              easing: "linear",
-              queue: false
-            }
-          });
-          return false;
-        });
-    }
 
-    if ($(".post-filter.has-dynamic-filters-counter").length) {
-      // var allItem = $('.single-filter-item').length;
-      var activeFilterItem = $(".post-filter.has-dynamic-filters-counter").find(
-        "li"
-      );
-      activeFilterItem.each(function () {
-        var filterElement = $(this).data("filter");
-        var count = $(".filter-layout").find(filterElement).length;
-        $(this)
-          .children(".filter-text")
-          .append('<span class="count">' + count + "</span>");
-      });
-    }
-  }
-
-
-
-
-
-
-
-
-
-  function SmoothMenuScroll() {
-    var anchor = $(".scrollToLink");
-    if (anchor.length) {
-      anchor.children("a").bind("click", function (event) {
-        if ($(window).scrollTop() > 10) {
-          var headerH = "90";
-        } else {
-          var headerH = "90";
-        }
-        var target = $(this);
-        $("html, body")
-          .stop()
-          .animate({
-              scrollTop: $(target.attr("href")).offset().top - headerH + "px"
-            },
-            200,
-            "easeInOutExpo"
-          );
-        anchor.removeClass("current");
-        anchor.removeClass("current-menu-ancestor");
-        anchor.removeClass("current_page_item");
-        anchor.removeClass("current-menu-parent");
-        target.parent().addClass("current");
-        event.preventDefault();
-      });
-    }
-  }
-  SmoothMenuScroll();
-
-  function OnePageMenuScroll() {
-    var windscroll = $(window).scrollTop();
-    if (windscroll >= 117) {
-      var menuAnchor = $(".one-page-scroll-menu .scrollToLink").children("a");
-      menuAnchor.each(function () {
-        var sections = $(this).attr("href");
-        $(sections).each(function () {
-          if ($(this).offset().top <= windscroll + 100) {
-            var Sectionid = $(sections).attr("id");
-            $(".one-page-scroll-menu").find("li").removeClass("current");
-            $(".one-page-scroll-menu").find("li").removeClass("current-menu-ancestor");
-            $(".one-page-scroll-menu").find("li").removeClass("current_page_item");
-            $(".one-page-scroll-menu").find("li").removeClass("current-menu-parent");
-            $(".one-page-scroll-menu")
-              .find("a[href*=\\#" + Sectionid + "]")
-              .parent()
-              .addClass("current");
-          }
-        });
-      });
-    } else {
-      $(".one-page-scroll-menu li.current").removeClass("current");
-      $(".one-page-scroll-menu li:first").addClass("current");
-    }
-  }
 
 
 
@@ -1388,30 +1116,6 @@
 
 
 
-  // ===Price Filter===
-  function priceFilter() {
-    if ($(".price-ranger").length) {
-      $(".price-ranger #slider-range").slider({
-        range: true,
-        min: 0,
-        max: 5000,
-        values: [0, 3000],
-        slide: function (event, ui) {
-          $(".price-ranger .ranger-min-max-block .min").val("" + ui.values[0]);
-          $(".price-ranger .ranger-min-max-block .max").val("" + ui.values[1]);
-        },
-      });
-      $(".price-ranger .ranger-min-max-block .min").val(
-        "" + $(".price-ranger #slider-range").slider("values", 0)
-      );
-      $(".price-ranger .ranger-min-max-block .max").val(
-        "" + $(".price-ranger #slider-range").slider("values", 1)
-      );
-    }
-  }
-
-
-
   $(".add").on("click", function () {
     if ($(this).prev().val() < 999) {
       $(this)
@@ -1479,88 +1183,6 @@
 
 
 
-  if ($("#shop-details-one__thumb").length) {
-    const isRTL = $('html').attr('dir') === 'rtl' || $('body').attr('dir') === 'rtl';
-    let testimonialsThumb = new Swiper("#shop-details-one__thumb", {
-      slidesPerView: 3,
-      spaceBetween: 0,
-      speed: 1400,
-      watchSlidesVisibility: true,
-      watchSlidesProgress: true,
-      loop: true,
-      direction: isRTL ? 'rtl' : 'ltr',
-      autoplay: {
-        delay: 5000
-      }
-    });
-
-    let testimonialsCarousel = new Swiper("#shop-details-one__carousel", {
-      observer: true,
-      observeParents: true,
-      loop: true,
-      speed: 1400,
-      mousewheel: false,
-      slidesPerView: 1,
-      direction: isRTL ? 'rtl' : 'ltr',
-      autoplay: {
-        delay: 5000
-      },
-      thumbs: {
-        swiper: testimonialsThumb
-      },
-      pagination: {
-        el: '#testimonials-one__carousel-pagination',
-        type: 'bullets',
-        clickable: true
-      },
-
-      "navigation": {
-        "nextEl": "#product-details__swiper-button-next",
-        "prevEl": "#product-details__swiper-button-prev"
-      },
-    });
-  }
-
-
-
-  //Related Products Carousel
-  if ($(".related-products__carousel").length) {
-    const isRTL = $('html').attr('dir') === 'rtl' || $('body').attr('dir') === 'rtl';
-    $(".related-products__carousel").owlCarousel({
-      loop: true,
-      margin: 30,
-      nav: false,
-      dots: false,
-      smartSpeed: 500,
-      autoplay: true,
-      autoplayTimeout: 2000,
-      rtl: isRTL,
-      navText: [
-        '<span class="icon-left-arrow"></span>',
-        '<span class="icon-right-arrow"></span>',
-      ],
-      responsive: {
-        0: {
-          items: 1,
-        },
-        768: {
-          items: 2,
-        },
-        992: {
-          items: 3,
-        },
-        1200: {
-          items: 3,
-        },
-        1320: {
-          items: 4,
-        },
-      },
-    });
-  }
-
-
-
 
 
 
@@ -1576,85 +1198,16 @@
   // window load event
   $(window).on("load", function () {
 
-    projectMasonaryLayout();
     fullHeight();
     title_animation();
-    priceFilter();
-    thmSwiperInit();
-
-
-
-
-    if ($(".post-filter").length) {
-      var postFilterList = $(".post-filter li");
-      // for first init
-      $(".filter-layout").isotope({
-        filter: ".filter-item",
-        animationOptions: {
-          duration: 500,
-          easing: "linear",
-          queue: false
-        }
-      });
-      // on click filter links
-      postFilterList.on("click", function () {
-        var Self = $(this);
-        var selector = Self.attr("data-filter");
-        postFilterList.removeClass("active");
-        Self.addClass("active");
-
-        $(".filter-layout").isotope({
-          filter: selector,
-          animationOptions: {
-            duration: 500,
-            easing: "linear",
-            queue: false
-          }
-        });
-        return false;
-      });
-    }
-
-    if ($(".post-filter.has-dynamic-filter-counter").length) {
-      // var allItem = $('.single-filter-item').length;
-
-      var activeFilterItem = $(".post-filter.has-dynamic-filter-counter").find(
-        "li"
-      );
-
-      activeFilterItem.each(function () {
-        var filterElement = $(this).data("filter");
-        var count = $(".filter-layout").find(filterElement).length;
-        $(this).append("<sup>[" + count + "]</sup>");
-      });
-    }
 
 
 
 
 
 
-    // Curved Circle
-    if ($(".portfolio-one__curved-circle").length) {
-      $(".portfolio-one__curved-circle").circleType({
-        position: "absolute",
-        dir: 1,
-        radius: 79.5,
-        forceHeight: true,
-        forceWidth: true,
-      });
-    }
 
 
-    if ($(".services-two__curved-circle").length) {
-      $(".services-two__curved-circle").circleType({
-        position: "absolute",
-        dir: 1,
-        radius: 73.6,
-        forceHeight: true,
-        forceWidth: true,
-      });
-    }
 
 
 
@@ -1679,8 +1232,6 @@
         stricky.removeClass("stricky-fixed");
       }
     }
-
-    OnePageMenuScroll();
 
   });
 
@@ -1710,75 +1261,7 @@
 
 
 
-  jQuery(document).ready(function ($) {
-    var player = document.querySelector('audio');
-    var $play_button = $('.play');
-    var $pause_button = $('.pause');
-    var $bar = $('.bar');
-    var update_time;
-
-    function startNupdate() {
-      document.querySelector('audio').pause();
-      player.play();
-      $play_button.hide();
-      $pause_button.show();
-
-      function pad(num, size) {
-        var s = num + "";
-        while (s.length < size) s = "0" + s;
-        return s;
-      }
-      clearInterval(update_time);
-      update_time = setInterval(function () {
-        var gradients = '';
-        for (var i = 0; i < player.buffered.length; i++) {
-          var perc_start = ((player.buffered.start(i) / player.duration) * 100).toString();
-          var perc_end = ((player.buffered.end(i) / player.duration) * 100).toString();
-
-          if (i > 0) {
-            gradients = gradients + ',rgba(240,240,240) ' + perc_start + '%,#9D9D9D ' + perc_start + '%' +
-              ', #9D9D9D ' + perc_end + '%, rgba(240,240,240) ' + perc_end + '%'
-          } else {
-            gradients = gradients + '#9D9D9D ' + perc_start + '%' + ', #9D9D9D ' + perc_end +
-              '%, rgba(240,240,240) ' + perc_end + '%'
-          }
-        }
-        gradients = gradients + ',rgba(240,240,240) ' + ((player.buffered.end(player.buffered.length - 1) / player
-          .duration) * 100) + '%, rgba(240,240,240)'
-        $bar.css({
-          "background": "linear-gradient(to right, #F0F0F0, " + gradients + ")"
-        })
-        var minutes = pad(Math.floor(player.currentTime / 60), 2);
-        var seconds = pad(Math.floor(player.currentTime - minutes * 60), 2);
-        $('.elapsed span').html(minutes + ':' + seconds);
-        $('.position-marker').css({
-          "left": ((player.currentTime / player.duration) * 100) + '%'
-        })
-      }, 1000)
-    }
-
-    $bar.on('click', function (event) {
-      var pos_perc = event.offsetX / event.target.offsetWidth;
-      player.currentTime = (player.duration * pos_perc);
-      startNupdate();
-    })
-
-    $play_button.on('click', function () {
-      startNupdate();
-    });
-    $pause_button.on('click', function () {
-      player.pause();
-      $pause_button.hide();
-      $play_button.show();
-      clearInterval(update_time);
-    });
-  })
-
-
-
-
-
-  $('select:not(.ignore)').niceSelect();
+  // removed unused audio player and select styling
 
 
 

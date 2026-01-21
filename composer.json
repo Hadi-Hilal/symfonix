@@ -12,6 +12,7 @@
         "akaunting/laravel-firewall": "^2.3",
         "botman/botman": "^2.8",
         "botman/driver-web": "^1.5",
+        "cloudstudio/ollama-laravel": "^1.1",
         "danielme85/laravel-log-to-db": "^4.1",
         "hansschouten/phpagebuilder": "^0.31.0",
         "inertiajs/inertia-laravel": "^2.0",
@@ -31,7 +32,8 @@
         "spatie/laravel-translatable": "^6.9",
         "stichoza/google-translate-php": "^5.2",
         "tightenco/ziggy": "^2.4",
-        "unisharp/laravel-filemanager": "^2.12"
+        "unisharp/laravel-filemanager": "^2.12",
+        "vdhicts/read-time": "^4.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.14",

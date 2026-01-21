@@ -7,14 +7,14 @@
 
     <app-layout>
         <section class="page-header">
-            <div class="page-header__bg"  :style="{ backgroundImage: `url(${asset_path}images/login-header-bg.jpg)`}"></div>
+            <div class="page-header__bg"  :style="{ backgroundImage: `url(${asset_path}images/backgrounds/login-bg.jpg)`}"></div>
             <div class="container">
                 <div class="page-header__inner">
                     <h2>{{ trans("Forgot Password") }}</h2>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li><a href="/"><i class="fas fa-home"></i> {{ trans("Home") }}</a></li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`""></span></li>
+                            <li><span :class="`icon-${locale !== 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
                             <li>{{ trans("Forgot Password") }}</li>
                         </ul>
                     </div>
@@ -40,7 +40,7 @@
                                             type="email"
                                             name="email"
                                             autocomplete="email"
-                                            placeholder="Email..."
+                                            :placeholder="trans('Email')"
                                             :class="{ 'error': errors.email }"
                                             :disabled="form.processing"
                                             required
@@ -62,7 +62,7 @@
                                             <i class="fa-solid fa-spinner fa-spin me-2"></i>{{ trans("Sending...") }}
                                         </span>
                                         <span v-else>
-                                            {{ trans("Send Email Verification") }}<span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
+                                            {{ trans("Send Email Verification") }}<span :class="`icon-${locale !== 'ar' ? 'left' : 'right'}-arrow `"></span>
                                         </span>
                                     </button>
                                 </div>

@@ -1,21 +1,34 @@
 <template>
     <Head>
         <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'"/>
-        <title>{{trans("Contact Us") }} | {{seo.website_name}}</title>
+        <title>{{ metaTitle }}</title>
+        <meta name="description" :content="metaDescription">
+        <meta name="keywords" :content="metaKeywords">
+        <meta name="robots" :content="metaRobots">
+        <link v-if="metaCanonical" rel="canonical" :href="metaCanonical">
+        <meta property="og:title" :content="metaTitle">
+        <meta property="og:description" :content="metaDescription">
+        <meta v-if="metaImage" property="og:image" :content="metaImage">
+        <meta v-if="metaCanonical" property="og:url" :content="metaCanonical">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" :content="metaTitle">
+        <meta name="twitter:description" :content="metaDescription">
+        <meta v-if="metaImage" name="twitter:image" :content="metaImage">
     </Head>
     <app-layout>
 
 
         <section class="page-header">
-            <div class="page-header__bg" :style="{ backgroundImage: `url(${asset_path}images/contact-header-bg.jpg)`}">
+            <div class="page-header__bg" :style="{ backgroundImage: `url(${asset_path}images/backgrounds/contact-us-bg.jpg)`}">
             </div>
             <div class="container">
                 <div class="page-header__inner">
                     <h2>{{ trans("Contact Us") }}</h2>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
-                            <li><a href="/"><i class="fas fa-home"></i>{{ trans("Home") }}</a></li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`""></span></li>
+                            <li><Link :href="route('home')"><i class="fas fa-home"></i>{{ trans("Home") }}</Link></li>
+                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
                             <li>{{ trans("Contact Us") }}</li>
                         </ul>
                     </div>
@@ -217,15 +230,31 @@
 </template>
 
 <script setup>
-import {computed, onMounted, nextTick, ref} from 'vue'
-import {usePage, useForm, router, Head} from '@inertiajs/vue3'
+import {computed, ref} from 'vue'
+import {usePage, useForm, Head} from '@inertiajs/vue3'
 
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;
 const seo = computed(() => page.props.seo)
-const settings = computed(() => page.props.settings)
+const settings = computed(() => page.props.settings || {})
 const asset_path = computed(() => page.props.asset_path || '')
 const locale = computed(() => page.props.locale || 'en')
+const meta = computed(() => page.props.meta || {})
+
+const metaTitle = computed(() => {
+    return meta.value.title || `${trans("Contact Us")} | ${seo.value.website_name || ''}`.trim()
+})
+const metaDescription = computed(() => {
+    return meta.value.description || seo.value.website_desc || ''
+})
+const metaKeywords = computed(() => {
+    return meta.value.keywords || seo.value.website_keywords || ''
+})
+const metaImage = computed(() => {
+    return meta.value?.og?.image || meta.value?.twitter?.image || settings.value?.meta_img || ''
+})
+const metaCanonical = computed(() => meta.value.canonical || '')
+const metaRobots = computed(() => meta.value.robots || 'index, follow')
 const submitSuccess = ref(false)
 
 const contactForm = useForm({
@@ -262,19 +291,7 @@ const handleSubmit = () => {
         return false;
     }
 
-    let contactUrl = '/contact-us';
-    try {
-        if (typeof route !== 'undefined' && route) {
-            contactUrl = route('contact-us.store');
-        } else {
-            const currentLocale = page.props.locale || '';
-            contactUrl = currentLocale ? `/${currentLocale}/contact-us` : '/contact-us';
-        }
-    } catch (e) {
-        const currentLocale = page.props.locale || '';
-        contactUrl = currentLocale ? `/${currentLocale}/contact-us` : '/contact-us';
-    }
-
+    let contactUrl = route('contact-us.store');
     contactForm.post(contactUrl, {
         preserveScroll: true,
         preserveState: true,

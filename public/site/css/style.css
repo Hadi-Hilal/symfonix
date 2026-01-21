@@ -311,7 +311,7 @@ ul {
   vertical-align: middle;
   -webkit-appearance: none;
   outline: none !important;
-  background: linear-gradient(270deg, var(--techguru-accent) 0%, var(--techguru-base) 100%);
+  background:  linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
   color: var(--techguru-white);
   font-size: 16px;
   line-height: 16px;
@@ -463,7 +463,7 @@ ul {
   background: transparent;
   position: fixed;
   bottom: 60px;
-  right: -12px;
+  left: -15px;
   z-index: 99;
   text-align: center;
   opacity: 0;

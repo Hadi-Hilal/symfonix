@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Conversations\MainMenuConversation;
+use App\Conversations\ProjectInquiryConversation;
 use BotMan\BotMan\BotMan;
 use BotMan\BotMan\BotManFactory;
 use BotMan\BotMan\Cache\LaravelCache;
@@ -33,9 +33,10 @@ class BotManController extends Controller
         // Create BotMan instance with proper cache and current request
         $botman = BotManFactory::create($config, new LaravelCache(), $request);
 
-        // Start main menu on any message
+        // Start lead qualification flow on any message
         $botman->hears('{message}', function (BotMan $bot) {
-            $bot->startConversation(new MainMenuConversation());
+            $initialMessage = $bot->getMessage()->getText();
+            $bot->startConversation(new ProjectInquiryConversation($initialMessage));
         });
 
 

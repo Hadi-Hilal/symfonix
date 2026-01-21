@@ -1,3 +1,8 @@
+<!---
+Site: Sham Vision
+Created At: 01-01-2026
+Developed By: Hadi Hilal
+--->
 <!DOCTYPE html>
 <html lang="<?php echo e(app()->getLocale()); ?>" dir="<?php echo e(app()->getLocale() == 'ar' ? 'rtl' :'ltr'); ?>">
 <head>
@@ -10,6 +15,7 @@
     <?php
         $seo = \Modules\Base\Models\Seo::pluck('value', 'key');
         $settings = \Modules\Base\Models\Settings::pluck('value', 'key');
+        $appLogoUrl = asset('images/logo.png');
     ?>
     <meta name="author" content="<?php echo e($seo->get('website_name')); ?>">
     <meta name="theme-color" content="#cc3333"/>
@@ -58,18 +64,11 @@
     <link rel="stylesheet" href="<?php echo e(asset('site/css/bootstrap.min.css')); ?>"/>
     <link rel="stylesheet" href="<?php echo e(asset('site/css/animate.min.css')); ?>"/>
     <link rel="stylesheet" href="<?php echo e(asset('site/css/custom-animate.css')); ?>"/>
-    <link rel="stylesheet" href="<?php echo e(asset('site/css/swiper.min.css')); ?>"/>
     <link rel="stylesheet" href="<?php echo e(asset('site/css/font-awesome-all.css')); ?>"/>
-    <link rel="stylesheet" href="<?php echo e(asset('site/css/jarallax.css')); ?>"/>
-    <link rel="stylesheet" href="<?php echo e(asset('site/css/jquery.magnific-popup.css')); ?>"/>
     <link rel="stylesheet" href="<?php echo e(asset('site/css/odometer.min.css')); ?>"/>
     <link rel="stylesheet" href="<?php echo e(asset('site/css/flaticon.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('site/css/owl.carousel.min.css')); ?>"/>
     <link rel="stylesheet" href="<?php echo e(asset('site/css/owl.theme.default.min.css')); ?>"/>
-    <link rel="stylesheet" href="<?php echo e(asset('site/css/nice-select.css')); ?>"/>
-    <link rel="stylesheet" href="<?php echo e(asset('site/css/jquery-ui.css')); ?>"/>
-    <link rel="stylesheet" href="<?php echo e(asset('site/css/aos.css')); ?>"/>
-    <link rel="stylesheet" href="<?php echo e(asset('site/css/twentytwenty.css')); ?>"/>
 
 
     <link rel="stylesheet" href="<?php echo e(asset('site/css/module-css/banner.css')); ?>"/>
@@ -99,6 +98,272 @@
     <link rel="stylesheet" href="<?php echo e(asset('site/css/style.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('site/css/responsive.css')); ?>"/>
 
+    <style>
+        /* ShamBot custom widget */
+        #symfonixbot-launcher-wrap {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9998;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            direction: ltr;
+        }
+
+        #symfonixbot-launcher {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: #7fc457;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+            animation: symfonixbot-launcher-pop 650ms cubic-bezier(.2,.9,.2,1) 200ms both;
+        }
+
+        #symfonixbot-launcher img {
+            width: 32px;
+            height: 32px;
+        }
+
+        #symfonixbot-launcher-hint {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: #e9f7dd;
+            color: #7fc457;
+            border: 1px solid rgba(127, 196, 87, 0.28);
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 1;
+            text-transform: uppercase;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+            user-select: none;
+            white-space: nowrap;
+            transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
+            animation: symfonixbot-hint-pop 650ms cubic-bezier(.2,.9,.2,1) both,
+                       symfonixbot-hint-float 2.8s ease-in-out 900ms infinite;
+        }
+
+        html[dir="rtl"] #symfonixbot-launcher-hint {
+            direction: rtl;
+        }
+
+        #symfonixbot-launcher-hint::after {
+            content: "";
+            position: absolute;
+            right: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 6px solid #e9f7dd;
+        }
+
+        #symfonixbot-launcher-hint.symfonixbot-hidden {
+            opacity: 0;
+            transform: translateX(6px) scale(0.98);
+            pointer-events: none;
+        }
+
+        #symfonixbot-launcher:hover {
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
+        }
+
+        #symfonixbot-launcher-wrap:hover #symfonixbot-launcher-hint:not(.symfonixbot-hidden) {
+            transform: translateY(-1px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+        }
+
+        @keyframes symfonixbot-hint-pop {
+            0% { opacity: 0; transform: translateX(10px) scale(0.92); }
+            60% { opacity: 1; transform: translateX(0) scale(1.04); }
+            100% { opacity: 1; transform: translateX(0) scale(1); }
+        }
+
+        @keyframes symfonixbot-launcher-pop {
+            0% { transform: scale(0.92); filter: saturate(0.9); }
+            60% { transform: scale(1.06); filter: saturate(1.05); }
+            100% { transform: scale(1); filter: saturate(1); }
+        }
+
+        @keyframes symfonixbot-hint-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-2px); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #symfonixbot-launcher,
+            #symfonixbot-launcher-hint {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            #symfonixbot-launcher-wrap {
+                bottom: 14px;
+                right: 14px;
+                gap: 8px;
+            }
+
+            #symfonixbot-launcher {
+                width: 52px;
+                height: 52px;
+            }
+
+            #symfonixbot-launcher img {
+                width: 30px;
+                height: 30px;
+            }
+
+            #symfonixbot-launcher-hint {
+                padding: 7px 10px;
+                font-size: 11px;
+            }
+        }
+
+        #symfonixbot-container {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 360px;
+            max-width: 95vw;
+            max-height: 480px;
+            min-height: 400px;
+            background: #f9f9f9;
+            border-radius: 16px;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 9999;
+            font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 14px;
+        }
+
+        #symfonixbot-container.symfonixbot-hidden {
+            display: none;
+        }
+
+        .symfonixbot-header {
+            background: #7fc457;
+            color: #ffffff;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .symfonixbot-header-title {
+            font-weight: 600;
+        }
+
+        .symfonixbot-header-close {
+            cursor: pointer;
+        }
+
+        .symfonixbot-bubble-bot a {
+            color: #7fc457;
+        }
+
+        .symfonixbot-messages {
+            padding: 10px 12px;
+            overflow-y: auto;
+            flex: 1;
+            background: #f5f7fa;
+        }
+
+        .symfonixbot-message {
+            margin-bottom: 8px;
+            display: flex;
+        }
+
+        .symfonixbot-message-user {
+            justify-content: flex-end;
+        }
+
+        .symfonixbot-bubble {
+            max-width: 80%;
+            padding: 8px 10px;
+            border-radius: 12px;
+            line-height: 1.4;
+        }
+
+        .symfonixbot-bubble-user {
+            background: #7fc457;
+            color: #ffffff;
+            border-bottom-right-radius: 2px;
+            margin: 10px 2px;
+        }
+
+        .symfonixbot-bubble-bot {
+            background: #ffffff;
+            color: #111827;
+            border-bottom-left-radius: 2px;
+        }
+
+        .symfonixbot-actions {
+            margin-top: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .symfonixbot-action-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            border-radius: 999px;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            background: #7fc457;
+            color: #ffffff;
+        }
+
+        .symfonixbot-input-row {
+            display: flex;
+            align-items: center;
+            padding: 8px 10px;
+            background: #ffffff;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        #symfonixbot-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 6px 8px;
+            background: transparent;
+        }
+
+        #symfonixbot-send {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: #7fc457;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+    </style>
+
 
     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(app()->getLocale() === "ar"): ?>
 
@@ -126,37 +391,36 @@
 
 
 <?php if (!isset($__inertiaSsrDispatched)) { $__inertiaSsrDispatched = true; $__inertiaSsrResponse = app(\Inertia\Ssr\Gateway::class)->dispatch($page); }  if ($__inertiaSsrResponse) { echo $__inertiaSsrResponse->body; } else { ?><div id="app" data-page="<?php echo e(json_encode($page)); ?>"></div><?php } ?>
+<div id="symfonixbot-launcher-wrap" aria-label="Symfonix Bot launcher">
+    <div id="symfonixbot-launcher-hint" class="fade-in"><?php echo e(__('chat.launcher.ask_me')); ?></div>
+    <div id="symfonixbot-launcher" aria-label="<?php echo e(__('chat.launcher.open')); ?>">
+        <img src="<?php echo e(asset('images/robot.png')); ?>" alt="<?php echo e(__('chat.launcher.title')); ?>">
+    </div>
+</div>
+<div id="symfonixbot-container" class="symfonixbot-hidden" aria-label="<?php echo e(__('chat.launcher.title')); ?>">
+    <div class="symfonixbot-header">
+        <div class="symfonixbot-header-title"><?php echo e(__('chat.launcher.title')); ?></div>
+        <div class="symfonixbot-header-close" id="symfonixbot-close">×</div>
+    </div>
+    <div id="symfonixbot-messages" class="symfonixbot-messages"></div>
+    <div class="symfonixbot-input-row">
+        <input id="symfonixbot-input" type="text" placeholder="<?php echo e(__('chat.launcher.placeholder')); ?>">
+        <button id="symfonixbot-send">➤</button>
+    </div>
+</div>
 <a href="#" data-target="html" class="scroll-to-target scroll-to-top">
     <span class="scroll-to-top__wrapper"><span class="scroll-to-top__inner"></span></span>
-    <span class="scroll-to-top__text"> Go Back Top</span>
+    <span class="scroll-to-top__text"> <?php echo e(__('Go Back Top')); ?></span>
 </a>
 
 
 <script src="<?php echo e(asset('site/js/jquery-3.6.0.min.js')); ?>"></script>
 <script src="<?php echo e(asset('site/js/bootstrap.bundle.min.js')); ?>"></script>
-<script src="<?php echo e(asset('site/js/jarallax.min.js')); ?>"></script>
-<script src="<?php echo e(asset('site/js/jquery.ajaxchimp.min.js')); ?>"></script>
 <script src="<?php echo e(asset('site/js/jquery.appear.min.js')); ?>"></script>
-<script src="<?php echo e(asset('site/js/swiper.min.js')); ?>"></script>
-<script src="<?php echo e(asset('site/js/jquery.magnific-popup.min.js')); ?>"></script>
-<script src="<?php echo e(asset('site/js/jquery.validate.min.js')); ?>"></script>
 <script src="<?php echo e(asset('site/js/odometer.min.js')); ?>"></script>
-<script src="<?php echo e(asset('site/js/wNumb.min.js')); ?>"></script>
 <script src="<?php echo e(asset('site/js/wow.js')); ?>"></script>
-<script src="<?php echo e(asset('site/js/isotope.js')); ?>"></script>
 <script src="<?php echo e(asset('site/js/owl.carousel.min.js')); ?>"></script>
-<script src="<?php echo e(asset('site/js/jquery-ui.js')); ?>"></script>
-<script src="<?php echo e(asset('site/js/jquery.nice-select.min.js')); ?>"></script>
-<script src="<?php echo e(asset('site/js/twentytwenty.js')); ?>"></script>
-<script src="<?php echo e(asset('site/js/jquery.event.move.js')); ?>"></script>
 <script src="<?php echo e(asset('site/js/marquee.min.js')); ?>"></script>
-<script src="<?php echo e(asset('site/js/jquery.circleType.js')); ?>"></script>
-<script src="<?php echo e(asset('site/js/jquery.fittext.js')); ?>"></script>
-<script src="<?php echo e(asset('site/js/jquery.lettering.min.js')); ?>"></script>
-<script src="<?php echo e(asset('site/js/typed-2.0.11.js')); ?>"></script>
-<script src="<?php echo e(asset('site/js/jquery-sidebar-content.js')); ?>"></script>
-<script src="<?php echo e(asset('site/js/aos.js')); ?>"></script>
-<script src="<?php echo e(asset('site/js/countdown.min.js')); ?>"></script>
 
 
 <script src="<?php echo e(asset('site/js/gsap/gsap.js')); ?>"></script>
@@ -166,13 +430,163 @@
 
 <!-- template js -->
 <script src="<?php echo e(asset('site/js/script.js')); ?>"></script>
+<script>
+    (function () {
+        const endpoint = '<?php echo e(route('botman.handle')); ?>?locale=<?php echo e(app()->getLocale()); ?>';
+        const symfonixbotSessionId = 'user-' + Math.random().toString(36).substring(2) + Date.now().toString(36);
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+
+        const launcher = document.getElementById('symfonixbot-launcher');
+        const container = document.getElementById('symfonixbot-container');
+        const closeBtn = document.getElementById('symfonixbot-close');
+        const messagesEl = document.getElementById('symfonixbot-messages');
+        const inputEl = document.getElementById('symfonixbot-input');
+        const sendBtn = document.getElementById('symfonixbot-send');
+        const hintEl = document.getElementById('symfonixbot-launcher-hint');
+
+        function toggleChat(open) {
+            const shouldOpen = open !== undefined ? open : container.classList.contains('symfonixbot-hidden');
+            container.classList.toggle('symfonixbot-hidden', !shouldOpen);
+            if (shouldOpen && hintEl) {
+                hintEl.classList.add('symfonixbot-hidden');
+            }
+            if (shouldOpen) {
+                inputEl.focus();
+            }
+        }
+
+        function appendMessage(from, html) {
+            const wrap = document.createElement('div');
+            wrap.className = 'symfonixbot-message ' + (from === 'user' ? 'symfonixbot-message-user' : '');
+            const bubble = document.createElement('div');
+            bubble.className = 'symfonixbot-bubble ' + (from === 'user' ? 'symfonixbot-bubble-user' : 'symfonixbot-bubble-bot');
+            bubble.innerHTML = html;
+            wrap.appendChild(bubble);
+            messagesEl.appendChild(wrap);
+            messagesEl.scrollTop = messagesEl.scrollHeight;
+        }
+
+        function appendActions(actions) {
+            if (!actions || !actions.length) return;
+            const row = document.createElement('div');
+            row.className = 'symfonixbot-actions';
+            actions.forEach(action => {
+                const btn = document.createElement('button');
+                btn.className = 'symfonixbot-action-btn';
+                btn.textContent = action.text || action.name || '';
+                btn.addEventListener('click', function () {
+                    sendMessage(action.text || '', { interactive: true, value: action.value });
+                });
+                row.appendChild(btn);
+            });
+            messagesEl.appendChild(row);
+            messagesEl.scrollTop = messagesEl.scrollHeight;
+        }
+
+        async function sendMessage(text, options = {}) {
+            const trimmed = text.trim();
+            if (!trimmed) return;
+
+            appendMessage('user', trimmed);
+            inputEl.value = '';
+
+            const payload = {
+                driver: 'web',
+                userId: symfonixbotSessionId,
+                message: trimmed,
+                _token: csrfToken,
+            };
+
+            if (options.interactive) {
+                payload.interactive = true;
+                if (options.value) {
+                    payload.value = options.value;
+                }
+            }
+
+            try {
+                const res = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                        'X-CSRF-TOKEN': csrfToken,
+                    },
+                    credentials: 'same-origin',
+                    body: new URLSearchParams(payload),
+                });
+
+                const raw = await res.text();
+                let data;
+                try {
+                    data = JSON.parse(raw);
+                } catch (e) {
+                    const linkIdx = raw.indexOf('<link');
+                    const scriptIdx = raw.indexOf('<script');
+                    let cutIdx = -1;
+                    if (linkIdx > 0 && scriptIdx > 0) {
+                        cutIdx = Math.min(linkIdx, scriptIdx);
+                    } else if (linkIdx > 0) {
+                        cutIdx = linkIdx;
+                    } else if (scriptIdx > 0) {
+                        cutIdx = scriptIdx;
+                    }
+
+                    if (cutIdx > 0) {
+                        const jsonPart = raw.substring(0, cutIdx);
+                        data = JSON.parse(jsonPart);
+                    } else {
+                        console.error('Symfonix Bot raw response (no JSON)', raw);
+                        return;
+                    }
+                }
+
+                const replies = (data && data.messages) || [];
+
+                replies.forEach(msg => {
+                    if (!msg || typeof msg !== 'object') return;
+                    if (msg.type === 'typing_indicator') {
+                        return;
+                    }
+                    if (msg.type === 'actions') {
+                        if (msg.text) {
+                            appendMessage('bot', msg.text);
+                        }
+                        appendActions(msg.actions || []);
+                    } else {
+                        if (msg.text) {
+                            appendMessage('bot', msg.text);
+                        }
+                    }
+                });
+            } catch (e) {
+                console.error('Symfonix Bot error', e);
+            }
+        }
+
+        launcher.addEventListener('click', function () {
+            toggleChat(true);
+        });
+        closeBtn.addEventListener('click', function () {
+            toggleChat(false);
+        });
+        sendBtn.addEventListener('click', function () {
+            sendMessage(inputEl.value);
+        });
+        inputEl.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage(inputEl.value);
+            }
+        });
+    })();
+</script>
 <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "<?php echo e(env('APP_NAME')); ?>",
       "url": "<?php echo e(env('APP_URL')); ?>",
-      "logo": ""
+      "logo": "<?php echo e($appLogoUrl); ?>"
     }
 </script>
 <script>

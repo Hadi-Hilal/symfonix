@@ -187,12 +187,19 @@
         </span>
 
         <div
-            class="menu-sub menu-sub-accordion {{ isset($active['contact_forms']) || isset($active['subscribers']) || isset($active['blocked_ips']) || isset($active['firewall_logs']) || isset($active['search_keywords']) || isset($active['complaints']) ? 'show' : '' }}">
+            class="menu-sub menu-sub-accordion {{ isset($active['contact_forms']) || isset($active['subscribers']) || isset($active['blocked_ips']) || isset($active['firewall_logs']) || isset($active['search_keywords']) || isset($active['complaints']) || isset($active['leads']) ? 'show' : '' }}">
             <div class="menu-item">
                 <a class="menu-link {{ isset($active['contact_forms']) ? 'active' : '' }}"
                    href="{{ route('admin.contact_forms.index') }}">
                     <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
                     <span class="menu-title">{{ __('Contacts') }}</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['leads']) ? 'active' : '' }}"
+                   href="{{ route('admin.leads.index') }}">
+                    <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+                    <span class="menu-title">{{ __('Leads') }}</span>
                 </a>
             </div>
             <div class="menu-item">

@@ -1,6 +1,19 @@
 <template>
     <Head>
-        <title>{{ trans('Pricing') }} | {{ seo.website_name }}</title>
+        <title>{{ metaTitle }}</title>
+        <meta name="description" :content="metaDescription">
+        <meta name="keywords" :content="metaKeywords">
+        <meta name="robots" :content="metaRobots">
+        <link v-if="metaCanonical" rel="canonical" :href="metaCanonical">
+        <meta property="og:title" :content="metaTitle">
+        <meta property="og:description" :content="metaDescription">
+        <meta v-if="metaImage" property="og:image" :content="metaImage">
+        <meta v-if="metaCanonical" property="og:url" :content="metaCanonical">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" :content="metaTitle">
+        <meta name="twitter:description" :content="metaDescription">
+        <meta v-if="metaImage" name="twitter:image" :content="metaImage">
     </Head>
     <app-layout>
 
@@ -22,7 +35,7 @@
                                     <i class="fas fa-home"></i>{{ trans('Home') }}
                                 </a>
                             </li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`""></span></li>
+                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
                             <li>{{ trans('Pricing') }}</li>
                         </ul>
                     </div>
@@ -52,7 +65,7 @@
                     <div class="col-xl-4 col-lg-6 wow fadeInLeft" data-wow-delay="100ms">
                         <div class="pricing-one__single">
                             <div class="pricing-one__icon">
-                                <img :src="asset_path + 'images/icon/pricing-icon-1.png'" alt="">
+                                <img :src="asset_path + 'images/icon/pricing-icon-1.png'" :alt="trans('Pricing plan icon')">
                             </div>
                             <span class="pricing-one__sub-title">{{ trans('PERSONAL') }}</span>
                             <h2 class="pricing-one__price">$5.60</h2>
@@ -109,7 +122,7 @@
                     <div class="col-xl-4 col-lg-6 wow fadeInUp" data-wow-delay="200ms">
                         <div class="pricing-one__single active">
                             <div class="pricing-one__icon">
-                                <img :src="asset_path + 'images/icon/pricing-icon-1.png'" alt="">
+                                <img :src="asset_path + 'images/icon/pricing-icon-1.png'" :alt="trans('Pricing plan icon')">
                             </div>
                             <span class="pricing-one__sub-title">{{ trans('ENTERPRISE') }}</span>
                             <h2 class="pricing-one__price">$25.60</h2>
@@ -166,7 +179,7 @@
                     <div class="col-xl-4 col-lg-6 wow fadeInRight" data-wow-delay="300ms">
                         <div class="pricing-one__single">
                             <div class="pricing-one__icon">
-                                <img :src="asset_path + 'images/icon/pricing-icon-1.png'" alt="">
+                                <img :src="asset_path + 'images/icon/pricing-icon-1.png'" :alt="trans('Pricing plan icon')">
                             </div>
                             <span class="pricing-one__sub-title">{{ trans('Premium') }}</span>
                             <h2 class="pricing-one__price">$120.60</h2>
@@ -236,8 +249,25 @@ import PartnersBrand from '@/Components/PartnersBrand.vue'
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;
 const seo = computed(() => page.props.seo)
+const settings = computed(() => page.props.settings || {})
 const asset_path = computed(() => page.props.asset_path || '')
 const locale = computed(() => page.props.locale)
+const meta = computed(() => page.props.meta || {})
+
+const metaTitle = computed(() => {
+    return meta.value.title || `${trans('Pricing')} | ${seo.value.website_name || ''}`.trim()
+})
+const metaDescription = computed(() => {
+    return meta.value.description || seo.value.website_desc || ''
+})
+const metaKeywords = computed(() => {
+    return meta.value.keywords || seo.value.website_keywords || ''
+})
+const metaImage = computed(() => {
+    return meta.value?.og?.image || meta.value?.twitter?.image || settings.value?.meta_img || ''
+})
+const metaCanonical = computed(() => meta.value.canonical || '')
+const metaRobots = computed(() => meta.value.robots || 'index, follow')
 
 onMounted(() => {
     nextTick(() => {

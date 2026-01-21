@@ -9,6 +9,7 @@ use Modules\Base\Support\Meta;
 use Modules\Cms\Models\Blog;
 use Modules\Cms\Models\BlogCategory;
 use Modules\SearchEngine\Models\SearchKeyword;
+use Vdhicts\ReadTime\ReadTime;
 
 class BlogController extends Controller {
     public function index(Request $request) {
@@ -50,13 +51,15 @@ class BlogController extends Controller {
             });
         }
 
-        $blogs = $query->paginate(12)->through(function ($blog) {
+        $blogs = $query->paginate(12)->through(function ($blog) use ($locale) {
             return [
                 'id' => $blog->id,
                 'title' => $blog->title,
                 'slug' => $blog->slug,
                 'image_link' => $blog->image_link,
                 'description' => $blog->description,
+                'reading_time' => $this->getReadingTimeMinutes($blog, $locale),
+                'comments_count' => 0,
                 'created_at' => $blog->created_at->format('d M Y'),
                 'created_at_day' => $blog->created_at->format('d'),
                 'created_at_month' => $blog->created_at->format('M'),
@@ -107,6 +110,7 @@ class BlogController extends Controller {
     }
 
     public function show($slug) {
+        $locale = app()->getLocale();
         $blog = Blog::published()
             ->where('slug', $slug)
             ->with('category')
@@ -192,6 +196,8 @@ class BlogController extends Controller {
                 'description' => $blog->description,
                 'content' => $blog->content,
                 'keywords' => $blog->keywords,
+                'comments_count' => 0,
+                  'reading_time' => $this->getReadingTimeMinutes($blog, $locale),
                 'created_at' => $blog->created_at->format('d M Y'),
                 'created_at_formatted' => $blog->created_at->format('d M Y'),
                 'category' => $blog->category ? [
@@ -200,12 +206,14 @@ class BlogController extends Controller {
                     'slug' => $blog->category->slug,
                 ] : null,
             ],
-            'relatedBlogs' => $relatedBlogs->map(function ($blog) {
+            'relatedBlogs' => $relatedBlogs->map(function ($blog) use ($locale) {
                 return [
                     'id' => $blog->id,
                     'title' => $blog->title,
                     'slug' => $blog->slug,
                     'image_link' => $blog->image_link,
+                    'reading_time' => $this->getReadingTimeMinutes($blog, $locale),
+                    'comments_count' => 0,
                     'created_at_day' => $blog->created_at->format('d'),
                     'created_at_month' => $blog->created_at->format('M'),
                     'category' => $blog->category ? [
@@ -230,6 +238,19 @@ class BlogController extends Controller {
                 'image_link' => $nextPost->image_link,
             ] : null,
         ], $meta);
+    }
+
+    private function getReadingTimeMinutes(Blog $blog, string $locale): int
+    {
+        $content = $blog->getTranslation('content', $locale)
+            ?: $blog->getTranslation('description', $locale)
+            ?: '';
+
+        if (trim(strip_tags((string) $content)) === '') {
+            return 0;
+        }
+
+        return (new ReadTime($content))->minutes();
     }
 }
 

@@ -22,7 +22,12 @@
     "Your complaint has been submitted to the branch." : "Şikayetiniz şubeye başarıyla gönderildi.",
 
     "Please choose a branch to contact on WhatsApp:" : "WhatsApp üzerinden iletişime geçmek için lütfen bir şube seçin:",
-    "You can click any button above to open WhatsApp with the selected branch." : "Seçilen şubeyle WhatsApp'ı açmak için yukarıdaki herhangi bir düğmeye tıklayabilirsiniz."
+    "You can click any button above to open WhatsApp with the selected branch." : "Seçilen şubeyle WhatsApp'ı açmak için yukarıdaki herhangi bir düğmeye tıklayabilirsiniz.",
+
+    "Ask me": "Bana sor",
+    "Open chat": "Sohbeti aç",
+    "Symfonix Bot": "Symfonix Bot",
+    "Send a message...": "Mesaj gönder..."
 }
 
 

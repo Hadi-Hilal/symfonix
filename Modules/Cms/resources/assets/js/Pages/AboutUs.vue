@@ -7,13 +7,26 @@
         <link rel="stylesheet" :href="asset_path + 'site/css/module-css/process.css'" />
         <link rel="stylesheet" :href="asset_path + 'site/css/module-css/testimonial.css'" />
         <link rel="stylesheet" :href="asset_path + 'site/css/odometer.min.css'" />
-        <title>{{trans('About Us')}} | {{seo.website_name}}</title>
+        <title>{{ metaTitle }}</title>
+        <meta name="description" :content="metaDescription">
+        <meta name="keywords" :content="metaKeywords">
+        <meta name="robots" :content="metaRobots">
+        <link v-if="metaCanonical" rel="canonical" :href="metaCanonical">
+        <meta property="og:title" :content="metaTitle">
+        <meta property="og:description" :content="metaDescription">
+        <meta v-if="metaImage" property="og:image" :content="metaImage">
+        <meta v-if="metaCanonical" property="og:url" :content="metaCanonical">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" :content="metaTitle">
+        <meta name="twitter:description" :content="metaDescription">
+        <meta v-if="metaImage" name="twitter:image" :content="metaImage">
     </Head>
     <app-layout>
 
         <!--Page Header Start-->
         <section class="page-header">
-            <div class="page-header__bg" :style="{ backgroundImage: `url(${asset_path}images/contact-header-bg.jpg)` }">
+            <div class="page-header__bg" :style="{ backgroundImage: `url(${asset_path}images/backgrounds/about-us-bg.jpg)` }">
             </div>
             <div class="container">
                 <div class="page-header__inner">
@@ -28,7 +41,7 @@
                                     <i class="fas fa-home"></i>{{ trans('Home') }}
                                 </a>
                             </li>
-                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`""></span></li>
+                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
                             <li>{{ trans('About Us') }}</li>
                         </ul>
                     </div>
@@ -41,44 +54,25 @@
         <section class="about-four">
             <div class="about-four__bg-shape"
                 :style="{ backgroundImage: `url(${asset_path}images/shapes/about-four-bg-shape.png)` }"></div>
-            <div class="about-four__bg-shape-2"
-                :style="{ backgroundImage: `url(${asset_path}images/shapes/about-four-bg-shape-2.png)` }"></div>
+
             <div class="container">
                 <div class="row">
                     <div class="col-xl-6">
-                        <div class="about-four__left wow slideInLeft" data-wow-delay="100ms" data-wow-duration="2500ms">
+                        <div :class="`about-four__left wow slideIn${locale !== 'ar' ? 'Left' : 'Right'}`" data-wow-delay="100ms" data-wow-duration="2500ms">
                             <div class="about-four__img-box">
                                 <div class="about-four__img">
-                                    <img :src="asset_path +  'images/about/about-four-img-1.jpg'" alt="">
+                                    <img :src="asset_path +  'images/about/about-four-img-1.jpg'" :alt="trans('About our company')">
                                 </div>
-                                <div class="about-four__img-2">
-                                    <img :src="asset_path +  'images/resources/about-four-img-2.jpg'" alt="">
-                                </div>
+
                                 <div class="about-four__experience">
                                     <div class="about-four__experience-inner">
-                                        <div class="about-four__experience-count-box">
-                                            <h3 class="odometer" data-count="25">00</h3>
-                                        </div>
-                                        <p class="about-four__experience-count-text">{{ trans('Years of') }}
+
+                                        <p class="about-four__experience-count-text">10 {{ trans('Years of') }}
                                             <br> {{ trans('Experience') }}</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="about-four__client-box" v-if="teams && teams.length > 0">
-                                <ul class="about-four__client-img-list list-unstyled">
-                                    <li v-for="(team, index) in teams.slice(0, 3)" :key="team.id">
-                                        <div class="about-four__client-img">
-                                            <img :src="team.avatar_link" :alt="translateField(team.name)">
-                                        </div>
-                                    </li>
-                                    <li v-if="teams.length > 3">
-                                        <a href="#"><span class="icon-plus"></span></a>
-                                    </li>
-                                </ul>
-                                <p class="about-four__client-text">
-                                    <span class="odometer" data-count="120">00</span><span>K</span> {{ trans('Satisfied Client') }}
-                                </p>
-                            </div>
+
                         </div>
                     </div>
                     <div class="col-xl-6">
@@ -89,7 +83,7 @@
                                     <span class="section-title__tagline">{{ trans('About Us') }}</span>
                                     <div class="section-title__tagline-shape-2"></div>
                                 </div>
-                                <h2 class="section-title__title title-animation">
+                                <h2 class="section-title__title title-animation" v-if="locale !== 'ar'">
                                     {{ trans('Supercharge') }} <span>{{ trans('Your Business') }}</span><br>
                                     <span>{{ trans('Growth with Our') }}</span>
                                     {{ trans('Cutting-Edge IT') }}<br> {{ trans('Solutions') }}
@@ -119,15 +113,6 @@
                                             <span class="icon-tick-inside-circle"></span>
                                         </div>
                                         <p>{{ trans('Seamless Digital') }}<br> {{ trans('Transformation AI-Driven') }} <br>{{ trans('Business Automation') }}</p>
-                                    </li>
-                                    <li v-if="teams && teams.length > 0">
-                                        <div class="about-four__points-list-img">
-                                            <img :src="teams[0].avatar_link" :alt="translateField(teams[0].name)">
-                                        </div>
-                                        <div class="about-four__points-list-content">
-                                            <h5>{{ translateField(teams[0].name) }}</h5>
-                                            <p>{{ translateField(teams[0].position) }}</p>
-                                        </div>
                                     </li>
                                 </ul>
                             </div>
@@ -162,8 +147,6 @@
         <section class="why-choose-three">
             <div class="why-choose-three__bg-shape float-bob-x"
                 :style="{ backgroundImage: `url(${asset_path}images/shapes/why-choose-three-bg-shape.png)` }"></div>
-            <div class="why-choose-three__shape-1"></div>
-            <div class="why-choose-three__shape-2"></div>
             <div class="container">
                 <div class="section-title text-center sec-title-animation animation-style1">
                     <div class="section-title__tagline-box">
@@ -171,7 +154,7 @@
                         <span class="section-title__tagline">{{ trans('Why Choose Us') }}</span>
                         <div class="section-title__tagline-shape-2"></div>
                     </div>
-                    <h2 class="section-title__title title-animation">
+                    <h2 class="section-title__title title-animation" v-if="locale !== 'ar'">
                         {{ trans('Your Business with') }} <span>{{ trans('Reliable &') }}</span><br>
                         <span>{{ trans('Future-Ready') }}</span>
                         {{ trans('IT Solutions') }}
@@ -204,7 +187,7 @@
                     </div>
                     <div class="col-xl-6 wow fadeInUp" data-wow-delay="200ms">
                         <div class="why-choose-three__img">
-                            <img :src="asset_path + 'images/resources/why-choose-three-img.jpg'" alt="">
+                                <img :src="asset_path +  'images/about/tech-concept.jpg'" :alt="trans('Technology concept')">
                         </div>
                     </div>
                     <div class="col-xl-3 wow fadeInRight" data-wow-delay="100ms">
@@ -241,7 +224,6 @@
             <div class="team-two__bg-shape float-bob-y"
                 :style="{ backgroundImage: `url(${asset_path}images/shapes/team-two-bg-shape.png)` }">
             </div>
-            <div class="team-two__shape-1"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-xl-5">
@@ -306,10 +288,9 @@
         <!-- Process One Start -->
         <section class="process-one">
             <div class="process-one__shape-1">
-                <img :src="asset_path + 'images/shapes/process-one-shape-1.png'" alt="">
+                <img :src="asset_path + 'images/shapes/process-one-shape-1.png'" :alt="trans('Process illustration')">
             </div>
-            <div class="process-one__shape-2"></div>
-            <div class="process-one__shape-3"></div>
+
             <div class="process-one__bg-shape"
                 :style="{ backgroundImage: `url(${asset_path}images/shapes/process-one-bg-shape.png)` }"></div>
             <div class="container">
@@ -384,8 +365,6 @@
 
         <!-- Testimonial Two Start -->
         <section class="testimonial-two" v-if="testimonials && testimonials.length > 0">
-            <div class="testimonial-two__shape-1"></div>
-            <div class="testimonial-two__shape-2"></div>
             <div class="container">
                 <div class="section-title text-center sec-title-animation animation-style1">
                     <div class="section-title__tagline-box">
@@ -440,36 +419,33 @@
 </template>
 
 <script setup>
-import {computed, onMounted, nextTick, ref} from 'vue'
-import {Link, usePage, Head, useForm} from '@inertiajs/vue3'
+import {computed, onMounted, nextTick} from 'vue'
+import {Link, usePage, Head} from '@inertiajs/vue3'
 
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;
 const seo = computed(() => page.props.seo)
+const settings = computed(() => page.props.settings || {})
 const asset_path = computed(() => page.props.asset_path || '')
-const settings = computed(() => page.props.settings)
-const storage_path = computed(() => page.props.storage_path)
 const locale = computed(() => page.props.locale)
 const teams = computed(() => page.props.teams || [])
 const testimonials = computed(() => page.props.testimonials || [])
+const meta = computed(() => page.props.meta || {})
 
-// Newsletter form
-const newsletterForm = useForm({
-    email: '',
-    acceptPrivacy: false
+const metaTitle = computed(() => {
+    return meta.value.title || `${trans('About Us')} | ${seo.value.website_name || ''}`.trim()
 })
-
-const handleNewsletterSubmit = () => {
-    if (!newsletterForm.email || !newsletterForm.acceptPrivacy) {
-        return false;
-    }
-
-    // You can add newsletter subscription logic here
-    // For now, just reset the form
-    newsletterForm.reset();
-    alert(trans('Thank you for subscribing!'));
-    return false;
-}
+const metaDescription = computed(() => {
+    return meta.value.description || seo.value.website_desc || ''
+})
+const metaKeywords = computed(() => {
+    return meta.value.keywords || seo.value.website_keywords || ''
+})
+const metaImage = computed(() => {
+    return meta.value?.og?.image || meta.value?.twitter?.image || settings.value?.meta_img || ''
+})
+const metaCanonical = computed(() => meta.value.canonical || '')
+const metaRobots = computed(() => meta.value.robots || 'index, follow')
 
 const translateField = (value) => {
     if (!value) {
@@ -499,6 +475,7 @@ onMounted(() => {
                 smartSpeed: 500,
                 autoplay: true,
                 autoplayTimeout: 7000,
+                rtl: locale.value === 'ar',
                 responsive: {
                     0: { items: 1 },
                     768: { items: 2 },
@@ -518,6 +495,7 @@ onMounted(() => {
                 smartSpeed: 500,
                 autoplay: true,
                 autoplayTimeout: 7000,
+                rtl: locale.value === 'ar',
                 responsive: {
                     0: { items: 1 },
                     768: { items: 1 },

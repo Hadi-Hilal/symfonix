@@ -46,11 +46,11 @@
         </li>
 
         <li>
-            <a href="#">
+            <a href="#" aria-label="Change language">
                 <img
                     :src="asset_path + `images/langs/${locale}.png`"
                     width="20"
-                    alt="locale"
+                    :alt="trans('Current language')"
                 >
             </a>
             <ul class="sub-menu">
@@ -64,7 +64,7 @@
                             class="me-1"
                             :src="asset_path + 'images/langs/ar.png'"
                             width="20"
-                            alt="locale"
+                            :alt="trans('Arabic')"
                         >
                         {{ trans('Arabic') }}
                     </a>
@@ -80,7 +80,7 @@
                             class="me-1"
                             :src="asset_path + 'images/langs/en.png'"
                             width="20"
-                            alt="locale"
+                            :alt="trans('English')"
                         >
                         {{ trans('English') }}
                     </a>
@@ -95,7 +95,7 @@
                             class="me-1"
                             :src="asset_path + 'images/langs/tr.png'"
                             width="20"
-                            alt="locale"
+                            :alt="trans('Turkish')"
                         >
                         {{ trans('Turkish') }}
                     </a>
