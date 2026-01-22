@@ -1,7 +1,7 @@
 <template>
     <Head>
+        <title>{{blog.title}}</title>
         <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'"/>
-        <title>{{ blog.title }} | {{ seo.website_name }}</title>
     </Head>
     <app-layout>
         <section class="page-header">

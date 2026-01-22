@@ -88,6 +88,14 @@
     "Enter your email and new password to reset your account": "Hesabınızı sıfırlamak için e-postanızı ve yeni şifrenizi girin",
     "Back to Login": "Girişe Dön",
     "Reset Your Password": "Şifrenizi Sıfırlayın",
-    "Enter your email address and we'll send you a link to reset your password": "E-posta adresinizi girin ve size şifrenizi sıfırlamak için bir bağlantı gönderelim"
+    "Enter your email address and we'll send you a link to reset your password": "E-posta adresinizi girin ve size şifrenizi sıfırlamak için bir bağlantı gönderelim",
+    "Log in to manage your account and services.": "Hesabınızı ve hizmetlerinizi yönetmek için giriş yapın.",
+    "login, sign in, account access": "giriş, oturum açma, hesap erişimi",
+    "Create a new account to access our services.": "Hizmetlerimize erişmek için yeni bir hesap oluşturun.",
+    "register, sign up, create account": "kayıt, üye ol, hesap oluştur",
+    "Request a password reset link to regain access to your account.": "Hesabınıza yeniden erişmek için parola sıfırlama bağlantısı isteyin.",
+    "forgot password, reset password, account recovery": "şifremi unuttum, parola sıfırlama, hesap kurtarma",
+    "Set a new password to secure your account.": "Hesabınızı güvenceye almak için yeni bir parola belirleyin.",
+    "reset password, account security, set new password": "parola sıfırlama, hesap güvenliği, yeni parola belirleme"
 }
 

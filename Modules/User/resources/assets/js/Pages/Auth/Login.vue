@@ -2,7 +2,20 @@
     <Head>
         <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'" />
         <link rel="stylesheet" :href="asset_path + 'site/css/module-css/shop.css'" />
-        <title>{{trans("Login")}} | {{seo.website_name}}</title>
+        <title>{{ metaTitle }}</title>
+        <meta name="description" :content="metaDescription">
+        <meta name="keywords" :content="metaKeywords">
+        <meta name="robots" :content="metaRobots">
+        <link v-if="metaCanonical" rel="canonical" :href="metaCanonical">
+        <meta property="og:title" :content="metaTitle">
+        <meta property="og:description" :content="metaDescription">
+        <meta v-if="metaImage" property="og:image" :content="metaImage">
+        <meta v-if="metaCanonical" property="og:url" :content="metaCanonical">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" :content="metaTitle">
+        <meta name="twitter:description" :content="metaDescription">
+        <meta v-if="metaImage" name="twitter:image" :content="metaImage">
     </Head>
 
     <app-layout>
@@ -41,8 +54,7 @@
                                             name="form_email"
                                             :placeholder="trans('Email')"
                                             :disabled="form.processing"
-                                            required=""
-                                            value="">
+                                            required="">
                                     </div>
                                     <div v-if="errors.email" class="text-danger mt-1 small">{{ errors.email }}</div>
                                 </div>
@@ -57,8 +69,7 @@
                                             name="form_password"
                                             :placeholder="trans('Password')"
                                             :disabled="form.processing"
-                                            required=""
-                                            value="">
+                                            required="">
                                     </div>
                                     <div v-if="errors.password" class="text-danger mt-1 small">{{ errors.password }}</div>
                                 </div>
@@ -126,7 +137,9 @@ export default {
         const page = usePage();
 
         const seo = computed(() => page.props.seo)
+        const settings = computed(() => page.props.settings || {})
         const asset_path = computed(() => page.props.asset_path || '')
+        const meta = computed(() => page.props.meta || {})
         const trans = (key) => {
             try {
                 return page.props.translations?.[key] || key;
@@ -135,13 +148,37 @@ export default {
             }
         };
 
+        const metaTitle = computed(() => `${trans("Login")} | ${seo.value.website_name || ''}`.trim())
+        const metaDescription = computed(() => {
+            return meta.value.description || trans('Log in to manage your account and services.')
+        })
+        const metaKeywords = computed(() => {
+            return meta.value.keywords || trans('login, sign in, account access')
+        })
+        const metaImage = computed(() => {
+            return meta.value?.og?.image || meta.value?.twitter?.image || settings.value?.meta_img || ''
+        })
+        const metaCanonical = computed(() => meta.value.canonical || '')
+        const metaRobots = computed(() => meta.value.robots || 'noindex, nofollow')
+
         const form = useForm({
             email: '',
             password: '',
             remember: false,
         });
 
-        return {form, seo, trans , asset_path};
+        return {
+            form,
+            seo,
+            trans,
+            asset_path,
+            metaTitle,
+            metaDescription,
+            metaKeywords,
+            metaImage,
+            metaCanonical,
+            metaRobots
+        };
     }
 }
 

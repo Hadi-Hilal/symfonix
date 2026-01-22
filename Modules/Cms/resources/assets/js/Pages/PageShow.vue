@@ -1,20 +1,7 @@
 <template>
     <Head>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'" />
         <title>{{ metaTitle }}</title>
-        <meta name="description" :content="metaDescription">
-        <meta name="keywords" :content="metaKeywords">
-        <meta name="robots" :content="metaRobots">
-        <link v-if="metaCanonical" rel="canonical" :href="metaCanonical">
-        <meta property="og:title" :content="metaTitle">
-        <meta property="og:description" :content="metaDescription">
-        <meta v-if="metaImage" property="og:image" :content="metaImage">
-        <meta v-if="metaCanonical" property="og:url" :content="metaCanonical">
-        <meta property="og:type" content="website">
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" :content="metaTitle">
-        <meta name="twitter:description" :content="metaDescription">
-        <meta v-if="metaImage" name="twitter:image" :content="metaImage">
+        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'" />
     </Head>
     <app-layout>
 
@@ -72,7 +59,7 @@ const meta = computed(() => page.props.meta || {})
 
 const metaTitle = computed(() => {
     const pageTitle = custom_page.value?.title?.[locale.value] || ''
-    return meta.value.title || `${pageTitle} | ${seo.value.website_name || ''}`.trim()
+    return `${pageTitle} | ${seo.value.website_name || ''}`.trim()
 })
 const metaDescription = computed(() => {
     return meta.value.description || custom_page.value?.description || seo.value.website_desc || ''

@@ -1,21 +1,21 @@
-<!-- resources/js/Pages/Index.vue -->
+
 <template>
-    <Head>
-        <title>{{ metaTitle }}</title>
-        <meta name="description" :content="metaDescription">
-        <meta name="keywords" :content="metaKeywords">
-        <meta name="robots" :content="metaRobots">
-        <link v-if="metaCanonical" rel="canonical" :href="metaCanonical">
-        <meta property="og:title" :content="metaTitle">
-        <meta property="og:description" :content="metaDescription">
-        <meta v-if="metaImage" property="og:image" :content="metaImage">
-        <meta v-if="metaCanonical" property="og:url" :content="metaCanonical">
-        <meta property="og:type" content="website">
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" :content="metaTitle">
-        <meta name="twitter:description" :content="metaDescription">
-        <meta v-if="metaImage" name="twitter:image" :content="metaImage">
-    </Head>
+     <Head>
+         <title>{{metaTitle}}</title>
+         <meta name="description" :content="metaDescription">
+         <meta name="keywords" :content="metaKeywords">
+         <meta name="robots" :content="metaRobots">
+         <link v-if="metaCanonical" rel="canonical" :href="metaCanonical">
+         <meta property="og:title" :content="metaTitle">
+         <meta property="og:description" :content="metaDescription">
+         <meta v-if="metaImage" property="og:image" :content="metaImage">
+         <meta v-if="metaCanonical" property="og:url" :content="metaCanonical">
+         <meta property="og:type" content="website">
+         <meta name="twitter:card" content="summary_large_image">
+         <meta name="twitter:title" :content="metaTitle">
+         <meta name="twitter:description" :content="metaDescription">
+         <meta v-if="metaImage" name="twitter:image" :content="metaImage">
+     </Head>
     <app-layout>
         <!--Banner One Start -->
         <section class="banner-one">
@@ -809,10 +809,16 @@ const metaTitle = computed(() => {
     return meta.value.title || `${trans("Home")} | ${seo.value.website_name || ''}`.trim()
 })
 const metaDescription = computed(() => {
-    return meta.value.description || seo.value.website_desc || ''
+    return meta.value.description
+        || trans('Empowering businesses with modern web, mobile, AI, and cloud solutions.')
+        || seo.value.website_desc
+        || ''
 })
 const metaKeywords = computed(() => {
-    return meta.value.keywords || seo.value.website_keywords || ''
+    return meta.value.keywords
+        || trans('IT solutions, web development, mobile apps, AI automation, cloud services')
+        || seo.value.website_keywords
+        || ''
 })
 const metaImage = computed(() => {
     return meta.value?.og?.image || meta.value?.twitter?.image || settings.value?.meta_img || ''

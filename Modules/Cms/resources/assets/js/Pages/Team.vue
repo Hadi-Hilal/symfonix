@@ -112,10 +112,16 @@ const metaTitle = computed(() => {
     return meta.value.title || `${trans('Our Members')} | ${seo.value.website_name || ''}`.trim()
 })
 const metaDescription = computed(() => {
-    return meta.value.description || seo.value.website_desc || ''
+    return meta.value.description
+        || trans('Meet the professionals behind our technology and consulting services.')
+        || seo.value.website_desc
+        || ''
 })
 const metaKeywords = computed(() => {
-    return meta.value.keywords || seo.value.website_keywords || ''
+    return meta.value.keywords
+        || trans('team, experts, leadership, professionals')
+        || seo.value.website_keywords
+        || ''
 })
 const metaImage = computed(() => {
     return meta.value?.og?.image || meta.value?.twitter?.image || settings.value?.meta_img || ''

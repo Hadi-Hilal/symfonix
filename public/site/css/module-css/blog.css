@@ -28,7 +28,8 @@
     height: 1008px;
     opacity: 0.7;
     filter: blur(160px);
-   background: radial-gradient(50% 50% at 50% 50%, var(--techguru-accent) 0%, var(--techguru-base) 100%);    z-index: -1;
+    background: radial-gradient(50% 50% at 50% 50%, var(--techguru-accent) 0%, var(--techguru-base) 100%);
+    z-index: -1;
 }
 
 .blog-one .container {
@@ -133,7 +134,7 @@
     border: 1px solid transparent;
     background: linear-gradient(180deg, rgba(92, 176, 233, .10), rgba(143, 136, 255, .30)) border-box;
     -webkit-mask: linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
+    linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     -webkit-transition: all 500ms ease;
@@ -178,7 +179,7 @@
     display: block;
 }
 
-.blog-one__meta li+li {
+.blog-one__meta li + li {
     margin-left: 26px;
 }
 
@@ -191,7 +192,7 @@
     border: 1px solid transparent;
     background: linear-gradient(180deg, #3D72FC, #5CB0E9) border-box;
     -webkit-mask: linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
+    linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     -webkit-transition: all 500ms ease;
@@ -292,7 +293,7 @@
     border: 1px solid transparent;
     background: linear-gradient(90deg, #3D72FC, #5CB0E9) border-box;
     -webkit-mask: linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
+    linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     -webkit-transition: all 500ms ease;
@@ -332,7 +333,7 @@
     border: 1px solid transparent;
     background: linear-gradient(90deg, #3D72FC, #5CB0E9) border-box;
     -webkit-mask: linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
+    linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     -webkit-transition: all 500ms ease;
@@ -571,7 +572,7 @@
     border: 1px solid transparent;
     background: linear-gradient(180deg, rgba(92, 176, 233, .10), rgba(143, 136, 255, .30)) border-box;
     -webkit-mask: linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
+    linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     -webkit-transition: all 500ms ease;
@@ -616,7 +617,7 @@
     display: block;
 }
 
-.blog-two__meta li+li {
+.blog-two__meta li + li {
     margin-left: 26px;
 }
 
@@ -629,7 +630,7 @@
     border: 1px solid transparent;
     background: linear-gradient(180deg, #3D72FC, #5CB0E9) border-box;
     -webkit-mask: linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
+    linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     -webkit-transition: all 500ms ease;
@@ -784,7 +785,7 @@
     border: 1px solid transparent;
     background: linear-gradient(180deg, rgba(92, 176, 233, .10), rgba(143, 136, 255, .30)) border-box;
     -webkit-mask: linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
+    linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     -webkit-transition: all 500ms ease;
@@ -850,7 +851,7 @@
     border: 1px solid transparent;
     background: linear-gradient(90deg, #3D72FC, #5CB0E9) border-box;
     -webkit-mask: linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
+    linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     -webkit-transition: all 500ms ease;
@@ -891,7 +892,7 @@
     display: block;
 }
 
-.blog-two__meta-two li+li {
+.blog-two__meta-two li + li {
     margin-left: 26px;
 }
 
@@ -904,7 +905,7 @@
     border: 1px solid transparent;
     background: linear-gradient(180deg, #3D72FC, #5CB0E9) border-box;
     -webkit-mask: linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
+    linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     -webkit-transition: all 500ms ease;
@@ -990,7 +991,8 @@
     bottom: 51.77%;
     filter: blur(120px);
     opacity: .50;
-   background: radial-gradient(50% 50% at 50% 50%, var(--techguru-accent) 0%, var(--techguru-base) 100%);    z-index: -1;
+    background: radial-gradient(50% 50% at 50% 50%, var(--techguru-accent) 0%, var(--techguru-base) 100%);
+    z-index: -1;
 }
 
 
@@ -1051,7 +1053,7 @@
     border: 1px solid transparent;
     background: linear-gradient(90deg, #3D72FC, #5CB0E9) border-box;
     -webkit-mask: linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
+    linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     -webkit-transition: all 500ms ease;
@@ -1241,7 +1243,7 @@
     display: block;
 }
 
-.blog-list__meta li+li {
+.blog-list__meta li + li {
     margin-left: 26px;
 }
 
@@ -1254,7 +1256,7 @@
     border: 1px solid transparent;
     background: linear-gradient(180deg, #3D72FC, #5CB0E9) border-box;
     -webkit-mask: linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
+    linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     -webkit-transition: all 500ms ease;
@@ -1352,7 +1354,7 @@
     border: 1px solid transparent;
     background: linear-gradient(90deg, #3D72FC, #5CB0E9) border-box;
     -webkit-mask: linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
+    linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     -webkit-transition: all 500ms ease;
@@ -1384,7 +1386,7 @@
     display: block;
 }
 
-.sidebar__single+.sidebar__single {
+.sidebar__single + .sidebar__single {
     margin-top: 60px;
 }
 
@@ -1534,7 +1536,7 @@
     display: block;
 }
 
-.sidebar__category-list li+li {
+.sidebar__category-list li + li {
     margin-top: 7px;
 }
 
@@ -1552,7 +1554,7 @@
     z-index: 1;
 }
 
-.sidebar__category-list li>a::before {
+.sidebar__category-list li > a::before {
     content: "";
     position: absolute;
     top: 0;
@@ -1603,7 +1605,7 @@
     gap: 15px;
 }
 
-.sidebar__post-list li+li {
+.sidebar__post-list li + li {
     margin-top: 24px;
 }
 
@@ -1702,7 +1704,7 @@
     color: var(--techguru-white);
 }
 
-.sidebar__tags-list li>a::before {
+.sidebar__tags-list li > a::before {
     content: "";
     position: absolute;
     top: 0;
@@ -1762,9 +1764,10 @@
     bottom: 0;
     border-radius: 16px;
     border: 1px solid transparent;
-    background: linear-gradient(270deg, var(--techguru-accent) 0%, var(--techguru-base) 100%); border-box;
+    background: linear-gradient(270deg, var(--techguru-accent) 0%, var(--techguru-base) 100%);
+    border-box;
     -webkit-mask: linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
+    linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     z-index: -1;
@@ -1840,7 +1843,7 @@
     border: 2px solid transparent;
     background: linear-gradient(90deg, #5CB0E9, #3D72FC) border-box;
     -webkit-mask: linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
+    linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     border-radius: 50%;
@@ -2043,7 +2046,7 @@
     display: block;
 }
 
-.blog-details__meta li+li {
+.blog-details__meta li + li {
     margin-left: 26px;
 }
 
@@ -2056,7 +2059,7 @@
     border: 1px solid transparent;
     background: linear-gradient(180deg, #3D72FC, #5CB0E9) border-box;
     -webkit-mask: linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
+    linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     -webkit-transition: all 500ms ease;
@@ -2139,7 +2142,7 @@
     gap: 30px;
 }
 
-.blog-details__points li+li {
+.blog-details__points li + li {
     margin-top: 20px;
 }
 
@@ -2210,9 +2213,10 @@
     bottom: 0px;
     border-radius: 20px;
     border: 1px solid transparent;
-    background: linear-gradient(270deg, var(--techguru-accent) 0%, var(--techguru-base) 100%); border-box;
+    background: linear-gradient(270deg, var(--techguru-accent) 0%, var(--techguru-base) 100%);
+    border-box;
     -webkit-mask: linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
+    linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     -webkit-transition: all 500ms ease;
@@ -2303,7 +2307,7 @@
     gap: 15px;
 }
 
-.blog-details__points-list-2 li+li {
+.blog-details__points-list-2 li + li {
     margin-top: 20px;
 }
 
@@ -2312,7 +2316,7 @@
     display: inline-block;
 }
 
-.blog-details__points-list-2 li .icon>span {
+.blog-details__points-list-2 li .icon > span {
     position: relative;
     display: inline-block;
     font-size: 16px;
@@ -2396,7 +2400,7 @@
     border: 1px solid transparent;
     background: linear-gradient(-90deg, #5CB0E9, #3D72FC) border-box;
     -webkit-mask: linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
+    linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     -webkit-transition: all 500ms ease;
@@ -2628,7 +2632,7 @@
     border: 1px solid transparent;
     background: linear-gradient(90deg, #3D72FC, #5CB0E9) border-box;
     -webkit-mask: linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
+    linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     -webkit-transition: all 500ms ease;
@@ -2679,7 +2683,7 @@
     border: 1px solid transparent;
     background: linear-gradient(90deg, #5CB0E9, #3D72FC) border-box;
     -webkit-mask: linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
+    linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     -webkit-transition: all 500ms ease;
@@ -2808,23 +2812,21 @@
 }
 
 
+@media screen and (max-width: 767px) {
+    .blog-two__img-two {
+        max-width: 100%;
+    }
 
+    .blog-two__content-two {
+        padding: 0 !important;
+        margin-top: 20px;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    .blog-two__meta-two li::before {
+        left: unset !important;
+        right: -18px !important;
+    }
+}
 
 
 /*--------------------------------------------------------------

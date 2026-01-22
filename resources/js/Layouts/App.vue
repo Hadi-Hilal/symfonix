@@ -529,8 +529,8 @@
 </template>
 
 <script setup>
-import {computed, onMounted, ref} from 'vue'
-import {Link, useForm, usePage} from '@inertiajs/vue3'
+import {computed, onMounted, onUnmounted, ref, watch} from 'vue'
+import {Link, router, useForm, usePage} from '@inertiajs/vue3'
 import MainMenuList from '@/Components/MainMenuList.vue'
 import MainMenuNav from '@/Components/MainMenuNav.vue'
 
@@ -659,6 +659,17 @@ const handleSubscribeSubmit = () => {
 };
 
 onMounted(() => {
+    const unregisterNavigate = router.on('navigate', (event) => {
+        $(".mobile-nav__wrapper").removeClass("expanded");
+        $("body").removeClass("locked");
+        $("body").removeClass("search-active");
+        $(".info-group").removeClass("isActive");
+    });
+
+    onUnmounted(() => {
+        unregisterNavigate();
+    });
+
     // Mobile Nav Toggler
     if ($(".mobile-nav__toggler").length) {
         $(".mobile-nav__toggler").off("click").on("click", function (e) {

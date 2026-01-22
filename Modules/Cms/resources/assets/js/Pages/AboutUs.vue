@@ -1,12 +1,11 @@
 <template>
     <Head>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'" />
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/about.css'" />
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/why-choose.css'" />
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/team.css'" />
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/process.css'" />
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/testimonial.css'" />
-        <link rel="stylesheet" :href="asset_path + 'site/css/odometer.min.css'" />
+        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'"/>
+        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/about.css'"/>
+        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/why-choose.css'"/>
+        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/team.css'"/>
+        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/testimonial.css'"/>
+        <link rel="stylesheet" :href="asset_path + 'site/css/rtl.css'"/>
         <title>{{ metaTitle }}</title>
         <meta name="description" :content="metaDescription">
         <meta name="keywords" :content="metaKeywords">
@@ -26,7 +25,8 @@
 
         <!--Page Header Start-->
         <section class="page-header">
-            <div class="page-header__bg" :style="{ backgroundImage: `url(${asset_path}images/backgrounds/about-us-bg.jpg)` }">
+            <div class="page-header__bg"
+                 :style="{ backgroundImage: `url(${asset_path}images/backgrounds/about-us-bg.jpg)` }">
             </div>
             <div class="container">
                 <div class="page-header__inner">
@@ -53,15 +53,17 @@
         <!--About Four Start-->
         <section class="about-four">
             <div class="about-four__bg-shape"
-                :style="{ backgroundImage: `url(${asset_path}images/shapes/about-four-bg-shape.png)` }"></div>
+                 :style="{ backgroundImage: `url(${asset_path}images/shapes/about-four-bg-shape.png)` }"></div>
 
             <div class="container">
                 <div class="row">
                     <div class="col-xl-6">
-                        <div :class="`about-four__left wow slideIn${locale !== 'ar' ? 'Left' : 'Right'}`" data-wow-delay="100ms" data-wow-duration="2500ms">
+                        <div :class="`about-four__left wow slideIn${locale !== 'ar' ? 'Left' : 'Right'}`"
+                             data-wow-delay="100ms" data-wow-duration="2500ms">
                             <div class="about-four__img-box">
                                 <div class="about-four__img">
-                                    <img :src="asset_path +  'images/about/about-four-img-1.jpg'" :alt="trans('About our company')">
+                                    <img :src="asset_path +  'images/about/about-four-img-1.jpg'"
+                                         :alt="trans('About our company')">
                                 </div>
 
                                 <div class="about-four__experience">
@@ -90,7 +92,9 @@
                                 </h2>
                             </div>
                             <p class="about-four__text">
-                                {{ trans('Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today\'s digital landscape.') }}
+                                {{
+                                    trans('Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today\'s digital landscape.')
+                                }}
                             </p>
                             <div class="about-four__points-box">
                                 <ul class="about-four__points-list list-unstyled">
@@ -98,7 +102,8 @@
                                         <div class="icon">
                                             <span class="icon-tick-inside-circle"></span>
                                         </div>
-                                        <p>{{ trans('Innovative IT Solutions Expert') }}<br> {{ trans('Support & Consulting') }}</p>
+                                        <p>{{ trans('Innovative IT Solutions Expert') }}<br>
+                                            {{ trans('Support & Consulting') }}</p>
                                     </li>
                                     <li>
                                         <div class="icon">
@@ -112,7 +117,8 @@
                                         <div class="icon">
                                             <span class="icon-tick-inside-circle"></span>
                                         </div>
-                                        <p>{{ trans('Seamless Digital') }}<br> {{ trans('Transformation AI-Driven') }} <br>{{ trans('Business Automation') }}</p>
+                                        <p>{{ trans('Seamless Digital') }}<br> {{ trans('Transformation AI-Driven') }}
+                                            <br>{{ trans('Business Automation') }}</p>
                                     </li>
                                 </ul>
                             </div>
@@ -123,7 +129,9 @@
                                     </div>
                                     <div class="content">
                                         <h5>{{ trans('Innovative IT Solutions') }}</h5>
-                                        <p>{{ trans('Stay ahead with cutting-edge technology tailored to your business needs.') }}</p>
+                                        <p>{{
+                                                trans('Stay ahead with cutting-edge technology tailored to your business needs.')
+                                            }}</p>
                                     </div>
                                 </li>
                                 <li>
@@ -132,7 +140,9 @@
                                     </div>
                                     <div class="content">
                                         <h5>{{ trans('Cloud Solutions') }}</h5>
-                                        <p>{{ trans('Secure, scalable, and efficient cloud services to power your growth.') }}</p>
+                                        <p>{{
+                                                trans('Secure, scalable, and efficient cloud services to power your growth.')
+                                            }}</p>
                                     </div>
                                 </li>
                             </ul>
@@ -146,7 +156,7 @@
         <!--Why Choose Three Start-->
         <section class="why-choose-three">
             <div class="why-choose-three__bg-shape float-bob-x"
-                :style="{ backgroundImage: `url(${asset_path}images/shapes/why-choose-three-bg-shape.png)` }"></div>
+                 :style="{ backgroundImage: `url(${asset_path}images/shapes/why-choose-three-bg-shape.png)` }"></div>
             <div class="container">
                 <div class="section-title text-center sec-title-animation animation-style1">
                     <div class="section-title__tagline-box">
@@ -170,7 +180,9 @@
                                 <h3 class="why-choose-three__title">{{ trans('Unmatched Quality') }}</h3>
                                 <div class="why-choose-three__bdr"></div>
                                 <p class="why-choose-three__text">
-                                    {{ trans('We deliver exceptional products and services that exceed expectations every time.') }}
+                                    {{
+                                        trans('We deliver exceptional products and services that exceed expectations every time.')
+                                    }}
                                 </p>
                             </div>
                             <div class="why-choose-three__single">
@@ -180,14 +192,17 @@
                                 <h3 class="why-choose-three__title">{{ trans('Trusted Expertise') }}</h3>
                                 <div class="why-choose-three__bdr"></div>
                                 <p class="why-choose-three__text">
-                                    {{ trans('Backed by years of experience and a proven track record, we are your reliable partner for success.') }}
+                                    {{
+                                        trans('Backed by years of experience and a proven track record, we are your reliable partner for success.')
+                                    }}
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-6 wow fadeInUp" data-wow-delay="200ms">
                         <div class="why-choose-three__img">
-                                <img :src="asset_path +  'images/about/tech-concept.jpg'" :alt="trans('Technology concept')">
+                            <img :src="asset_path +  'images/about/tech-concept.jpg'"
+                                 :alt="trans('Technology concept')">
                         </div>
                     </div>
                     <div class="col-xl-3 wow fadeInRight" data-wow-delay="100ms">
@@ -199,7 +214,9 @@
                                 <h3 class="why-choose-three__title">{{ trans('User-Centric Approach') }}</h3>
                                 <div class="why-choose-three__bdr"></div>
                                 <p class="why-choose-three__text">
-                                    {{ trans('Your satisfaction is our priority, and we tailor solutions to meet your unique needs. Your happiness comes first.') }}
+                                    {{
+                                        trans('Your satisfaction is our priority, and we tailor solutions to meet your unique needs. Your happiness comes first.')
+                                    }}
                                 </p>
                             </div>
                             <div class="why-choose-three__single">
@@ -209,7 +226,9 @@
                                 <h3 class="why-choose-three__title">{{ trans('Trusted by Many') }}</h3>
                                 <div class="why-choose-three__bdr"></div>
                                 <p class="why-choose-three__text">
-                                    {{ trans('We have built a strong reputation over the years by consistently delivering excellent results.') }}
+                                    {{
+                                        trans('We have built a strong reputation over the years by consistently delivering excellent results.')
+                                    }}
                                 </p>
                             </div>
                         </div>
@@ -222,7 +241,7 @@
         <!-- Team Two Start -->
         <section class="team-two" v-if="teams && teams.length > 0">
             <div class="team-two__bg-shape float-bob-y"
-                :style="{ backgroundImage: `url(${asset_path}images/shapes/team-two-bg-shape.png)` }">
+                 :style="{ backgroundImage: `url(${asset_path}images/shapes/team-two-bg-shape.png)` }">
             </div>
             <div class="container">
                 <div class="row">
@@ -241,7 +260,9 @@
                                 </h2>
                             </div>
                             <p class="team-two__text">
-                                {{ trans('Our dedicated team combines expertise, creativity, and passion to deliver exceptional results and ensure your satisfaction every step of the way.') }}
+                                {{
+                                    trans('Our dedicated team combines expertise, creativity, and passion to deliver exceptional results and ensure your satisfaction every step of the way.')
+                                }}
                             </p>
                         </div>
                     </div>
@@ -292,7 +313,7 @@
             </div>
 
             <div class="process-one__bg-shape"
-                :style="{ backgroundImage: `url(${asset_path}images/shapes/process-one-bg-shape.png)` }"></div>
+                 :style="{ backgroundImage: `url(${asset_path}images/shapes/process-one-bg-shape.png)` }"></div>
             <div class="container">
                 <div class="row">
                     <div class="col-xl-5">
@@ -311,7 +332,9 @@
                                 </h2>
                             </div>
                             <p class="process-one__text">
-                                {{ trans('From personalized solutions to expert execution, we prioritize quality, reliability, and customer satisfaction') }}
+                                {{
+                                    trans('From personalized solutions to expert execution, we prioritize quality, reliability, and customer satisfaction')
+                                }}
                             </p>
                             <div class="process-one__btn-box">
                                 <Link :href="route('contact-us')" class="thm-btn" v-if="typeof route !== 'undefined'">
@@ -333,7 +356,9 @@
                                     <div class="process-one__process-content">
                                         <h3 class="process-one__process-title">{{ trans('Discovery & Strategy') }}</h3>
                                         <p class="process-one__process-text">
-                                            {{ trans('We analyze your business needs, identify challenges, and craft a strategic roadmap for the best IT solutions.') }}
+                                            {{
+                                                trans('We analyze your business needs, identify challenges, and craft a strategic roadmap for the best IT solutions.')
+                                            }}
                                         </p>
                                     </div>
                                 </li>
@@ -341,7 +366,9 @@
                                     <div class="process-one__process-content">
                                         <h3 class="process-one__process-title">{{ trans('Development') }}</h3>
                                         <p class="process-one__process-text">
-                                            {{ trans('Our expert team designs, develops, and integrates cutting-edge technology tailored to your goals.') }}
+                                            {{
+                                                trans('Our expert team designs, develops, and integrates cutting-edge technology tailored to your goals.')
+                                            }}
                                         </p>
                                     </div>
                                     <div class="process-one__process-count"></div>
@@ -349,9 +376,13 @@
                                 <li>
                                     <div class="process-one__process-count"></div>
                                     <div class="process-one__process-content">
-                                        <h3 class="process-one__process-title">{{ trans('Optimization & Support') }}</h3>
+                                        <h3 class="process-one__process-title">{{
+                                                trans('Optimization & Support')
+                                            }}</h3>
                                         <p class="process-one__process-text">
-                                            {{ trans('We ensure seamless performance with continuous improvements, maintenance, and dedicated support.') }}
+                                            {{
+                                                trans('We ensure seamless performance with continuous improvements, maintenance, and dedicated support.')
+                                            }}
                                         </p>
                                     </div>
                                 </li>
@@ -373,7 +404,9 @@
                         <div class="section-title__tagline-shape-2"></div>
                     </div>
                     <h2 class="section-title__title title-animation">
-                        {{ trans('Customer Experiences') }} <br> {{ trans('That') }} <span>{{ trans('Speak Volumes') }}</span>
+                        {{ trans('Customer Experiences') }} <br> {{ trans('That') }} <span>{{
+                            trans('Speak Volumes')
+                        }}</span>
                     </h2>
                 </div>
                 <div class="testimonial-two__carousel owl-theme owl-carousel">
@@ -436,10 +469,16 @@ const metaTitle = computed(() => {
     return meta.value.title || `${trans('About Us')} | ${seo.value.website_name || ''}`.trim()
 })
 const metaDescription = computed(() => {
-    return meta.value.description || seo.value.website_desc || ''
+    return meta.value.description
+        || trans('Learn about our team, mission, and the technology expertise behind our solutions.')
+        || seo.value.website_desc
+        || ''
 })
 const metaKeywords = computed(() => {
-    return meta.value.keywords || seo.value.website_keywords || ''
+    return meta.value.keywords
+        || trans('about us, IT consulting, technology experts, digital transformation')
+        || seo.value.website_keywords
+        || ''
 })
 const metaImage = computed(() => {
     return meta.value?.og?.image || meta.value?.twitter?.image || settings.value?.meta_img || ''
@@ -477,10 +516,10 @@ onMounted(() => {
                 autoplayTimeout: 7000,
                 rtl: locale.value === 'ar',
                 responsive: {
-                    0: { items: 1 },
-                    768: { items: 2 },
-                    992: { items: 2 },
-                    1200: { items: 3 }
+                    0: {items: 1},
+                    768: {items: 2},
+                    992: {items: 2},
+                    1200: {items: 3}
                 }
             });
         }
@@ -497,10 +536,10 @@ onMounted(() => {
                 autoplayTimeout: 7000,
                 rtl: locale.value === 'ar',
                 responsive: {
-                    0: { items: 1 },
-                    768: { items: 1 },
-                    992: { items: 1 },
-                    1200: { items: 1 }
+                    0: {items: 1},
+                    768: {items: 1},
+                    992: {items: 1},
+                    1200: {items: 1}
                 }
             });
         }
@@ -515,8 +554,8 @@ onMounted(() => {
             const titleAnimations = document.querySelectorAll(".sec-title-animation .title-animation");
             if (titleAnimations.length) {
                 titleAnimations.forEach(quote => {
-                    let splitParent = new SplitText(quote, { type: "lines" });
-                    let split = new SplitText(quote, { type: "lines" });
+                    let splitParent = new SplitText(quote, {type: "lines"});
+                    let split = new SplitText(quote, {type: "lines"});
                     gsap.from(split.lines, {
                         duration: 1,
                         y: 100,
@@ -534,7 +573,7 @@ onMounted(() => {
 
         // Initialize Odometer counters using jQuery approach
         if (typeof $ !== 'undefined' && $.fn.odometer) {
-            $('.odometer').each(function() {
+            $('.odometer').each(function () {
                 const $this = $(this);
                 if (!$this.data('initialized')) {
                     $this.odometer({

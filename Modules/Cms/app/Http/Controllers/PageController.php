@@ -4,6 +4,7 @@ namespace Modules\Cms\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Inertia\Inertia;
+use Modules\Base\Models\Seo;
 use Modules\Base\Support\Meta;
 use Modules\Cms\Models\Page;
 use Modules\Team\Models\Team;
@@ -22,6 +23,7 @@ class PageController extends Controller {
         $meta = (new Meta())
             ->title($page->title)
             ->description($page->description)
+            ->keywords($page->keywords)
             ->ogImage($page->image_link)
             ->twitterImage($page->image_link)
             ->toArray();
@@ -43,41 +45,89 @@ class PageController extends Controller {
             ->take(10)
             ->get();
 
+        $siteName = Seo::get('website_name', config('app.name'));
+        $meta = (new Meta())
+            ->title(__('About Us').' | '.$siteName)
+            ->description(__('Learn about our team, mission, and the technology expertise behind our solutions.'))
+            ->keywords(__('about us, IT consulting, technology experts, digital transformation'))
+            ->ogImage()
+            ->twitterImage()
+            ->toArray();
         return $this->inertia('Cms::AboutUs', [
             'teams' => $teams,
             'testimonials' => $testimonials,
-        ]);
+         ], $meta);
     }
 
     public function privacy_policy() {
-        return $this->inertia('Cms::PrivacyPolicy');
+        $siteName = Seo::get('website_name', config('app.name'));
+        $meta = (new Meta())
+            ->title(__('Privacy Policy').' | '.$siteName)
+            ->description(__('Review how we collect, use, and protect your personal information.'))
+            ->keywords(__('privacy policy, data protection, security, compliance'))
+            ->ogImage()
+            ->twitterImage()
+            ->toArray();
+        return $this->inertia('Cms::PrivacyPolicy', [], $meta);
     }
 
     public function team() {
+        $siteName = Seo::get('website_name', config('app.name'));
+        $meta = (new Meta())
+            ->title(__('Our Members').' | '.$siteName)
+            ->description(__('Meet the professionals behind our technology and consulting services.'))
+            ->keywords(__('team, experts, leadership, professionals'))
+            ->ogImage()
+            ->twitterImage()
+            ->toArray();
         $teams = Team::where('status', 'Published')
             ->latest()
             ->get();
 
         return $this->inertia('Cms::Team', [
             'teams' => $teams,
-        ]);
+   ], $meta);
     }
 
     public function testimonials() {
+        $siteName = Seo::get('website_name', config('app.name'));
+        $meta = (new Meta())
+            ->title(__('Testimonials').' | '.$siteName)
+            ->description(__('Read what our clients say about working with our team.'))
+            ->keywords(__('testimonials, reviews, client feedback, success stories'))
+            ->ogImage()
+            ->twitterImage()
+            ->toArray();
         $testimonials = Testimonial::where('status', 'Published')
             ->latest()
             ->get();
 
         return $this->inertia('Cms::Testimonials', [
             'testimonials' => $testimonials,
-        ]);
+        ], $meta);
     }
 
     public function pricing() {
-        return $this->inertia('Cms::Pricing', []);
+        $siteName = Seo::get('website_name', config('app.name'));
+        $meta = (new Meta())
+            ->title(__('Pricing').' | '.$siteName)
+            ->description(__('Compare our pricing plans and choose the right fit for your business.'))
+            ->keywords(__('pricing, plans, packages, subscriptions'))
+            ->ogImage()
+            ->twitterImage()
+            ->toArray();
+        return $this->inertia('Cms::Pricing', [], $meta);
     }
 
     public function faq() {
-        return $this->inertia('Cms::Faq', []);
+        $siteName = Seo::get('website_name', config('app.name'));
+        $meta = (new Meta())
+            ->title(__('FAQ').' | '.$siteName)
+            ->description(__('Find answers to common questions about our services and policies.'))
+            ->keywords(__('FAQ, help center, support, common questions'))
+            ->ogImage()
+            ->twitterImage()
+            ->toArray();
+        return $this->inertia('Cms::Faq', [], $meta);
     }
 }

@@ -242,13 +242,19 @@ const locale = computed(() => page.props.locale || 'en')
 const meta = computed(() => page.props.meta || {})
 
 const metaTitle = computed(() => {
-    return meta.value.title || `${trans("Contact Us")} | ${seo.value.website_name || ''}`.trim()
+    return   `${trans("Contact Us")} | ${seo.value.website_name || ''}`.trim()
 })
 const metaDescription = computed(() => {
-    return meta.value.description || seo.value.website_desc || ''
+    return meta.value.description
+        || trans('Contact our team for support, inquiries, or project discussions.')
+        || seo.value.website_desc
+        || ''
 })
 const metaKeywords = computed(() => {
-    return meta.value.keywords || seo.value.website_keywords || ''
+    return meta.value.keywords
+        || trans('contact, support, get in touch, customer service')
+        || seo.value.website_keywords
+        || ''
 })
 const metaImage = computed(() => {
     return meta.value?.og?.image || meta.value?.twitter?.image || settings.value?.meta_img || ''

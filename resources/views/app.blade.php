@@ -22,6 +22,7 @@ Developed By: Hadi Hilal
 
     <title inertia>{{ $page['props']['meta']['title'] ?? $seo->get('website_name') }}</title>
     <meta name="description" content="{{ $page['props']['meta']['description'] ?? $seo->get('website_desc') }}">
+    <meta name="keywords" content="{{ $page['props']['meta']['keywords'] ?? $seo->get('website_keywords') }}">
 
     <link rel="canonical" href="{{ $page['props']['meta']['canonical'] ?? url()->current() }}">
 
@@ -96,7 +97,7 @@ Developed By: Hadi Hilal
 
     <!-- template styles -->
     <link rel="stylesheet" href="{{ asset('site/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('site/css/responsive.css') }}"/>
+
 
     <style>
         /* ShamBot custom widget */
@@ -372,7 +373,7 @@ Developed By: Hadi Hilal
         <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{asset('site/css/rtl.css')}}">
     @endif
-
+   <link rel="stylesheet" href="{{ asset('site/css/responsive.css') }}"/>
     {!! $settings->get('header_scripts') !!}
 </head>
 <body class="custom-cursor">

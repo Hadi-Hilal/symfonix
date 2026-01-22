@@ -5,6 +5,8 @@ namespace Modules\Base\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Cache;
 use Inertia\Inertia;
+use Modules\Base\Models\Seo;
+use Modules\Base\Support\Meta;
 use Modules\Cms\Models\Blog;
 use Modules\Services\Models\Service;
 use Modules\Services\Models\ServiceCategory;
@@ -55,12 +57,20 @@ class HomeController extends Controller {
             ->take(10)
             ->get();
 
-        return Inertia::render('Base::Index', [
+        $siteName = Seo::get('website_name', config('app.name'));
+        $meta = (new Meta())
+            ->title(__('Home').' | '.$siteName)
+            ->description(__('Empowering businesses with modern web, mobile, AI, and cloud solutions.'))
+            ->keywords(__('IT solutions, web development, mobile apps, AI automation, cloud services'))
+            ->ogImage()
+            ->twitterImage()
+            ->toArray();
+        return $this->inertia('Base::Index', [
             'posts' => $posts,
             'servicesCategories' => $servicesCategories,
             'testimonials' => $testimonials,
             'teams' => $teams,
-        ]);
+        ], $meta);
     }
 
     private function getReadingTimeMinutes(Blog $blog, string $locale): int

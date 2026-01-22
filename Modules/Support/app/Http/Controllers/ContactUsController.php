@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\Mail;
 use Inertia\Inertia;
 use Modules\Base\Models\Branch;
 use Modules\Base\Models\Settings;
-use Modules\Support\Models\Complaint;
+
+use Modules\Base\Support\Meta;
+use Modules\Base\Models\Seo;
 use Modules\Support\Models\ContactForm;
 use Modules\Support\Models\Subscriber;
 
@@ -23,9 +25,17 @@ class ContactUsController extends Controller {
             return Branch::all();
         });
 
-        return Inertia::render('Support::Index', [
+        $siteName = Seo::get('website_name', config('app.name'));
+        $meta = (new Meta())
+            ->title(__('Contact Us').' | '.$siteName)
+            ->description(__('Contact our team for support, inquiries, or project discussions.'))
+            ->keywords(__('contact, support, get in touch, customer service'))
+            ->ogImage()
+            ->twitterImage()
+            ->toArray();
+        return $this->inertia('Support::Index', [
             'branches' => $branches,
-        ]);
+        ], $meta);
     }
 
     public function store(Request $request) {

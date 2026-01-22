@@ -1,40 +1,24 @@
 <template>
     <Head>
-        <title>{{ trans("500 Error") }} | {{ seo.website_name }}</title>
+        <title>{{ metaTitle }}</title>
+        <meta name="description" :content="metaDescription">
+        <meta name="keywords" :content="metaKeywords">
+        <meta name="robots" :content="metaRobots">
+        <link v-if="metaCanonical" rel="canonical" :href="metaCanonical">
+        <meta property="og:title" :content="metaTitle">
+        <meta property="og:description" :content="metaDescription">
+        <meta v-if="metaImage" property="og:image" :content="metaImage">
+        <meta v-if="metaCanonical" property="og:url" :content="metaCanonical">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" :content="metaTitle">
+        <meta name="twitter:description" :content="metaDescription">
+        <meta v-if="metaImage" name="twitter:image" :content="metaImage">
     </Head>
     <app-layout>
         <div class="breadcrumb__area breadcrumb-space overflow-hidden banner-home-bg">
             <div class="banner-home__middel-shape inner-top-shape"></div>
-            <div class="container">
-                <div class="banner-all-shape-wrapper">
-                    <div class="banner-home__banner-shape-1 first-shape">
-                        <img class="upDown-top" :src="asset_path + 'site/imgs/banner-1/banner-shape-1.svg'" alt="img not found">
-                    </div>
-                    <div class="banner-home__banner-shape-2 second-shape">
-                        <img class="upDown-bottom" :src="asset_path + 'site/imgs/banner-1/banner-shape-2.svg'" alt="img not found">
-                    </div>
-                    <div class="right-shape">
-                        <img class="zooming" :src="asset_path + 'site/imgs/inner-img/inner-right-shape.svg'" alt="img not found">
-                    </div>
-                </div>
-                <div class="row align-items-center justify-content-between">
-                    <div class="col-12">
-                        <div class="breadcrumb__content text-center">
-                            <div class="breadcrumb__title-wrapper mb-15 mb-sm-10 mb-xs-5">
-                                <h1 class="breadcrumb__title color-white wow fadeIn animated" data-wow-delay=".1s">{{ trans("500 Error") }}</h1>
-                            </div>
-                            <div class="breadcrumb__menu wow fadeIn animated" data-wow-delay=".5s">
-                                <nav>
-                                    <ul>
-                                        <li><span><Link :href="getHomeUrl()">{{ trans("Home") }}</Link></span></li>
-                                        <li class="active"><span>{{ trans("500 Error") }}</span></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
 
         <section class="error section-space">
@@ -42,7 +26,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="error__content">
-                           
+
                             <div class="section__title-wrapper text-center">
                                 <h3 class="section__title mb-15 mb-xs-10 wow fadeIn animated" data-wow-delay=".3s">
                                     {{ trans("Internal Server Error") }}
@@ -96,6 +80,20 @@ const seo = computed(() => page.props.seo || { website_name: 'Sham Vision' })
 const asset_path = computed(() => page.props.asset_path || '/')
 const appEnv = computed(() => page.props.app_env || 'production')
 const isNonProduction = computed(() => appEnv.value !== 'production')
+const meta = computed(() => page.props.meta || {})
+
+const metaTitle = computed(() => `${trans("500 Error")} | ${seo.value.website_name || ''}`.trim())
+const metaDescription = computed(() => {
+    return meta.value.description || trans('An internal server error occurred. Please try again later.')
+})
+const metaKeywords = computed(() => {
+    return meta.value.keywords || trans('500 error, server error, internal error')
+})
+const metaImage = computed(() => {
+    return meta.value?.og?.image || meta.value?.twitter?.image || ''
+})
+const metaCanonical = computed(() => meta.value.canonical || '')
+const metaRobots = computed(() => meta.value.robots || 'noindex, nofollow')
 
 // Helper function to safely get home URL
 const getHomeUrl = () => {

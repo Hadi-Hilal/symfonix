@@ -8,6 +8,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Str;
 use Modules\Base\Models\Seo;
 use Modules\Base\Models\Settings;
+use Modules\Base\Support\Meta;
 use Modules\Services\Models\Service;
 use Modules\Services\Models\ServiceCategory;
 use Modules\SearchEngine\Models\SearchKeyword;
@@ -99,8 +100,15 @@ class ServiceController extends Controller {
                     'created_at' => $service->created_at->format('d M Y'),
                 ];
             });
-
-        return Inertia::render('Services::ServiceIndex', [
+        $siteName = Seo::get('website_name', config('app.name'));
+        $meta = (new Meta())
+            ->title(__('Our Services').' | '.$siteName)
+            ->description(__('Discover our IT services designed to scale and modernize your business.'))
+            ->keywords(__('IT services, web development, mobile apps, AI solutions, cloud services'))
+            ->ogImage()
+            ->twitterImage()
+            ->toArray();
+        return $this->inertia('Services::ServiceIndex', [
             'services' => $services,
             'categories' => $categories,
             'recentServices' => $recentServices,
@@ -108,7 +116,7 @@ class ServiceController extends Controller {
                 'search' => $request->search,
                 'category' => $request->category,
             ],
-        ]);
+        ], $meta);
     }
 
     public function show($slug) {
@@ -190,36 +198,15 @@ class ServiceController extends Controller {
             ->take(10)
             ->get();
 
-        // Build dynamic meta data for this service
-        $seo = Seo::pluck('value', 'key');
-        $settings = Settings::pluck('value', 'key');
+        $meta = (new Meta())
+            ->title($service->title)
+            ->description($service->description)
+            ->keywords($service->keywords)
+            ->ogImage($service->image_link)
+            ->twitterImage($service->image_link)
+            ->toArray();
 
-        $baseTitle = $seo->get('website_name');
-        $serviceTitle = (string) $service->title;
-
-        $rawDescription = $service->description ?? $service->content ?? $seo->get('website_desc');
-        $plainDescription = Str::limit(trim(strip_tags((string) $rawDescription)), 160, '...');
-
-        $metaImage = $service->image_link ?: $settings->get('meta_img');
-
-        $meta = [
-            'title' => $serviceTitle.($baseTitle ? " | {$baseTitle}" : ''),
-            'description' => $plainDescription,
-            'robots' => 'index, follow',
-            'canonical' => url()->current(),
-            'og' => [
-                'title' => $serviceTitle.($baseTitle ? " | {$baseTitle}" : ''),
-                'description' => $plainDescription,
-                'image' => $metaImage,
-            ],
-            'twitter' => [
-                'title' => $serviceTitle.($baseTitle ? " | {$baseTitle}" : ''),
-                'description' => $plainDescription,
-                'image' => $metaImage,
-            ],
-        ];
-
-        return Inertia::render('Services::ServiceShow', [
+        return $this->inertia('Services::ServiceShow', [
             'service' => [
                 'id' => $service->id,
                 'title' => $service->title,
@@ -269,14 +256,13 @@ class ServiceController extends Controller {
             ] : null,
             'testimonials' => $testimonials,
             'meta' => $meta,
-        ]);
+        ], $meta);
     }
 
-    private function getReadingTimeMinutes(Service $service, string $locale): int
-    {
+    private function getReadingTimeMinutes(Service $service, string $locale): int {
         $content = $service->getTranslation('content', $locale)
             ?: $service->getTranslation('description', $locale)
-            ?: '';
+                ?: '';
 
         if (trim(strip_tags((string) $content)) === '') {
             return 0;

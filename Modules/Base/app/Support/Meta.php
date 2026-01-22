@@ -10,6 +10,7 @@ class Meta {
     protected array $data = [
         'title' => null,
         'description' => null,
+        'keywords' => null,
         'robots' => 'index, follow',
         'canonical' => null,
         'og' => [
@@ -26,18 +27,25 @@ class Meta {
 
     public function title(string $value = null): static {
         $seo_title = Seo::get('website_name', config('app.name'));
-        $this->data['title'] = $value ?? $seo_title;
-        $this->data['og']['title'] = $value ?? $seo_title;
-        $this->data['twitter']['title'] = $value ?? $seo_title;
+        $this->data['title'] = $value ?: $seo_title;
+        $this->data['og']['title'] = $value ?: $seo_title;
+        $this->data['twitter']['title'] = $value ?: $seo_title;
 
         return $this;
     }
 
     public function description(string $value = null): static {
         $seo_desc = Seo::get('website_desc', '');
-        $this->data['description'] = $value ?? $seo_desc;
-        $this->data['og']['description'] = $value ?? $seo_desc;
-        $this->data['twitter']['description'] = $value ?? $seo_desc;
+        $this->data['description'] = $value ?: $seo_desc;
+        $this->data['og']['description'] = $value ?: $seo_desc;
+        $this->data['twitter']['description'] = $value ?: $seo_desc;
+
+        return $this;
+    }
+
+    public function keywords(string $value = null): static {
+        $seo_keywords = Seo::get('website_keywords', '');
+        $this->data['keywords'] = $value ?: $seo_keywords;
 
         return $this;
     }
@@ -45,13 +53,13 @@ class Meta {
 
     public function ogImage(string $url = null): static {
         $meta_img = Settings::get('meta_img');
-        $this->data['og']['image'] = $url ?? $meta_img;
+        $this->data['og']['image'] = $url ?: $meta_img;
         return $this;
     }
 
     public function twitterImage(string $url = null): static {
         $meta_img = Settings::get('meta_img');
-        $this->data['twitter']['image'] = $url ?? $meta_img;
+        $this->data['twitter']['image'] = $url ?: $meta_img;
         return $this;
     }
 

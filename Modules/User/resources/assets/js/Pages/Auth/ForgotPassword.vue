@@ -2,7 +2,20 @@
     <Head>
           <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'" />
         <link rel="stylesheet" :href="asset_path + 'site/css/module-css/shop.css'" />
-        <title>{{trans("Forgot Password")}} | {{seo.website_name}}</title>
+        <title>{{ metaTitle }}</title>
+        <meta name="description" :content="metaDescription">
+        <meta name="keywords" :content="metaKeywords">
+        <meta name="robots" :content="metaRobots">
+        <link v-if="metaCanonical" rel="canonical" :href="metaCanonical">
+        <meta property="og:title" :content="metaTitle">
+        <meta property="og:description" :content="metaDescription">
+        <meta v-if="metaImage" property="og:image" :content="metaImage">
+        <meta v-if="metaCanonical" property="og:url" :content="metaCanonical">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" :content="metaTitle">
+        <meta name="twitter:description" :content="metaDescription">
+        <meta v-if="metaImage" name="twitter:image" :content="metaImage">
     </Head>
 
     <app-layout>
@@ -96,7 +109,9 @@ export default {
         const page = usePage();
 
         const seo = computed(() => page.props.seo)
+        const settings = computed(() => page.props.settings || {})
         const asset_path = computed(() => page.props.asset_path)
+        const meta = computed(() => page.props.meta || {})
         const trans = (key) => {
             try {
                 return page.props.translations?.[key] || key;
@@ -105,11 +120,35 @@ export default {
             }
         };
 
+        const metaTitle = computed(() => `${trans("Forgot Password")} | ${seo.value.website_name || ''}`.trim())
+        const metaDescription = computed(() => {
+            return meta.value.description || trans('Request a password reset link to regain access to your account.')
+        })
+        const metaKeywords = computed(() => {
+            return meta.value.keywords || trans('forgot password, reset password, account recovery')
+        })
+        const metaImage = computed(() => {
+            return meta.value?.og?.image || meta.value?.twitter?.image || settings.value?.meta_img || ''
+        })
+        const metaCanonical = computed(() => meta.value.canonical || '')
+        const metaRobots = computed(() => meta.value.robots || 'noindex, nofollow')
+
         const form = useForm({
             email: '',
         });
 
-        return {form, seo, trans , asset_path};
+        return {
+            form,
+            seo,
+            trans,
+            asset_path,
+            metaTitle,
+            metaDescription,
+            metaKeywords,
+            metaImage,
+            metaCanonical,
+            metaRobots
+        };
     }
 }
 

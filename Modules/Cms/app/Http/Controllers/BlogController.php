@@ -5,6 +5,7 @@ namespace Modules\Cms\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Modules\Base\Models\Seo;
 use Modules\Base\Support\Meta;
 use Modules\Cms\Models\Blog;
 use Modules\Cms\Models\BlogCategory;
@@ -96,9 +97,16 @@ class BlogController extends Controller {
                     'created_at' => $blog->created_at->format('d M Y'),
                 ];
             });
+        $siteName = Seo::get('website_name', config('app.name'));
+        $meta = (new Meta())
+            ->title(__('Blogs').' | '.$siteName)
+            ->description(__('Explore our latest blogs, insights, and technology updates.'))
+            ->keywords(__('blogs, news, insights, technology trends'))
+            ->ogImage()
+            ->twitterImage()
+            ->toArray();
 
-
-        return Inertia::render('Cms::BlogIndex', [
+        return $this->inertia('Cms::BlogIndex', [
             'blogs' => $blogs,
             'categories' => $categories,
             'recentPosts' => $recentPosts,
@@ -106,7 +114,7 @@ class BlogController extends Controller {
                 'search' => $request->search,
                 'category' => $request->category,
             ],
-        ]);
+        ], $meta);
     }
 
     public function show($slug) {
@@ -183,6 +191,7 @@ class BlogController extends Controller {
         $meta = (new Meta())
             ->title($blog->title)
             ->description($blog->description)
+            ->keywords($blog->keywords)
             ->ogImage($blog->image_link)
             ->twitterImage($blog->image_link)
             ->toArray();
@@ -197,7 +206,7 @@ class BlogController extends Controller {
                 'content' => $blog->content,
                 'keywords' => $blog->keywords,
                 'comments_count' => 0,
-                  'reading_time' => $this->getReadingTimeMinutes($blog, $locale),
+                'reading_time' => $this->getReadingTimeMinutes($blog, $locale),
                 'created_at' => $blog->created_at->format('d M Y'),
                 'created_at_formatted' => $blog->created_at->format('d M Y'),
                 'category' => $blog->category ? [
@@ -240,11 +249,10 @@ class BlogController extends Controller {
         ], $meta);
     }
 
-    private function getReadingTimeMinutes(Blog $blog, string $locale): int
-    {
+    private function getReadingTimeMinutes(Blog $blog, string $locale): int {
         $content = $blog->getTranslation('content', $locale)
             ?: $blog->getTranslation('description', $locale)
-            ?: '';
+                ?: '';
 
         if (trim(strip_tags((string) $content)) === '') {
             return 0;

@@ -88,5 +88,13 @@
     "Enter your email and new password to reset your account": "أدخل بريدك الإلكتروني وكلمة المرور الجديدة لإعادة تعيين حسابك",
     "Back to Login": "العودة إلى تسجيل الدخول",
     "Reset Your Password": "إعادة تعيين كلمة المرور الخاصة بك",
-    "Enter your email address and we'll send you a link to reset your password": "أدخل عنوان بريدك الإلكتروني وسنرسل لك رابطًا لإعادة تعيين كلمة المرور الخاصة بك"
+    "Enter your email address and we'll send you a link to reset your password": "أدخل عنوان بريدك الإلكتروني وسنرسل لك رابطًا لإعادة تعيين كلمة المرور الخاصة بك",
+    "Log in to manage your account and services.": "سجّل الدخول لإدارة حسابك وخدماتك.",
+    "login, sign in, account access": "تسجيل الدخول، دخول، الوصول إلى الحساب",
+    "Create a new account to access our services.": "أنشئ حسابًا جديدًا للوصول إلى خدماتنا.",
+    "register, sign up, create account": "تسجيل، إنشاء حساب، فتح حساب",
+    "Request a password reset link to regain access to your account.": "اطلب رابط إعادة تعيين كلمة المرور لاستعادة الوصول إلى حسابك.",
+    "forgot password, reset password, account recovery": "نسيت كلمة المرور، إعادة تعيين كلمة المرور، استعادة الحساب",
+    "Set a new password to secure your account.": "قم بتعيين كلمة مرور جديدة لتأمين حسابك.",
+    "reset password, account security, set new password": "إعادة تعيين كلمة المرور، أمان الحساب، تعيين كلمة مرور جديدة"
 }

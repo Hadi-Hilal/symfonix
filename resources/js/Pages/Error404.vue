@@ -1,6 +1,19 @@
 <template>
     <Head>
-        <title>{{ trans("404 Error") }} | {{ seo.website_name }}</title>
+        <title>{{ metaTitle }}</title>
+        <meta name="description" :content="metaDescription">
+        <meta name="keywords" :content="metaKeywords">
+        <meta name="robots" :content="metaRobots">
+        <link v-if="metaCanonical" rel="canonical" :href="metaCanonical">
+        <meta property="og:title" :content="metaTitle">
+        <meta property="og:description" :content="metaDescription">
+        <meta v-if="metaImage" property="og:image" :content="metaImage">
+        <meta v-if="metaCanonical" property="og:url" :content="metaCanonical">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" :content="metaTitle">
+        <meta name="twitter:description" :content="metaDescription">
+        <meta v-if="metaImage" name="twitter:image" :content="metaImage">
     </Head>
     <app-layout>
         <section class="page-header">
@@ -25,7 +38,7 @@
             <div class="container">
                 <div class="error-page__inner text-center">
                     <div class="error-page__img float-bob-y">
-                        <img src="assets/images/resources/error-page-img1.png" alt="404 illustration">
+
                     </div>
 
                     <div class="error-page__content">
@@ -57,6 +70,20 @@ const trans = (key) => {
 }
 const seo = computed(() => page.props.seo || { website_name: 'Sham Vision' })
 const asset_path = computed(() => page.props.asset_path || '/')
+const meta = computed(() => page.props.meta || {})
+
+const metaTitle = computed(() => `${trans("404 Error")} | ${seo.value.website_name || ''}`.trim())
+const metaDescription = computed(() => {
+    return meta.value.description || trans('The page you are looking for could not be found.')
+})
+const metaKeywords = computed(() => {
+    return meta.value.keywords || trans('404 error, page not found, missing page')
+})
+const metaImage = computed(() => {
+    return meta.value?.og?.image || meta.value?.twitter?.image || ''
+})
+const metaCanonical = computed(() => meta.value.canonical || '')
+const metaRobots = computed(() => meta.value.robots || 'noindex, nofollow')
 
 // Helper function to safely get home URL
 const getHomeUrl = () => {

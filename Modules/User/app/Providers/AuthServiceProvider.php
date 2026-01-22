@@ -5,6 +5,8 @@ namespace Modules\User\Providers;
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
 use Laravel\Fortify\Fortify;
+use Modules\Base\Models\Seo;
+use Modules\Base\Support\Meta;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -14,19 +16,59 @@ class AuthServiceProvider extends ServiceProvider
     public function register(): void
     {
         Fortify::loginView(function () {
-            return Inertia::render('User::Auth/Login');
+            $siteName = Seo::get('website_name', config('app.name'));
+            $meta = (new Meta())
+                ->title(__('Login').' | '.$siteName)
+                ->description(__('Log in to manage your account and services.'))
+                ->keywords(__('login, sign in, account access'))
+                ->ogImage()
+                ->twitterImage()
+                ->toArray();
+            $meta['robots'] = 'noindex, nofollow';
+
+            return Inertia::render('User::Auth/Login', ['meta' => $meta]);
         });
 
         Fortify::registerView(function () {
-            return Inertia::render('User::Auth/Register');
+            $siteName = Seo::get('website_name', config('app.name'));
+            $meta = (new Meta())
+                ->title(__('Register').' | '.$siteName)
+                ->description(__('Create a new account to access our services.'))
+                ->keywords(__('register, sign up, create account'))
+                ->ogImage()
+                ->twitterImage()
+                ->toArray();
+            $meta['robots'] = 'noindex, nofollow';
+
+            return Inertia::render('User::Auth/Register', ['meta' => $meta]);
         });
 
         Fortify::requestPasswordResetLinkView(function () {
-            return Inertia::render('User::Auth/ForgotPassword');
+            $siteName = Seo::get('website_name', config('app.name'));
+            $meta = (new Meta())
+                ->title(__('Forgot Password').' | '.$siteName)
+                ->description(__('Request a password reset link to regain access to your account.'))
+                ->keywords(__('forgot password, reset password, account recovery'))
+                ->ogImage()
+                ->twitterImage()
+                ->toArray();
+            $meta['robots'] = 'noindex, nofollow';
+
+            return Inertia::render('User::Auth/ForgotPassword', ['meta' => $meta]);
         });
 
         Fortify::resetPasswordView(function () {
-            return Inertia::render('User::Auth/ResetPassword');
+            $siteName = Seo::get('website_name', config('app.name'));
+            $meta = (new Meta())
+                ->title(__('Reset Password').' | '.$siteName)
+                ->description(__('Set a new password to secure your account.'))
+                ->keywords(__('reset password, account security, set new password'))
+                ->ogImage()
+                ->twitterImage()
+                ->toArray();
+            $meta['robots'] = 'noindex, nofollow';
+
+            return Inertia::render('User::Auth/ResetPassword', ['meta' => $meta]);
         });
 
     }
