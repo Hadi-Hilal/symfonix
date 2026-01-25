@@ -27,7 +27,7 @@
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li><a href="/"><i class="fas fa-home"></i>{{ trans("Home") }}</a></li>
-                            <li><span :class="`icon-${locale !== 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
+                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
                             <li>{{ trans("Login") }}</li>
                         </ul>
                     </div>
@@ -89,7 +89,7 @@
                                         </span>
                                         <span v-else>
                                            {{ trans("Login") }}
-                                            <span :class="`icon-${locale !== 'ar' ? 'left' : 'right'}-arrow `"></span>
+                                            <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
                                         </span>
                                     </button>
                                 </div>
@@ -136,6 +136,7 @@ export default {
     setup() {
         const page = usePage();
 
+        const locale = computed(() => page.props.locale)
         const seo = computed(() => page.props.seo)
         const settings = computed(() => page.props.settings || {})
         const asset_path = computed(() => page.props.asset_path || '')
@@ -170,6 +171,7 @@ export default {
         return {
             form,
             seo,
+            locale,
             trans,
             asset_path,
             metaTitle,

@@ -35,10 +35,10 @@
 
             <div class="container">
                 <div class="banner-one__inner">
-                    <h2 class="banner-one__title px-3">
-                        {{ trans('Crafting Intelligent Technologies for the Future') }} <br/>
-                        <span>{{ trans('Balanced, modern, includes web, mobile, AI, and cloud') }}</span>
-                    </h2>
+                        <h2 class="banner-one__title px-3">
+                            {{ trans('Crafting Intelligent Technologies for the Future') }} <br/>
+                            <span>{{ trans('Balanced, modern, includes web, mobile, AI, and cloud') }}</span>
+                        </h2>
 
                     <div class="banner-one__btn-box mb-5">
                         <Link :href="route('contact-us')" class="thm-btn">
@@ -81,7 +81,7 @@
                                         <span class="icon-tick-inside-circle"></span>
                                     </div>
                                     <div class="content">
-                                        <h3>{{ trans('Innovative IT Solutions Expert') }}</h3>
+                                        <h2 class="h3">{{ trans('Innovative IT Solutions Expert') }}</h2>
                                         <p>{{ trans('Support & Consulting') }}</p>
                                     </div>
                                 </li>
@@ -90,7 +90,7 @@
                                         <span class="icon-tick-inside-circle"></span>
                                     </div>
                                     <div class="content">
-                                        <h3>{{ trans('Cloud Solutions for Modern') }}</h3>
+                                        <h2 class="h3">{{ trans('Cloud Solutions for Modern') }}</h2>
                                         <p>{{ trans('Enterprises') }}</p>
                                     </div>
                                 </li>
@@ -99,7 +99,7 @@
                                         <span class="icon-tick-inside-circle"></span>
                                     </div>
                                     <div class="content">
-                                        <h3>{{ trans('Seamless Digital Transformation') }}</h3>
+                                        <h2 class="h3">{{ trans('Seamless Digital Transformation') }}</h2>
                                         <p>{{ trans('AI-Driven Business Automation') }}</p>
                                     </div>
                                 </li>
@@ -216,7 +216,7 @@
                                         <span class="icon-quality"></span>
                                     </div>
                                     <div class="content">
-                                        <h4>{{ trans('Unmatched Quality') }}</h4>
+                                        <h3 class="h4">{{ trans('Unmatched Quality') }}</h3>
                                         <p>
                                             {{
                                                 trans('We deliver exceptional products and services that exceed expectations every time.')
@@ -229,7 +229,7 @@
                                         <span class="icon-team"></span>
                                     </div>
                                     <div class="content">
-                                        <h4>{{ trans('Trusted Expertise') }}</h4>
+                                        <h3 class="h4">{{ trans('Trusted Expertise') }}</h3>
                                         <p>
                                             {{
                                                 trans('Backed by years of experience and a proven track record, we are your reliable partner for success.')
@@ -242,7 +242,7 @@
                                         <span class="icon-customer-centricity"></span>
                                     </div>
                                     <div class="content">
-                                        <h4>{{ trans('User-Centric Approach') }}</h4>
+                                        <h3 class="h4">{{ trans('User-Centric Approach') }}</h3>
                                         <p>
                                             {{
                                                 trans('Your satisfaction is our priority, and we tailor solutions to meet your unique needs. Your happiness comes first.')
@@ -479,9 +479,9 @@
                                     <img :src="testimonial.avatar_link" :alt="translateField(testimonial.name)">
                                 </div>
                                 <div class="testimonial-two__client-content">
-                                    <h4 class="testimonial-two__client-name">
+                                    <h3 class="h4 testimonial-two__client-name">
                                         <a href="#">{{ translateField(testimonial.name) }}</a>
-                                    </h4>
+                                    </h3>
                                     <p class="testimonial-two__sub-title">
                                         {{ translateField(testimonial.position) }}
                                     </p>
@@ -563,23 +563,23 @@
 
         <!-- Contact Two Start -->
         <section class="contact-two">
-            <ul class="contact-two__sliding-text-list list-unstyled marquee_mode-2">
-                <li>
+            <div class="contact-two__sliding-text-list marquee_mode-2">
+                <div class="contact-two__sliding-text-item">
                     <h2 data-hover="Branding" class="contact-two__sliding-text-title">
                         {{ trans('GET IN TOUCH *') }}
                     </h2>
-                </li>
-                <li>
+                </div>
+                <div class="contact-two__sliding-text-item">
                     <h2 data-hover="Branding" class="contact-two__sliding-text-title">
                         {{ trans('GET IN TOUCH *') }}
                     </h2>
-                </li>
-                <li>
+                </div>
+                <div class="contact-two__sliding-text-item">
                     <h2 data-hover="Branding" class="contact-two__sliding-text-title">
                         {{ trans('GET IN TOUCH *') }}
                     </h2>
-                </li>
-            </ul>
+                </div>
+            </div>
             <div
                 class="contact-two__bg"
                 :style="{ backgroundImage: `url(${asset_path}site/images/backgrounds/contact-two-bg.jpg)` }"
@@ -614,7 +614,7 @@
                                         <span class="icon-mail"></span>
                                     </div>
                                     <div class="content">
-                                        <h4>{{ trans('Email') }}</h4>
+                                        <h3 class="h4">{{ trans('Email') }}</h3>
                                         <p>
                                             <a dir="ltr" :href="`mailto:${settings.email}`">
                                                 {{ settings.email }}
@@ -627,7 +627,7 @@
                                         <span class="icon-phone-call"></span>
                                     </div>
                                     <div class="content">
-                                        <h4>{{ trans('Phone') }}</h4>
+                                        <h3 class="h4">{{ trans('Phone') }}</h3>
                                         <p>
                                             <a dir="ltr" :href="`tel:${settings.phone}`">
                                                 {{ settings.phone }}
@@ -640,7 +640,7 @@
                                         <span class="icon-pin"></span>
                                     </div>
                                     <div class="content">
-                                        <h4>{{ trans('Our Location') }}</h4>
+                                        <h3 class="h4">{{ trans('Our Location') }}</h3>
                                         <p>{{ settings.address }}</p>
                                     </div>
                                 </li>
@@ -654,7 +654,7 @@
                                   @submit.prevent="handleContactSubmit">
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-6">
-                                        <h4 class="contact-one__input-title">{{ trans("Full Name") }}</h4>
+                                        <h3 class="h4 contact-one__input-title">{{ trans("Full Name") }}</h3>
                                         <div class="contact-one__input-box">
                                             <div class="contact-one__input-icon">
                                                 <span class="icon-user-1"></span>
@@ -673,9 +673,9 @@
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6">
-                                        <h4 class="contact-one__input-title">
+                                        <h3 class="h4 contact-one__input-title">
                                             {{ trans('Email') }}
-                                        </h4>
+                                        </h3>
                                         <div class="contact-one__input-box">
                                             <div class="contact-one__input-icon">
                                                 <span class="icon-email"></span>
@@ -695,7 +695,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6">
-                                        <h4 class="contact-one__input-title">{{ trans("Phone Number") }}</h4>
+                                        <h3 class="h4 contact-one__input-title">{{ trans("Phone Number") }}</h3>
                                         <div class="contact-one__input-box">
                                             <div class="contact-one__input-icon">
                                                 <span class="icon-phone-call"></span>
@@ -714,9 +714,9 @@
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6">
-                                        <h4 class="contact-one__input-title">
+                                        <h3 class="h4 contact-one__input-title">
                                             {{ trans('Subject') }}
-                                        </h4>
+                                        </h3>
                                         <div class="contact-one__input-box">
                                             <div class="contact-one__input-icon">
                                                 <span class="icon-edit"></span>
@@ -737,7 +737,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
-                                    <h4 class="contact-one__input-title">{{ trans("Message") }}</h4>
+                                    <h3 class="h4 contact-one__input-title">{{ trans("Message") }}</h3>
                                     <div class="contact-one__input-box text-message-box">
                                         <div class="contact-one__input-icon">
                                             <span class="icon-edit"></span>
@@ -927,6 +927,10 @@ onMounted(() => {
                     992: {items: 3},
                     1200: {items: 3}
                 }
+            }).on('initialized.owl.carousel refreshed.owl.carousel', function() {
+                $(this).find('.owl-dot').each(function(index) {
+                    $(this).attr('aria-label', `Go to slide ${index + 1}`);
+                });
             });
         }
 
@@ -947,6 +951,10 @@ onMounted(() => {
                     992: {items: 2},
                     1200: {items: 3}
                 }
+            }).on('initialized.owl.carousel refreshed.owl.carousel', function() {
+                $(this).find('.owl-dot').each(function(index) {
+                    $(this).attr('aria-label', `Go to slide ${index + 1}`);
+                });
             });
         }
 
@@ -967,6 +975,10 @@ onMounted(() => {
                     992: {items: 1},
                     1200: {items: 1}
                 }
+            }).on('initialized.owl.carousel refreshed.owl.carousel', function() {
+                $(this).find('.owl-dot').each(function(index) {
+                    $(this).attr('aria-label', `Go to slide ${index + 1}`);
+                });
             });
         }
 

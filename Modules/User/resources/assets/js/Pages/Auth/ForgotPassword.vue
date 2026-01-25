@@ -1,7 +1,7 @@
 <template>
     <Head>
-          <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'" />
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/shop.css'" />
+        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'"/>
+        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/shop.css'"/>
         <title>{{ metaTitle }}</title>
         <meta name="description" :content="metaDescription">
         <meta name="keywords" :content="metaKeywords">
@@ -20,14 +20,15 @@
 
     <app-layout>
         <section class="page-header">
-            <div class="page-header__bg"  :style="{ backgroundImage: `url(${asset_path}images/backgrounds/login-bg.jpg)`}"></div>
+            <div class="page-header__bg"
+                 :style="{ backgroundImage: `url(${asset_path}images/backgrounds/login-bg.jpg)`}"></div>
             <div class="container">
                 <div class="page-header__inner">
                     <h2>{{ trans("Forgot Password") }}</h2>
                     <div class="thm-breadcrumb__box">
                         <ul class="thm-breadcrumb list-unstyled">
                             <li><a href="/"><i class="fas fa-home"></i> {{ trans("Home") }}</a></li>
-                            <li><span :class="`icon-${locale !== 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
+                            <li><span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow-1`"></span></li>
                             <li>{{ trans("Forgot Password") }}</li>
                         </ul>
                     </div>
@@ -75,14 +76,17 @@
                                             <i class="fa-solid fa-spinner fa-spin me-2"></i>{{ trans("Sending...") }}
                                         </span>
                                         <span v-else>
-                                            {{ trans("Send Email Verification") }}<span :class="`icon-${locale !== 'ar' ? 'left' : 'right'}-arrow `"></span>
+                                            {{ trans("Send Email Verification") }}<span
+                                            :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
                                         </span>
                                     </button>
                                 </div>
                             </div>
 
                             <div class="create-account text-center">
-                                <p><Link :href="route('login')">{{ trans("Back to Login") }}</Link></p>
+                                <p>
+                                    <Link :href="route('login')">{{ trans("Back to Login") }}</Link>
+                                </p>
                             </div>
                         </div>
                     </form>
@@ -108,6 +112,7 @@ export default {
     setup() {
         const page = usePage();
 
+        const locale = computed(() => page.props.locale)
         const seo = computed(() => page.props.seo)
         const settings = computed(() => page.props.settings || {})
         const asset_path = computed(() => page.props.asset_path)
@@ -140,6 +145,7 @@ export default {
         return {
             form,
             seo,
+            locale,
             trans,
             asset_path,
             metaTitle,

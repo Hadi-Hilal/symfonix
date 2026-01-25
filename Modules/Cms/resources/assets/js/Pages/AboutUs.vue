@@ -5,7 +5,7 @@
         <link rel="stylesheet" :href="asset_path + 'site/css/module-css/why-choose.css'"/>
         <link rel="stylesheet" :href="asset_path + 'site/css/module-css/team.css'"/>
         <link rel="stylesheet" :href="asset_path + 'site/css/module-css/testimonial.css'"/>
-        <link rel="stylesheet" :href="asset_path + 'site/css/rtl.css'"/>
+        <link v-if="locale === 'ar'" rel="stylesheet" :href="asset_path + 'site/css/rtl.css'"/>
         <title>{{ metaTitle }}</title>
         <meta name="description" :content="metaDescription">
         <meta name="keywords" :content="metaKeywords">
@@ -430,9 +430,9 @@
                                     <img :src="testimonial.avatar_link" :alt="translateField(testimonial.name)">
                                 </div>
                                 <div class="testimonial-two__client-content">
-                                    <h4 class="testimonial-two__client-name">
+                                    <h3 class="h4 testimonial-two__client-name">
                                         <a href="#">{{ translateField(testimonial.name) }}</a>
-                                    </h4>
+                                    </h3>
                                     <p class="testimonial-two__sub-title">
                                         {{ translateField(testimonial.position) }}
                                     </p>
@@ -521,6 +521,10 @@ onMounted(() => {
                     992: {items: 2},
                     1200: {items: 3}
                 }
+            }).on('initialized.owl.carousel refreshed.owl.carousel', function() {
+                $(this).find('.owl-dot').each(function(index) {
+                    $(this).attr('aria-label', `Go to slide ${index + 1}`);
+                });
             });
         }
 
@@ -541,6 +545,10 @@ onMounted(() => {
                     992: {items: 1},
                     1200: {items: 1}
                 }
+            }).on('initialized.owl.carousel refreshed.owl.carousel', function() {
+                $(this).find('.owl-dot').each(function(index) {
+                    $(this).attr('aria-label', `Go to slide ${index + 1}`);
+                });
             });
         }
 

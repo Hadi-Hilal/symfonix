@@ -420,11 +420,9 @@ Developed By: Hadi Hilal
 <script src="{{ asset('site/js/jquery-3.6.0.min.js') }}"></script>
 <script src="{{ asset('site/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('site/js/jquery.appear.min.js') }}"></script>
-<script src="{{ asset('site/js/odometer.min.js') }}"></script>
 <script src="{{ asset('site/js/wow.js') }}"></script>
 <script src="{{ asset('site/js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('site/js/marquee.min.js') }}"></script>
-
 
 <script src="{{ asset('site/js/gsap/gsap.js') }}"></script>
 <script src="{{ asset('site/js/gsap/ScrollTrigger.js') }}"></script>

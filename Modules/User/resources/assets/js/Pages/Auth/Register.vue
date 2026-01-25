@@ -39,7 +39,7 @@
             <div class="container">
                 <div class="sign-up-one__form">
                     <div class="inner-title text-center">
-                        <h2>{{ trans("Sing Up") }}</h2>
+                        <h2>{{ trans("Register") }}</h2>
                     </div>
 
                     <form id="sign-up-one__form" name="sign-up-one_form" action="#" method="post" @submit.prevent="form.post(route('register'))">
@@ -138,7 +138,7 @@
                                         </span>
                                         <span v-else>
                                             {{ trans("Register") }}
-                                            <span :class="`icon-${locale !== 'ar' ? 'left' : 'right'}-arrow `"></span>
+                                            <span :class="`icon-${locale === 'ar' ? 'left' : 'right'}-arrow `"></span>
                                         </span>
                                     </button>
                                 </div>
@@ -173,6 +173,7 @@ export default {
     setup() {
         const page = usePage();
 
+           const locale = computed(() => page.props.locale)
         const seo = computed(() => page.props.seo)
         const settings = computed(() => page.props.settings || {})
         const asset_path = computed(() => page.props.asset_path)
@@ -211,6 +212,7 @@ export default {
             form,
             seo,
             trans,
+             locale,
             asset_path,
             metaTitle,
             metaDescription,

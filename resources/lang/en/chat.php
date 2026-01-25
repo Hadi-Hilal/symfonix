@@ -63,7 +63,7 @@ return [
     'lead.widget_about' => 'Chat with our team about your next project.',
     'lead.widget_intro' => 'Hi! Tell us about your project and we will guide you.',
 
-    'launcher.ask_me' => 'Ask me',
+    'launcher.ask_me' => 'Start your tech symphony',
     'launcher.open' => 'Open chat',
     'launcher.title' => 'Symfonix Bot',
     'launcher.placeholder' => 'Send a message...',

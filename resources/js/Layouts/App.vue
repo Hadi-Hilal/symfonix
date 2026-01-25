@@ -166,7 +166,9 @@
             </div><!-- /.sticky-header__content -->
         </div><!-- /.stricky-header -->
 
-        <slot/>
+        <main>
+            <slot/>
+        </main>
         <!-- Newsletter Two Start -->
         <section class="newsletter-two">
             <div class="newsletter-two__shape-1">
@@ -242,7 +244,7 @@
             <div class="site-footer-two__top">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                             <div class="site-footer-two__about">
                                 <div class="site-footer-two__logo">
                                     <Link :href="route('home')"><img :src="storage_path + settings.site_logo"
@@ -283,7 +285,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
+                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
                             <div class="footer-widget-two__quick-links">
                                 <h4 class="footer-widget-two__title">{{ trans('Pages') }}</h4>
                                 <ul class="footer-widget-two__quick-links-list list-unstyled">
@@ -370,8 +372,8 @@
                             <div class="footer-widget-two__services">
                                 <h4 class="footer-widget-two__title">{{ trans('Our Services') }}</h4>
                                 <ul class="footer-widget-two__quick-links-list list-unstyled">
-                                    <li v-for="service in (servicesList || []).slice(0, 6)" :key="service.id">
-                                        <Link :href="getServiceUrl(service)">
+                                    <li v-for="service in (servicesList || []).slice(0, 3)" :key="service.id">
+                                        <Link :href="route('services.index' , { category: service.slug })">
                                             <span
                                                 :class="locale === 'ar' ? 'icon-left-arrow-2' : 'icon-right-arrow-2'"></span>{{
                                                 getTranslatableTitle(service)
@@ -379,7 +381,7 @@
                                         </Link>
                                     </li>
                                     <li v-if="!servicesList || servicesList.length === 0">
-                                        <Link :href="route('services.index')">
+                                        <Link :href="route('services.index' )">
                                             <span
                                                 :class="locale === 'ar' ? 'icon-left-arrow-2' : 'icon-right-arrow-2'"></span>{{
                                                 trans('View All Services')
@@ -406,7 +408,7 @@
                                     </p>
                                 </div>
                                 <div class="site-footer-two__social-box">
-                                    <h4 class="site-footer-two__social-title">{{ trans('Follow Us') }}:</h4>
+                                    <h3 class="h4 site-footer-two__social-title">{{ trans('Follow Us') }}:</h3>
                                     <div class="site-footer-two__social-box-inner">
                                         <a
                                             v-if="settings.whatsapp"
@@ -834,16 +836,6 @@ const getPageUrl = (pageItem) => {
 };
 
 // Helper function to get service URL
-const getServiceUrl = (serviceItem) => {
-    if (!serviceItem || !serviceItem.slug) {
-        return '#';
-    }
-    try {
-        return route('services.show', serviceItem.slug);
-    } catch (e) {
-        return '#';
-    }
-};
 
 
 </script>

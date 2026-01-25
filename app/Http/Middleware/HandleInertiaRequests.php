@@ -11,6 +11,7 @@ use Modules\Base\Models\Seo;
 use Modules\Base\Models\Settings;
 use Modules\Cms\Models\Page;
 use Modules\Services\Models\Service;
+use Modules\Services\Models\ServiceCategory;
 
 class HandleInertiaRequests extends Middleware {
     /**
@@ -88,9 +89,7 @@ class HandleInertiaRequests extends Middleware {
                 ];
             }, []),
             'servicesList' => $safe(function () {
-                return Cache::rememberForever('services', function () {
-                    return Service::featured()->get();
-                });
+                    return ServiceCategory::all();
             }, []),
             'headerPages' => $safe(function () {
                 return Cache::rememberForever('header_pages', function () {

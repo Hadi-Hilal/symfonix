@@ -46,9 +46,9 @@
         </li>
 
         <li v-if="auth?.type === 'admin'" :class="{ active: isActive('admin.dashboard.index') }">
-            <Link :href="route('admin.dashboard.index')">
+            <a :href="route('admin.dashboard.index')">
                 {{ trans('Dashboard') }}
-            </Link>
+            </a>
         </li>
 
         <li class="dropdown">

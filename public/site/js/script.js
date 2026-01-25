@@ -77,6 +77,10 @@
           items: 1,
         },
       },
+    }).on('initialized.owl.carousel refreshed.owl.carousel', function() {
+      $(this).find('.owl-dot').each(function(index) {
+        $(this).attr('aria-label', `Go to slide ${index + 1}`);
+      });
     });
   }
 
@@ -277,6 +281,10 @@
           items: 3,
         },
       },
+    }).on('initialized.owl.carousel refreshed.owl.carousel', function() {
+      $(this).find('.owl-dot').each(function(index) {
+        $(this).attr('aria-label', `Go to slide ${index + 1}`);
+      });
     });
   }
 
@@ -478,6 +486,10 @@
           items: 3,
         },
       },
+    }).on('initialized.owl.carousel refreshed.owl.carousel', function() {
+      $(this).find('.owl-dot').each(function(index) {
+        $(this).attr('aria-label', `Go to slide ${index + 1}`);
+      });
     });
   }
 
@@ -518,6 +530,10 @@
           items: 4,
         },
       },
+    }).on('initialized.owl.carousel refreshed.owl.carousel', function() {
+      $(this).find('.owl-dot').each(function(index) {
+        $(this).attr('aria-label', `Go to slide ${index + 1}`);
+      });
     });
   }
 

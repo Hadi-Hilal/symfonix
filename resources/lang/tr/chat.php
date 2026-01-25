@@ -63,7 +63,7 @@ return [
     'lead.widget_about' => 'Projeniz hakkında bizimle sohbet edin.',
     'lead.widget_intro' => 'Merhaba! Projenizi anlatın, size yardımcı olalım.',
 
-    'launcher.ask_me' => 'Bana sor',
+    'launcher.ask_me' => 'Teknik senfoninize başlayın',
     'launcher.open' => 'Sohbeti aç',
     'launcher.title' => 'Symfonix Bot',
     'launcher.placeholder' => 'Mesaj gönder...',

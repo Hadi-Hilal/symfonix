@@ -90,7 +90,7 @@ trait FileTrait
         $sanitizedOriginalName = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $originalName);
         $hash = md5($sanitizedOriginalName.time());
 
-        return ($name ?? $hash).'.'.$file->getClientOriginalExtension();
+        return ($name ? $name.'-'.time() : $hash).'.'.$file->getClientOriginalExtension();
     }
 
     /**
