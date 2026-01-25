@@ -1287,7 +1287,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
       var _a;
       return ((_a = posts.value) == null ? void 0 : _a[0]) || null;
     });
-    const sidePosts = computed(() => (posts.value || []).slice(1, 4));
+    const sidePosts = computed(() => (posts.value || []).slice(1, 5));
     const translateField = (value) => {
       if (!value) {
         return "";

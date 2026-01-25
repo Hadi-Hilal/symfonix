@@ -939,7 +939,7 @@
 .team-two__title-box {
     width: 100%;
     padding: 5px 10px;
-    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0) 0%, #1c5e8e 60%, #1c5e8e 100%), url(image.jpg);
+    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0) 0%, #1c5e8e 60%, #1c5e8e 100%);
     background-size: cover;
     background-position: center;
 }

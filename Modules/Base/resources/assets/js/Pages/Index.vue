@@ -827,7 +827,7 @@ const metaCanonical = computed(() => meta.value.canonical || '')
 const metaRobots = computed(() => meta.value.robots || 'index, follow')
 
 const featuredPost = computed(() => posts.value?.[0] || null)
-const sidePosts = computed(() => (posts.value || []).slice(1, 4))
+const sidePosts = computed(() => (posts.value || []).slice(1, 5))
 
 
 const translateField = (value) => {
