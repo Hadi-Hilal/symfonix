@@ -58,7 +58,7 @@
 }
 
 .banner-one__btn-box .thm-btn {
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
 }
 
 .banner-one__img-box {
@@ -124,7 +124,7 @@
     right: 0px;
     bottom: 0px;
     border-radius: 50%;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     z-index: -1;
 }
 

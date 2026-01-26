@@ -16,4 +16,3 @@ Route::match(['get', 'post'], '/botman', [BotManController::class, 'handle'])->n
 
 // Optional page that can host the widget iframe (used by frameEndpoint if desired).
 Route::get('/chatbot', [BotManController::class, 'widget'])->name('chatbot.widget');
-

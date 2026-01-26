@@ -33,7 +33,7 @@ class Page extends Model
         $q->where('status', 'Published')->where('featured', 1);
     }
 
-     public function scopePublished($q)
+    public function scopePublished($q)
     {
         $q->where('status', 'Published');
     }

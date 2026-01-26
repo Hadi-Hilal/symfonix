@@ -13,6 +13,3 @@ class Branch extends Model
 
     public array $translatable = ['name', 'city', 'address'];
 }
-
-
-

@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Modules\Base\Http\Controllers\Admin\BranchController;
 use Modules\Base\Http\Controllers\Admin\FileManager;
 use Modules\Base\Http\Controllers\Admin\LogController;
 use Modules\Base\Http\Controllers\Admin\SeoController;
 use Modules\Base\Http\Controllers\Admin\SettingsController;
-use Modules\Base\Http\Controllers\Admin\BranchController;
 use UniSharp\LaravelFilemanager\Lfm;
 
 // Group for Settings Management

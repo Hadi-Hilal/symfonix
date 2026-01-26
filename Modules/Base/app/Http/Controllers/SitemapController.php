@@ -3,8 +3,8 @@
 namespace Modules\Base\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use Modules\Cms\Models\Page;
 use Modules\Cms\Models\Blog;
+use Modules\Cms\Models\Page;
 use Modules\Services\Models\Service;
 
 class SitemapController extends Controller
@@ -68,7 +68,7 @@ class SitemapController extends Controller
                 Page::published()->select(['slug', 'updated_at'])->chunk(200, function ($pages) use (&$urls) {
                     foreach ($pages as $page) {
                         $urls[] = [
-                            'loc' => $this->buildUrl('/p/' . $page->slug),
+                            'loc' => $this->buildUrl('/p/'.$page->slug),
                             'lastmod' => optional($page->updated_at)->toAtomString(),
                             'changefreq' => 'weekly',
                             'priority' => '0.7',
@@ -93,7 +93,7 @@ class SitemapController extends Controller
                 Blog::published()->select(['slug', 'updated_at'])->chunk(200, function ($posts) use (&$urls) {
                     foreach ($posts as $post) {
                         $urls[] = [
-                            'loc' => $this->buildUrl('/blog/' . $post->slug),
+                            'loc' => $this->buildUrl('/blog/'.$post->slug),
                             'lastmod' => optional($post->updated_at)->toAtomString(),
                             'changefreq' => 'weekly',
                             'priority' => '0.8',
@@ -118,7 +118,7 @@ class SitemapController extends Controller
                 Service::published()->select(['slug', 'updated_at'])->chunk(200, function ($services) use (&$urls) {
                     foreach ($services as $service) {
                         $urls[] = [
-                            'loc' => $this->buildUrl('/service/' . $service->slug),
+                            'loc' => $this->buildUrl('/service/'.$service->slug),
                             'lastmod' => optional($service->updated_at)->toAtomString(),
                             'changefreq' => 'weekly',
                             'priority' => '0.7',
@@ -157,14 +157,12 @@ class SitemapController extends Controller
     private function buildUrl(string $path): string
     {
         $baseUrl = rtrim(config('app.url'), '/');
-        $normalizedPath = '/' . ltrim($path, '/');
+        $normalizedPath = '/'.ltrim($path, '/');
 
         if ($normalizedPath === '/') {
-            return $baseUrl . '/';
+            return $baseUrl.'/';
         }
 
-        return $baseUrl . $normalizedPath;
+        return $baseUrl.$normalizedPath;
     }
 }
-
-

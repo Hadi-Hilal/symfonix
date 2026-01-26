@@ -3,12 +3,12 @@
 namespace Modules\Support\app\Exports;
 
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
-use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Modules\Support\Models\Complaint;
 
-class ComplaintExport implements FromCollection, WithHeadings, WithMapping, WithColumnWidths
+class ComplaintExport implements FromCollection, WithColumnWidths, WithHeadings, WithMapping
 {
     protected $status;
 
@@ -20,11 +20,11 @@ class ComplaintExport implements FromCollection, WithHeadings, WithMapping, With
     public function collection()
     {
         $query = Complaint::with('branch')->latest();
-        
+
         if ($this->status && in_array($this->status, ['pending', 'resolved'])) {
             $query->where('status', $this->status);
         }
-        
+
         return $query->get();
     }
 
@@ -76,4 +76,3 @@ class ComplaintExport implements FromCollection, WithHeadings, WithMapping, With
         ];
     }
 }
-

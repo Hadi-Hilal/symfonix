@@ -69,7 +69,6 @@ const trans = (key) => {
     }
 }
 const seo = computed(() => page.props.seo || { website_name: 'Sham Vision' })
-const asset_path = computed(() => page.props.asset_path || '/')
 const meta = computed(() => page.props.meta || {})
 
 const metaTitle = computed(() => `${trans("404 Error")} | ${seo.value.website_name || ''}`.trim())

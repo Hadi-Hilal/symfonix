@@ -25,7 +25,7 @@ class ContactFormController extends Controller
 
     public function export()
     {
-        return Excel::download(new ContactFormExport, 'contacts_' . date('Y-m-d_His') . '.xlsx');
+        return Excel::download(new ContactFormExport, 'contacts_'.date('Y-m-d_His').'.xlsx');
     }
 
     public function deleteMulti(DeleteMultiRequest $request)

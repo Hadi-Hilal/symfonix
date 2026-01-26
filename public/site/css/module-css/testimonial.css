@@ -167,7 +167,7 @@
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
 }
 
 .testimonial-one__quote span {
@@ -356,7 +356,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     -webkit-text-fill-color: transparent;
     background-clip: text;
     -webkit-transition: all 500ms ease;
@@ -376,7 +376,7 @@
 
 .testimonial-one__carousel.owl-theme .owl-nav .owl-next:hover,
 .testimonial-one__carousel.owl-theme .owl-nav .owl-prev:hover {
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
 }
 
 .testimonial-one__carousel.owl-carousel .owl-dots {
@@ -660,7 +660,7 @@
     line-height: 45px;
     font-weight: 500;
     text-transform: capitalize;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }

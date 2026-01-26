@@ -22,7 +22,7 @@ class ServiceCategoryController extends Controller
 
     public function index()
     {
-        $model = $this->categoryRepository->all(['id', 'title', 'slug', 'image' , 'color_code', 'created_at']);
+        $model = $this->categoryRepository->all(['id', 'title', 'slug', 'image', 'color_code', 'created_at']);
 
         return view('services::admin.service_category.index', compact('model'));
     }
@@ -72,7 +72,3 @@ class ServiceCategoryController extends Controller
         return back();
     }
 }
-
-
-
-

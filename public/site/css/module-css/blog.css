@@ -98,7 +98,7 @@
     color: var(--techguru-white);
     font-weight: 500;
     line-height: 14px;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     border-radius: 14px;
     padding: 7px 14px 7px;
 }
@@ -360,7 +360,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     -webkit-text-fill-color: transparent;
     background-clip: text;
     -webkit-transition: all 500ms ease;
@@ -380,7 +380,7 @@
 
 .blog-one__carousel.owl-theme .owl-nav .owl-next:hover,
 .blog-one__carousel.owl-theme .owl-nav .owl-prev:hover {
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
 }
 
 .blog-one__carousel.owl-carousel .owl-dots {
@@ -1082,7 +1082,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     border-radius: 50%;
     opacity: 0;
     -webkit-transition: all 500ms ease;
@@ -1178,7 +1178,7 @@
     color: var(--techguru-white);
     font-weight: 500;
     line-height: 14px;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     border-radius: 14px;
     padding: 7px 14px 7px;
 }
@@ -1414,7 +1414,7 @@
     display: block;
     width: 8px;
     height: 8px;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     border-radius: 50%;
 }
 
@@ -2146,7 +2146,7 @@
     position: relative;
     display: inline-block;
     font-size: 20px;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
@@ -2409,7 +2409,7 @@
     right: 0px;
     bottom: 0px;
     border-radius: 8px;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     -webkit-transition: all 500ms ease;
     transition: all 500ms ease;
     opacity: 0;
@@ -2734,7 +2734,7 @@
     border-radius: 15px;
     color: var(--techguru-white);
     overflow: hidden;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     z-index: 1;
 }
 

@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\SearchEngine\Http\Controllers\SearchEngineController;
 
 /*
  *--------------------------------------------------------------------------
@@ -14,6 +13,4 @@ use Modules\SearchEngine\Http\Controllers\SearchEngineController;
  *
 */
 
-Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
-
-});
+Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {});

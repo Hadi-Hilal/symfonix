@@ -17,7 +17,3 @@ interface ServiceCategoryRepository
 
     public function deleteMulti(array $ids): ?bool;
 }
-
-
-
-

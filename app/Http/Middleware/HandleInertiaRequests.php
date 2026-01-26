@@ -10,10 +10,10 @@ use Module;
 use Modules\Base\Models\Seo;
 use Modules\Base\Models\Settings;
 use Modules\Cms\Models\Page;
-use Modules\Services\Models\Service;
 use Modules\Services\Models\ServiceCategory;
 
-class HandleInertiaRequests extends Middleware {
+class HandleInertiaRequests extends Middleware
+{
     /**
      * The root template that's loaded on the first page visit.
      *
@@ -28,7 +28,8 @@ class HandleInertiaRequests extends Middleware {
      *
      * @see https://inertiajs.com/asset-versioning
      */
-    public function version(Request $request): ?string {
+    public function version(Request $request): ?string
+    {
         return parent::version($request);
     }
 
@@ -39,7 +40,8 @@ class HandleInertiaRequests extends Middleware {
      *
      * @return array<string, mixed>
      */
-    public function share(Request $request): array {
+    public function share(Request $request): array
+    {
         $shared = parent::share($request);
 
         // Helper function to safely get a value with fallback
@@ -53,16 +55,16 @@ class HandleInertiaRequests extends Middleware {
 
         // Try to get shared data, but handle errors gracefully for error pages
         $shared = array_merge($shared, [
-            'appName' => $safe(fn() => config('app.name'), 'Sham Vision'),
-            'csrf' => $safe(fn() => csrf_token(), ''),
+            'appName' => $safe(fn () => config('app.name'), 'Sham Vision'),
+            'csrf' => $safe(fn () => csrf_token(), ''),
             'asset_path' => asset('/'),
             'storage_path' => asset('storage').'/',
-            'locale' => $safe(fn() => App::currentLocale() ?: 'en', 'en'),
-            'app_env' => $safe(fn() => config('app.env'), 'production'),
-            'app_debug' => $safe(fn() => config('app.debug'), false),
-            'translations' => $safe(fn() => $this->getTranslations(), []),
-            'settings' => $safe(fn() => Settings::pluck('value', 'key'), []),
-            'seo' => $safe(fn() => Seo::pluck('value', 'key'), ['website_name' => config('app.name', 'Sham Vision')]),
+            'locale' => $safe(fn () => App::currentLocale() ?: 'en', 'en'),
+            'app_env' => $safe(fn () => config('app.env'), 'production'),
+            'app_debug' => $safe(fn () => config('app.debug'), false),
+            'translations' => $safe(fn () => $this->getTranslations(), []),
+            'settings' => $safe(fn () => Settings::pluck('value', 'key'), []),
+            'seo' => $safe(fn () => Seo::pluck('value', 'key'), ['website_name' => config('app.name', 'Sham Vision')]),
             'meta' => $safe(function () {
                 $seo = Seo::pluck('value', 'key');
                 $settings = Settings::pluck('value', 'key');
@@ -89,7 +91,7 @@ class HandleInertiaRequests extends Middleware {
                 ];
             }, []),
             'servicesList' => $safe(function () {
-                    return ServiceCategory::all();
+                return ServiceCategory::all();
             }, []),
             'headerPages' => $safe(function () {
                 return Cache::rememberForever('header_pages', function () {
@@ -107,7 +109,7 @@ class HandleInertiaRequests extends Middleware {
                         ->get();
                 });
             }, []),
-            'auth' => fn() => $request->user()
+            'auth' => fn () => $request->user()
                 ? $request->user()->only('id', 'name', 'email', 'type')
                 : null,
         ]);
@@ -115,7 +117,8 @@ class HandleInertiaRequests extends Middleware {
         return $shared;
     }
 
-    public function getTranslations(): array {
+    public function getTranslations(): array
+    {
 
         $modules = Module::all();
 

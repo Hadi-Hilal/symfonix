@@ -14,18 +14,18 @@ class SubscriberImport implements ToModel, WithHeadingRow, WithValidation
         // Match export format: ID, Email, IP Address, Language, Blocked, Created At
         // Email is required, others are optional
         $email = $row['email'] ?? $row['Email'] ?? null;
-        
-        if (!$email) {
+
+        if (! $email) {
             return null; // Skip rows without email
         }
-        
+
         // Check if subscriber with this email already exists
         $subscriber = Subscriber::where('email', $email)->first();
-        
+
         // Get values matching export format exactly
         $ipAddress = $row['ip_address'] ?? $row['IP Address'] ?? null;
         $lang = $row['language'] ?? $row['Language'] ?? $row['lang'] ?? 'en';
-        
+
         // Handle blocked field - can be Yes/No, 1/0, true/false
         $blocked = $row['blocked'] ?? $row['Blocked'] ?? 'No';
         $isBlocked = false;
@@ -37,7 +37,7 @@ class SubscriberImport implements ToModel, WithHeadingRow, WithValidation
         } elseif (is_bool($blocked)) {
             $isBlocked = $blocked;
         }
-        
+
         if ($subscriber) {
             // Update existing subscriber (ignore ID and Created At from import)
             $subscriber->update([
@@ -45,9 +45,10 @@ class SubscriberImport implements ToModel, WithHeadingRow, WithValidation
                 'lang' => $lang ?? $subscriber->lang ?? 'en',
                 'blocked' => $isBlocked,
             ]);
+
             return null; // Don't create a new model
         }
-        
+
         // Create new subscriber (ignore ID and Created At from import)
         return new Subscriber([
             'email' => $email,
@@ -72,4 +73,3 @@ class SubscriberImport implements ToModel, WithHeadingRow, WithValidation
         ];
     }
 }
-

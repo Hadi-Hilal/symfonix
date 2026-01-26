@@ -152,8 +152,8 @@
 </template>
 
 <script setup>
-import {computed, ref} from 'vue'
-import { usePage, Link, Head, router } from '@inertiajs/vue3'
+import {computed} from 'vue'
+import { usePage, Link, Head } from '@inertiajs/vue3'
 import AppLayout from '@/Layouts/App.vue'
 
 
@@ -187,10 +187,6 @@ const metaImage = computed(() => {
 })
 const metaCanonical = computed(() => meta.value.canonical || '')
 const metaRobots = computed(() => meta.value.robots || 'index, follow')
-
-// Search and filter state
-const searchQuery = ref(filters.value.search || '')
-const selectedCategory = ref(filters.value.category || '')
 
 // Do NOT mutate page.props.services; return a derived, immutable copy instead
 const services = computed(() => {
@@ -301,50 +297,6 @@ const chunkHighlights = (items, size = 2, maxItems = 6) => {
     return chunks
 }
 
-// Search and filter handlers
-const handleSearch = () => {
-    router.get(route('services.index'), {
-        search: searchQuery.value || null,
-        category: selectedCategory.value || null,
-    }, {
-        preserveState: true,
-        preserveScroll: true,
-        replace: true,
-    })
-}
-
-const handleCategoryFilter = () => {
-    router.get(route('services.index'), {
-        search: searchQuery.value || null,
-        category: selectedCategory.value || null,
-    }, {
-        preserveState: true,
-        preserveScroll: true,
-        replace: true,
-    })
-}
-
-const clearSearch = () => {
-    searchQuery.value = ''
-    router.get(route('services.index'), {
-        category: selectedCategory.value || null,
-    }, {
-        preserveState: true,
-        preserveScroll: true,
-        replace: true,
-    })
-}
-
-const clearCategory = () => {
-    selectedCategory.value = ''
-    router.get(route('services.index'), {
-        search: searchQuery.value || null,
-    }, {
-        preserveState: true,
-        preserveScroll: true,
-        replace: true,
-    })
-}
 </script>
 
 <script>
@@ -367,11 +319,5 @@ export default {
 
 .services-two__services-list-single {
     margin-bottom: 30px;
-}
-
-.services-two__meta {
-    margin: 8px 0 0;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.75);
 }
 </style>

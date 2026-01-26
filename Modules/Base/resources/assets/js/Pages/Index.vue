@@ -534,7 +534,6 @@
                                     :locale="locale"
                                     :asset-path="asset_path"
                                     :image-fallback-index="1"
-                                    :avatar-seed="0"
                                 />
                             </div>
                         </div>
@@ -550,7 +549,6 @@
                                 :locale="locale"
                                 :asset-path="asset_path"
                                 :image-fallback-index="idx + 2"
-                                :avatar-seed="idx + 1"
                                 :animation-class="idx % 2 === 0 ? 'fadeInLeft' : 'fadeInRight'"
                                 :animation-delay="`${(idx + 1) * 100}ms`"
                             />
@@ -1183,8 +1181,4 @@ export default {
 
 };
 </script>
-
-<style scoped>
-
-</style>
 

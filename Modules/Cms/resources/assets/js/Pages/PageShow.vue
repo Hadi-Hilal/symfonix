@@ -50,28 +50,15 @@ import {usePage, Head, Link} from '@inertiajs/vue3'
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;
 const seo = computed(() => page.props.seo)
-const settings = computed(() => page.props.settings || {})
 const custom_page = computed(() => page.props.custom_page)
 const asset_path = computed(() => page.props.asset_path || '')
 const locale = computed(() => page.props.locale || 'en')
 const banner = computed(() => page.props.banner)
-const meta = computed(() => page.props.meta || {})
 
 const metaTitle = computed(() => {
     const pageTitle = custom_page.value?.title?.[locale.value] || ''
     return `${pageTitle} | ${seo.value.website_name || ''}`.trim()
 })
-const metaDescription = computed(() => {
-    return meta.value.description || custom_page.value?.description || seo.value.website_desc || ''
-})
-const metaKeywords = computed(() => {
-    return meta.value.keywords || custom_page.value?.keywords || seo.value.website_keywords || ''
-})
-const metaImage = computed(() => {
-    return meta.value?.og?.image || meta.value?.twitter?.image || banner.value || settings.value?.meta_img || ''
-})
-const metaCanonical = computed(() => meta.value.canonical || '')
-const metaRobots = computed(() => meta.value.robots || 'index, follow')
 </script>
 <script>
 

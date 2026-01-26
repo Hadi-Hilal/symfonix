@@ -7,14 +7,15 @@ use App\Models\User;
 use Modules\Cms\Models\Blog;
 use Modules\Cms\Models\Page;
 use Modules\Services\Models\Service;
-
 use Modules\Support\Models\ContactForm;
 use Modules\Support\Models\Subscriber;
 use Monishroy\VisitorTracking\Helpers\Visitor;
 use MonishRoy\VisitorTracking\Models\VisitorTable;
 
-class DashboardController extends Controller {
-    public function index() {
+class DashboardController extends Controller
+{
+    public function index()
+    {
         $this->setActive('dashboard');
 
         $visitorsStats = [
@@ -34,6 +35,6 @@ class DashboardController extends Controller {
             'pages' => Page::count(),
         ];
 
-        return view('user::admin.dashboard.index', compact('stats', 'visitorsStats' , 'topVisitedPages'));
+        return view('user::admin.dashboard.index', compact('stats', 'visitorsStats', 'topVisitedPages'));
     }
 }

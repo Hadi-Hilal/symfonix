@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Services\Http\Controllers\Admin\ServiceController;
 use Modules\Services\Http\Controllers\Admin\ServiceCategoryController;
+use Modules\Services\Http\Controllers\Admin\ServiceController;
 
 Route::prefix('services')->name('services.')->group(function () {
     Route::get('/', [ServiceController::class, 'index'])->name('index');

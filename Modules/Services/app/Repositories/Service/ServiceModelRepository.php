@@ -131,7 +131,7 @@ class ServiceModelRepository implements ServiceRepository
         });
     }
 
-     private function clearServiceCache(): void
+    private function clearServiceCache(): void
     {
         cache()->forget('services');
         cache()->forget('home_services');

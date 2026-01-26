@@ -4,7 +4,6 @@ namespace Modules\Support\app\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lead;
-use Illuminate\Http\Request;
 use Modules\Core\Http\Requests\DeleteMultiRequest;
 
 class LeadController extends Controller

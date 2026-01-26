@@ -166,9 +166,9 @@
             </div><!-- /.sticky-header__content -->
         </div><!-- /.stricky-header -->
 
-        <main>
+
             <slot/>
-        </main>
+
         <!-- Newsletter Two Start -->
         <section class="newsletter-two">
             <div class="newsletter-two__shape-1">
@@ -564,7 +564,7 @@
 </template>
 
 <script setup>
-import {computed, onMounted, onUnmounted, ref, watch} from 'vue'
+import {computed, onMounted, onUnmounted, ref} from 'vue'
 import {Link, router, useForm, usePage} from '@inertiajs/vue3'
 import MainMenuList from '@/Components/MainMenuList.vue'
 import MainMenuNav from '@/Components/MainMenuNav.vue'

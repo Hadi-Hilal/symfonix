@@ -817,7 +817,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     z-index: -1;
 }
 
@@ -838,7 +838,7 @@
     font-size: 20px;
     font-weight: 500;
     line-height: 20px;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 12px;
@@ -882,7 +882,7 @@
     position: relative;
     display: block;
     font-size: 24px;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+    background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-transform: capitalize;

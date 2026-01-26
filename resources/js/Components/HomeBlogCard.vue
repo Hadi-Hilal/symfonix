@@ -118,10 +118,6 @@ const props = defineProps({
         type: Number,
         default: 1
     },
-    avatarSeed: {
-        type: Number,
-        default: 0
-    },
     showReadingTime: {
         type: Boolean,
         default: true

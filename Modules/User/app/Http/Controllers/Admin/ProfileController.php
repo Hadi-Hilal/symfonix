@@ -49,10 +49,3 @@ class ProfileController extends Controller
         return back()->with('success', __('The Operation Done Successfully'));
     }
 }
-
-
-
-
-
-
-

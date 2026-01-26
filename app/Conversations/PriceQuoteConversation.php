@@ -2,15 +2,18 @@
 
 namespace App\Conversations;
 
-use Modules\Support\Models\ContactForm;
 use BotMan\BotMan\Messages\Conversations\Conversation;
 use BotMan\BotMan\Messages\Incoming\Answer;
+use Modules\Support\Models\ContactForm;
 
 class PriceQuoteConversation extends Conversation
 {
     protected string $name;
+
     protected string $email;
+
     protected string $phone;
+
     protected string $message;
 
     public function run(): void
@@ -76,12 +79,12 @@ class PriceQuoteConversation extends Conversation
 
         ContactForm::create([
             'ip_address' => request()->ip(),
-            'name'       => $this->name,
-            'email'      => $this->email,
-            'mobile'     => $this->phone,
-            'subject'    => $subject,
-            'message'    => $this->message,
-            'blocked'    => false,
+            'name' => $this->name,
+            'email' => $this->email,
+            'mobile' => $this->phone,
+            'subject' => $subject,
+            'message' => $this->message,
+            'blocked' => false,
         ]);
 
         $this->say(__('chat.quote.success'));
@@ -97,5 +100,3 @@ class PriceQuoteConversation extends Conversation
         return strlen($digits) >= 8;
     }
 }
-
-

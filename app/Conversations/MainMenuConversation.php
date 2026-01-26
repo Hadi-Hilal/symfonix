@@ -32,11 +32,11 @@ class MainMenuConversation extends Conversation
             $value = $answer->getValue();
 
             if ($value === 'price_quote') {
-                $this->bot->startConversation(new PriceQuoteConversation());
+                $this->bot->startConversation(new PriceQuoteConversation);
             } elseif ($value === 'branch_complaint') {
-                $this->bot->startConversation(new BranchComplaintConversation());
+                $this->bot->startConversation(new BranchComplaintConversation);
             } elseif ($value === 'contact_branch') {
-                $this->bot->startConversation(new ContactBranchConversation());
+                $this->bot->startConversation(new ContactBranchConversation);
             } else {
                 // Unknown option – simply re-show the menu.
                 $this->showMainMenu();
@@ -44,5 +44,3 @@ class MainMenuConversation extends Conversation
         });
     }
 }
-
-

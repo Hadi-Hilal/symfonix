@@ -25,7 +25,7 @@ class SearchKeywordController extends Controller
 
     public function export()
     {
-        return Excel::download(new SearchKeywordExport, 'search_keywords_' . date('Y-m-d_His') . '.xlsx');
+        return Excel::download(new SearchKeywordExport, 'search_keywords_'.date('Y-m-d_His').'.xlsx');
     }
 
     public function deleteMulti(DeleteMultiRequest $request)
@@ -36,7 +36,3 @@ class SearchKeywordController extends Controller
         return redirect()->back();
     }
 }
-
-
-
-

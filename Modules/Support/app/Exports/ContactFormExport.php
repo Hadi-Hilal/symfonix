@@ -3,12 +3,12 @@
 namespace Modules\Support\app\Exports;
 
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
-use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Modules\Support\Models\ContactForm;
 
-class ContactFormExport implements FromCollection, WithHeadings, WithMapping, WithColumnWidths
+class ContactFormExport implements FromCollection, WithColumnWidths, WithHeadings, WithMapping
 {
     public function collection()
     {
@@ -60,4 +60,3 @@ class ContactFormExport implements FromCollection, WithHeadings, WithMapping, Wi
         ];
     }
 }
-

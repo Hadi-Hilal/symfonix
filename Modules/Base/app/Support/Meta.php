@@ -5,8 +5,8 @@ namespace Modules\Base\Support;
 use Modules\Base\Models\Seo;
 use Modules\Base\Models\Settings;
 
-class Meta {
-
+class Meta
+{
     protected array $data = [
         'title' => null,
         'description' => null,
@@ -25,7 +25,8 @@ class Meta {
         ],
     ];
 
-    public function title(string $value = null): static {
+    public function title(?string $value = null): static
+    {
         $seo_title = Seo::get('website_name', config('app.name'));
         $this->data['title'] = $value ?: $seo_title;
         $this->data['og']['title'] = $value ?: $seo_title;
@@ -34,7 +35,8 @@ class Meta {
         return $this;
     }
 
-    public function description(string $value = null): static {
+    public function description(?string $value = null): static
+    {
         $seo_desc = Seo::get('website_desc', '');
         $this->data['description'] = $value ?: $seo_desc;
         $this->data['og']['description'] = $value ?: $seo_desc;
@@ -43,27 +45,32 @@ class Meta {
         return $this;
     }
 
-    public function keywords(string $value = null): static {
+    public function keywords(?string $value = null): static
+    {
         $seo_keywords = Seo::get('website_keywords', '');
         $this->data['keywords'] = $value ?: $seo_keywords;
 
         return $this;
     }
 
-
-    public function ogImage(string $url = null): static {
+    public function ogImage(?string $url = null): static
+    {
         $meta_img = Settings::get('meta_img');
         $this->data['og']['image'] = $url ?: $meta_img;
+
         return $this;
     }
 
-    public function twitterImage(string $url = null): static {
+    public function twitterImage(?string $url = null): static
+    {
         $meta_img = Settings::get('meta_img');
         $this->data['twitter']['image'] = $url ?: $meta_img;
+
         return $this;
     }
 
-    public function toArray(): array {
+    public function toArray(): array
+    {
         $this->data['canonical'] ??= url()->current();
 
         return $this->data;

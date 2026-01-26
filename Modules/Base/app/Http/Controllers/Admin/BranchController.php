@@ -62,7 +62,8 @@ class BranchController extends Controller
         $this->prepareTranslatable($data, $branch);
         $branch->update($data);
         session()->flushMessage(true);
-cache()->forget('branches');
+        cache()->forget('branches');
+
         return redirect()->route('admin.branches.index');
     }
 
@@ -104,6 +105,3 @@ cache()->forget('branches');
         }
     }
 }
-
-
-

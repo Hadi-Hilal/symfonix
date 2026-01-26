@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use Modules\SearchEngine\app\Http\Controllers\Admin\SearchKeywordController;
 

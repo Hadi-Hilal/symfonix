@@ -3,12 +3,12 @@
 namespace Modules\SearchEngine\app\Exports;
 
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
-use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Modules\SearchEngine\Models\SearchKeyword;
 
-class SearchKeywordExport implements FromCollection, WithHeadings, WithMapping, WithColumnWidths
+class SearchKeywordExport implements FromCollection, WithColumnWidths, WithHeadings, WithMapping
 {
     public function collection()
     {
@@ -48,4 +48,3 @@ class SearchKeywordExport implements FromCollection, WithHeadings, WithMapping, 
         ];
     }
 }
-

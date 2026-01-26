@@ -12,24 +12,24 @@ class FirewallLogObserver
      */
     public function creating(Log $log): void
     {
-        if (isset($log->request) && !empty($log->request)) {
+        if (isset($log->request) && ! empty($log->request)) {
             // Ensure the request field is properly UTF-8 encoded
-            if (!mb_check_encoding($log->request, 'UTF-8')) {
+            if (! mb_check_encoding($log->request, 'UTF-8')) {
                 $log->request = mb_convert_encoding($log->request, 'UTF-8', 'auto');
             }
             // Ensure it's valid UTF-8
             $log->request = mb_convert_encoding($log->request, 'UTF-8', 'UTF-8');
         }
-        
+
         // Also fix other text fields
-        if (isset($log->url) && !empty($log->url)) {
-            if (!mb_check_encoding($log->url, 'UTF-8')) {
+        if (isset($log->url) && ! empty($log->url)) {
+            if (! mb_check_encoding($log->url, 'UTF-8')) {
                 $log->url = mb_convert_encoding($log->url, 'UTF-8', 'auto');
             }
         }
-        
-        if (isset($log->referrer) && !empty($log->referrer)) {
-            if (!mb_check_encoding($log->referrer, 'UTF-8')) {
+
+        if (isset($log->referrer) && ! empty($log->referrer)) {
+            if (! mb_check_encoding($log->referrer, 'UTF-8')) {
                 $log->referrer = mb_convert_encoding($log->referrer, 'UTF-8', 'auto');
             }
         }

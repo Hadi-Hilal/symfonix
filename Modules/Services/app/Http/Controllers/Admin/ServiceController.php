@@ -24,7 +24,7 @@ class ServiceController extends Controller
     public function index()
     {
         $model = $this->serviceRepository->all([
-            'id', 'title', 'slug', 'image', 'status', 'featured', 'visits', 'created_at', 'service_category_id'
+            'id', 'title', 'slug', 'image', 'status', 'featured', 'visits', 'created_at', 'service_category_id',
         ]);
 
         return view('services::admin.service.index', compact('model'));
@@ -58,6 +58,7 @@ class ServiceController extends Controller
     public function edit(Service $service)
     {
         $categories = ServiceCategory::select('id', 'title')->latest()->get();
+
         return view('services::admin.service.edit', compact('service', 'categories'));
     }
 

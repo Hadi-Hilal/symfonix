@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Support\app\Http\Controllers\Admin\ContactFormController;
-use Modules\Support\app\Http\Controllers\Admin\SubscriberController;
-use Modules\Support\app\Http\Controllers\Admin\FirewallController;
 use Modules\Support\app\Http\Controllers\Admin\BlockedIpController;
-use Modules\Support\app\Http\Controllers\Admin\FirewallLogController;
 use Modules\Support\app\Http\Controllers\Admin\ComplaintController;
+use Modules\Support\app\Http\Controllers\Admin\ContactFormController;
+use Modules\Support\app\Http\Controllers\Admin\FirewallController;
+use Modules\Support\app\Http\Controllers\Admin\FirewallLogController;
 use Modules\Support\app\Http\Controllers\Admin\LeadController;
+use Modules\Support\app\Http\Controllers\Admin\SubscriberController;
 
 Route::middleware('can:Support Management')->group(function () {
     // Subscriber routes

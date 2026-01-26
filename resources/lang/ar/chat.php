@@ -68,5 +68,3 @@ return [
     'launcher.title' => 'سمفونكس بوت',
     'launcher.placeholder' => 'أرسل رسالة...',
 ];
-
-

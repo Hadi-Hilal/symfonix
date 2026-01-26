@@ -16,17 +16,29 @@ use Modules\Services\Models\ServiceCategory;
 class ProjectInquiryConversation extends Conversation
 {
     protected ?string $initialMessage;
+
     protected array $transcript = [];
+
     protected ?string $problemStatement = null;
+
     protected array $serviceMatches = [];
+
     protected ?string $primaryService = null;
+
     protected ?int $selectedServiceId = null;
+
     protected ?string $selectedServiceTitle = null;
+
     protected ?int $selectedCategoryId = null;
+
     protected ?string $name = null;
+
     protected ?string $email = null;
+
     protected ?string $companyName = null;
+
     protected ?string $budget = null;
+
     protected array $analysisMeta = [];
 
     public function __construct(?string $initialMessage = null)
@@ -58,6 +70,7 @@ class ProjectInquiryConversation extends Conversation
 
             if (! $recommended) {
                 $this->promptServiceSelection();
+
                 return;
             }
 
@@ -71,6 +84,7 @@ class ProjectInquiryConversation extends Conversation
         if ($categories->isEmpty()) {
             $this->reply(__('chat.lead.no_services'));
             $this->leadCaptureIntro();
+
             return;
         }
 
@@ -97,6 +111,7 @@ class ProjectInquiryConversation extends Conversation
             if (! $category) {
                 $this->reply(__('chat.lead.service_unknown'));
                 $this->promptServiceSelection();
+
                 return;
             }
 
@@ -129,6 +144,7 @@ class ProjectInquiryConversation extends Conversation
             if (in_array($value, ['confirm', 'yes', 'y'], true)) {
                 $this->shareValueProposition();
                 $this->askGetStarted();
+
                 return;
             }
 
@@ -146,6 +162,7 @@ class ProjectInquiryConversation extends Conversation
         if ($services->isEmpty()) {
             $this->reply(__('chat.lead.no_services'));
             $this->promptServiceSelection();
+
             return;
         }
 
@@ -172,6 +189,7 @@ class ProjectInquiryConversation extends Conversation
             if (! $service) {
                 $this->reply(__('chat.lead.service_unknown'));
                 $this->listServicesInCategory($services->first()->category);
+
                 return;
             }
 
@@ -199,6 +217,7 @@ class ProjectInquiryConversation extends Conversation
 
             if (in_array($value, ['get_started', 'start', 'yes', 'y'], true)) {
                 $this->leadCaptureIntro();
+
                 return;
             }
 
@@ -252,6 +271,7 @@ class ProjectInquiryConversation extends Conversation
                 $this->reply(__('chat.lead.email_invalid'));
 
                 $this->askEmail();
+
                 return;
             }
 
@@ -518,8 +538,8 @@ PROMPT;
         foreach ($map as $service => $keywords) {
             foreach ($keywords as $keyword) {
                 if (str_contains($normalized, $keyword)) {
-                    return ServiceCategory::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, "$.en"))) LIKE ?', ['%' . $service . '%'])
-                        ->orWhereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, "$.ar"))) LIKE ?', ['%' . $service . '%'])
+                    return ServiceCategory::whereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, "$.en"))) LIKE ?', ['%'.$service.'%'])
+                        ->orWhereRaw('LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, "$.ar"))) LIKE ?', ['%'.$service.'%'])
                         ->first();
                 }
             }

@@ -4,7 +4,6 @@ namespace Modules\Cms\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 use Modules\Base\Models\Seo;
 use Modules\Base\Support\Meta;
 use Modules\Cms\Models\Blog;
@@ -12,8 +11,10 @@ use Modules\Cms\Models\BlogCategory;
 use Modules\SearchEngine\Models\SearchKeyword;
 use Vdhicts\ReadTime\ReadTime;
 
-class BlogController extends Controller {
-    public function index(Request $request) {
+class BlogController extends Controller
+{
+    public function index(Request $request)
+    {
         $locale = app()->getLocale();
         $query = Blog::published()->with('category')->latest();
 
@@ -38,7 +39,7 @@ class BlogController extends Controller {
             });
 
             // Track search keyword
-            if (!empty($search)) {
+            if (! empty($search)) {
                 $keyword = SearchKeyword::firstOrNew(['keyword' => $search]);
                 $keyword->count = ($keyword->count ?? 0) + 1;
                 $keyword->save();
@@ -74,7 +75,7 @@ class BlogController extends Controller {
 
         $categories = BlogCategory::withCount(['blogs' => function ($q) {
             $q->where('status', 'Published');
-        }])->get()->map(function ($category) use ($locale) {
+        }])->get()->map(function ($category) {
             return [
                 'id' => $category->id,
                 'name' => $category->name,
@@ -88,7 +89,7 @@ class BlogController extends Controller {
             ->latest()
             ->limit(3)
             ->get()
-            ->map(function ($blog) use ($locale) {
+            ->map(function ($blog) {
                 return [
                     'id' => $blog->id,
                     'title' => $blog->title,
@@ -98,7 +99,7 @@ class BlogController extends Controller {
                 ];
             });
         $siteName = Seo::get('website_name', config('app.name'));
-        $meta = (new Meta())
+        $meta = (new Meta)
             ->title(__('Blogs').' | '.$siteName)
             ->description(__('Explore our latest blogs, insights, and technology updates.'))
             ->keywords(__('blogs, news, insights, technology trends'))
@@ -117,7 +118,8 @@ class BlogController extends Controller {
         ], $meta);
     }
 
-    public function show($slug) {
+    public function show($slug)
+    {
         $locale = app()->getLocale();
         $blog = Blog::published()
             ->where('slug', $slug)
@@ -125,7 +127,7 @@ class BlogController extends Controller {
             ->firstOrFail();
 
         // Increment visits
-        if (!session()->has('blog_'.$blog->id)) {
+        if (! session()->has('blog_'.$blog->id)) {
             $blog->increment('visits');
             session()->put('blog_'.$blog->id, true);
         }
@@ -188,7 +190,7 @@ class BlogController extends Controller {
             ->oldest('id')
             ->first();
 
-        $meta = (new Meta())
+        $meta = (new Meta)
             ->title($blog->title)
             ->description($blog->description)
             ->keywords($blog->keywords)
@@ -249,7 +251,8 @@ class BlogController extends Controller {
         ], $meta);
     }
 
-    private function getReadingTimeMinutes(Blog $blog, string $locale): int {
+    private function getReadingTimeMinutes(Blog $blog, string $locale): int
+    {
         $content = $blog->getTranslation('content', $locale)
             ?: $blog->getTranslation('description', $locale)
                 ?: '';
@@ -261,4 +264,3 @@ class BlogController extends Controller {
         return (new ReadTime($content))->minutes();
     }
 }
-

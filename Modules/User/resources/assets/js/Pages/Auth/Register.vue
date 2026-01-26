@@ -231,10 +231,6 @@ export default {
     opacity: 0.6;
 }
 
-.input-box input.error {
-    border-color: #dc3545;
-}
-
 .text-danger {
     color: #dc3545;
 }

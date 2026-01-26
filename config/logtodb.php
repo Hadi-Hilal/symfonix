@@ -1,13 +1,14 @@
 <?php
-    /*
-    |--------------------------------------------------------------------------
-    | Default Config for Laravel Log-To-DB
-    |--------------------------------------------------------------------------
-    |
-    |   These settings are ONLY USED if they are not specified per channel
-    |   in the config/logging.php file.
-    |
-    */
+
+/*
+|--------------------------------------------------------------------------
+| Default Config for Laravel Log-To-DB
+|--------------------------------------------------------------------------
+|
+|   These settings are ONLY USED if they are not specified per channel
+|   in the config/logging.php file.
+|
+*/
 return [
     /*
     |--------------------------------------------------------------------------
@@ -107,15 +108,15 @@ return [
     | When older than: records older than a give number of hours will be removed.
     |
     */
-    'max_records' => env('LOG_DB_MAX_COUNT', false), //Ex: 1000 records
+    'max_records' => env('LOG_DB_MAX_COUNT', false), // Ex: 1000 records
 
-    'max_hours' => env('LOG_DB_MAX_HOURS', false), //Ex: 24 for 24 hours. Or 24*7 = 1 week.
+    'max_hours' => env('LOG_DB_MAX_HOURS', false), // Ex: 24 for 24 hours. Or 24*7 = 1 week.
 
     /*
      |
      | Specify the datetime format storing into the log record
      |
      */
-    'datetime_format' => env('LOG_DB_DATETIME_FORMAT', 'Y-m-d H:i:s:ms')
+    'datetime_format' => env('LOG_DB_DATETIME_FORMAT', 'Y-m-d H:i:s:ms'),
 
 ];

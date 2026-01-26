@@ -31,14 +31,13 @@ class BotManController extends Controller
         ];
 
         // Create BotMan instance with proper cache and current request
-        $botman = BotManFactory::create($config, new LaravelCache(), $request);
+        $botman = BotManFactory::create($config, new LaravelCache, $request);
 
         // Start lead qualification flow on any message
         $botman->hears('{message}', function (BotMan $bot) {
             $initialMessage = $bot->getMessage()->getText();
             $bot->startConversation(new ProjectInquiryConversation($initialMessage));
         });
-
 
         $botman->listen();
     }

@@ -4,11 +4,11 @@ namespace Modules\Support\app\Exports;
 
 use Akaunting\Firewall\Models\Log as FirewallLog;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
-use Maatwebsite\Excel\Concerns\WithColumnWidths;
 
-class FirewallLogExport implements FromCollection, WithHeadings, WithMapping, WithColumnWidths
+class FirewallLogExport implements FromCollection, WithColumnWidths, WithHeadings, WithMapping
 {
     public function collection()
     {
@@ -63,7 +63,3 @@ class FirewallLogExport implements FromCollection, WithHeadings, WithMapping, Wi
         ];
     }
 }
-
-
-
-

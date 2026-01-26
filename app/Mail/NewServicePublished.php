@@ -12,7 +12,9 @@ class NewServicePublished extends Mailable
     use Queueable, SerializesModels;
 
     public Service $service;
+
     public string $locale;
+
     public string $title;
 
     public function __construct(Service $service, ?string $locale = null)

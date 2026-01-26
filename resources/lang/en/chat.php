@@ -68,5 +68,3 @@ return [
     'launcher.title' => 'Symfonix Bot',
     'launcher.placeholder' => 'Send a message...',
 ];
-
-

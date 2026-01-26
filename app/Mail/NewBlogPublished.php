@@ -12,7 +12,9 @@ class NewBlogPublished extends Mailable
     use Queueable, SerializesModels;
 
     public Blog $blog;
+
     public string $locale;
+
     public string $title;
 
     public function __construct(Blog $blog, ?string $locale = null)

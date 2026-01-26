@@ -8,37 +8,38 @@ use Cache;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use Inertia\Inertia;
 use Modules\Base\Models\Branch;
-use Modules\Base\Models\Settings;
-
-use Modules\Base\Support\Meta;
 use Modules\Base\Models\Seo;
+use Modules\Base\Models\Settings;
+use Modules\Base\Support\Meta;
 use Modules\Support\Models\ContactForm;
 use Modules\Support\Models\Subscriber;
 
-class ContactUsController extends Controller {
-
-    public function index() {
+class ContactUsController extends Controller
+{
+    public function index()
+    {
 
         $branches = Cache::rememberForever('branches', function () {
             return Branch::all();
         });
 
         $siteName = Seo::get('website_name', config('app.name'));
-        $meta = (new Meta())
+        $meta = (new Meta)
             ->title(__('Contact Us').' | '.$siteName)
             ->description(__('Contact our team for support, inquiries, or project discussions.'))
             ->keywords(__('contact, support, get in touch, customer service'))
             ->ogImage()
             ->twitterImage()
             ->toArray();
+
         return $this->inertia('Support::Index', [
             'branches' => $branches,
         ], $meta);
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         try {
             $validated = $request->validate([
                 'name' => 'required|string|max:255',
@@ -67,17 +68,21 @@ class ContactUsController extends Controller {
 
             $this->notifyAdmins($contact);
             session()->flushMessage(true, __('Thank you for contacting us! We will get back to you soon.'));
+
             return back();
         } catch (\Illuminate\Validation\ValidationException $e) {
             session()->flushMessage(false);
+
             return back()->withErrors($e->errors())->withInput();
         } catch (\Exception $e) {
             session()->flushMessage(false, __('An error occurred. Please try again later.'));
+
             return back()->withErrors(['message' => __('An error occurred. Please try again later.')])->withInput();
         }
     }
 
-    public function subscribe(Request $request) {
+    public function subscribe(Request $request)
+    {
         try {
             $validated = $request->validate([
                 'email' => 'required|email|max:255|unique:subscribers,email',
@@ -94,12 +99,15 @@ class ContactUsController extends Controller {
                 'blocked' => false,
             ]);
             session()->flushMessage(true, __('Thank you for subscribing to our newsletter!'));
+
             return back();
         } catch (\Illuminate\Validation\ValidationException $e) {
             session()->flushMessage(false);
+
             return back()->withErrors($e->errors())->withInput();
         } catch (\Exception $e) {
             session()->flushMessage(false, __('An error occurred. Please try again later.'));
+
             return back()->withErrors(['email' => __('An error occurred. Please try again later.')])->withInput();
         }
     }
@@ -135,4 +143,3 @@ class ContactUsController extends Controller {
         return array_values(array_unique($emails));
     }
 }
-

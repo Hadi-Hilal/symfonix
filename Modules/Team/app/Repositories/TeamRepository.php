@@ -15,6 +15,7 @@ class TeamRepository
     use ExceptionHandlerTrait, FileTrait;
 
     private string $avatarUploadPath = 'teams';
+
     private string $resumeUploadPath = 'teams/resumes';
 
     public function all(array $columns = ['*']): Collection

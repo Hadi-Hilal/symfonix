@@ -676,7 +676,7 @@
     display: inline-block;
     font-size: 14px;
     font-weight: 500;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-transform: capitalize;
@@ -1262,7 +1262,7 @@
     position: relative;
     display: inline-block;
     font-size: 50px;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     -webkit-text-fill-color: transparent;
     background-clip: text;
     transition: all 500ms linear;

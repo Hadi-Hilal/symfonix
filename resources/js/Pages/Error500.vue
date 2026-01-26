@@ -77,7 +77,6 @@ const trans = (key) => {
     }
 }
 const seo = computed(() => page.props.seo || { website_name: 'Sham Vision' })
-const asset_path = computed(() => page.props.asset_path || '/')
 const appEnv = computed(() => page.props.app_env || 'production')
 const isNonProduction = computed(() => appEnv.value !== 'production')
 const meta = computed(() => page.props.meta || {})
@@ -114,25 +113,12 @@ export default {
 </script>
 
 <style scoped>
-.breadcrumb__title.color-white,
-.breadcrumb__menu a.color-white,
-.breadcrumb__menu span.color-white {
-    color: #ffffff !important;
-}
-
 .error {
     padding: 100px 0;
 }
 
 .error__content {
     text-align: center;
-}
-
-.error__content-media img {
-    max-width: 500px;
-    width: 100%;
-    height: auto;
-    margin: 0 auto;
 }
 
 .section__title {

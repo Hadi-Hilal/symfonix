@@ -3,12 +3,12 @@
 namespace Modules\Support\app\Exports;
 
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
-use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Modules\Support\Models\Subscriber;
 
-class SubscriberExport implements FromCollection, WithHeadings, WithMapping, WithColumnWidths
+class SubscriberExport implements FromCollection, WithColumnWidths, WithHeadings, WithMapping
 {
     public function collection()
     {
@@ -51,4 +51,3 @@ class SubscriberExport implements FromCollection, WithHeadings, WithMapping, Wit
         ];
     }
 }
-

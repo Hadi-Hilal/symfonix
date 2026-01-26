@@ -4,19 +4,18 @@ namespace Modules\Services\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
-use Illuminate\Support\Str;
 use Modules\Base\Models\Seo;
-use Modules\Base\Models\Settings;
 use Modules\Base\Support\Meta;
+use Modules\SearchEngine\Models\SearchKeyword;
 use Modules\Services\Models\Service;
 use Modules\Services\Models\ServiceCategory;
-use Modules\SearchEngine\Models\SearchKeyword;
 use Modules\Testimonial\Models\Testimonial;
 use Vdhicts\ReadTime\ReadTime;
 
-class ServiceController extends Controller {
-    public function index(Request $request) {
+class ServiceController extends Controller
+{
+    public function index(Request $request)
+    {
         $locale = app()->getLocale();
         $query = Service::published()->with('category')->latest();
 
@@ -41,7 +40,7 @@ class ServiceController extends Controller {
             });
 
             // Track search keyword
-            if (!empty($search)) {
+            if (! empty($search)) {
                 $keyword = SearchKeyword::firstOrNew(['keyword' => $search]);
                 $keyword->count = ($keyword->count ?? 0) + 1;
                 $keyword->save();
@@ -101,13 +100,14 @@ class ServiceController extends Controller {
                 ];
             });
         $siteName = Seo::get('website_name', config('app.name'));
-        $meta = (new Meta())
+        $meta = (new Meta)
             ->title(__('Our Services').' | '.$siteName)
             ->description(__('Discover our IT services designed to scale and modernize your business.'))
             ->keywords(__('IT services, web development, mobile apps, AI solutions, cloud services'))
             ->ogImage()
             ->twitterImage()
             ->toArray();
+
         return $this->inertia('Services::ServiceIndex', [
             'services' => $services,
             'categories' => $categories,
@@ -119,7 +119,8 @@ class ServiceController extends Controller {
         ], $meta);
     }
 
-    public function show($slug) {
+    public function show($slug)
+    {
         $locale = app()->getLocale();
         $service = Service::published()
             ->where('slug', $slug)
@@ -127,7 +128,7 @@ class ServiceController extends Controller {
             ->firstOrFail();
 
         // Increment visits
-        if (!session()->has('service_'.$service->id)) {
+        if (! session()->has('service_'.$service->id)) {
             $service->increment('visits');
             session()->put('service_'.$service->id, true);
         }
@@ -198,7 +199,7 @@ class ServiceController extends Controller {
             ->take(10)
             ->get();
 
-        $meta = (new Meta())
+        $meta = (new Meta)
             ->title($service->title)
             ->description($service->description)
             ->keywords($service->keywords)
@@ -259,7 +260,8 @@ class ServiceController extends Controller {
         ], $meta);
     }
 
-    private function getReadingTimeMinutes(Service $service, string $locale): int {
+    private function getReadingTimeMinutes(Service $service, string $locale): int
+    {
         $content = $service->getTranslation('content', $locale)
             ?: $service->getTranslation('description', $locale)
                 ?: '';
@@ -271,4 +273,3 @@ class ServiceController extends Controller {
         return (new ReadTime($content))->minutes();
     }
 }
-

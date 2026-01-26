@@ -249,24 +249,6 @@ const getServiceDescription = (serviceItem) => {
     return translateField(serviceItem?.description)
 }
 
-const stripHtml = (html) => {
-    if (!html) return ''
-    return String(html).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()
-}
-
-const getServicePlainContent = (serviceItem) => {
-    const raw = translateField(serviceItem?.content) || translateField(serviceItem?.description)
-    return stripHtml(raw)
-}
-
-const getServiceExcerpt = (serviceItem, limit = 220, offset = 0) => {
-    const text = getServicePlainContent(serviceItem)
-    if (!text || offset >= text.length) return ''
-    const slice = text.slice(offset, offset + limit).trim()
-    if (!slice) return ''
-    return text.length > offset + limit ? `${slice}...` : slice
-}
-
 const normalizeKeywords = (rawKeywords) => {
     if (!rawKeywords) {
         return []

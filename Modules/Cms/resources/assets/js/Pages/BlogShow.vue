@@ -189,7 +189,6 @@
                                 :locale="locale"
                                 :asset-path="asset_path"
                                 :image-fallback-index="1"
-                                :avatar-seed="0"
                             />
                         </div>
                     </div>
@@ -208,7 +207,6 @@ import HomeBlogCard from '@/Components/HomeBlogCard.vue'
 
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;
-const seo = computed(() => page.props.seo)
 const asset_path = computed(() => page.props.asset_path || '')
 const locale = computed(() => page.props.locale || 'en')
 const blog = computed(() => page.props.blog)
@@ -231,7 +229,6 @@ const getKeywords = (keywords) => {
 const getShareUrl = (platform) => {
     const url = encodeURIComponent(window.location.href)
     const title = encodeURIComponent(blog.value.title)
-    const text = encodeURIComponent(blog.value.description || blog.value.title)
 
     switch (platform) {
         case 'twitter':

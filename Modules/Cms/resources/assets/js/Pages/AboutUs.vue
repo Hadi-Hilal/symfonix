@@ -1,10 +1,8 @@
 <template>
     <Head>
         <link rel="stylesheet" :href="asset_path + 'site/css/module-css/page-header.css'"/>
+        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/counter.css'"/>
         <link rel="stylesheet" :href="asset_path + 'site/css/module-css/about.css'"/>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/why-choose.css'"/>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/team.css'"/>
-        <link rel="stylesheet" :href="asset_path + 'site/css/module-css/testimonial.css'"/>
         <link v-if="locale === 'ar'" rel="stylesheet" :href="asset_path + 'site/css/rtl.css'"/>
         <title>{{ metaTitle }}</title>
         <meta name="description" :content="metaDescription">
@@ -458,7 +456,6 @@ import {Link, usePage, Head} from '@inertiajs/vue3'
 const page = usePage()
 const trans = (key) => page.props.translations[key] || key;
 const seo = computed(() => page.props.seo)
-const settings = computed(() => page.props.settings || {})
 const asset_path = computed(() => page.props.asset_path || '')
 const locale = computed(() => page.props.locale)
 const teams = computed(() => page.props.teams || [])

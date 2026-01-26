@@ -22,11 +22,10 @@ class ServiceCategory extends Model
 
     public function getImageLinkAttribute()
     {
-        if (!empty($this->attributes['image'])) {
+        if (! empty($this->attributes['image'])) {
             return asset('storage/'.$this->attributes['image']);
         }
+
         return asset('images/blank.png');
     }
 }
-
-

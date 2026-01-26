@@ -2,7 +2,6 @@
 
 namespace App\Conversations;
 
-use App\Models\BranchComplaint;
 use BotMan\BotMan\Messages\Conversations\Conversation;
 use BotMan\BotMan\Messages\Incoming\Answer;
 use BotMan\BotMan\Messages\Outgoing\Actions\Button;
@@ -10,23 +9,30 @@ use BotMan\BotMan\Messages\Outgoing\Question;
 use Modules\Base\Models\Branch;
 use Modules\Support\Models\Complaint;
 
-class BranchComplaintConversation extends Conversation {
+class BranchComplaintConversation extends Conversation
+{
     protected ?int $branchId = null;
+
     protected string $name;
+
     protected string $email;
+
     protected string $mobile;
+
     protected string $complaint;
 
-    public function run(): void {
+    public function run(): void
+    {
         $this->askBranch();
     }
 
-    protected function askBranch(): void {
+    protected function askBranch(): void
+    {
         $branches = Branch::all();
 
         if ($branches->isEmpty()) {
             $this->say(__('chat.branches.none'));
-            $this->bot->startConversation(new MainMenuConversation());
+            $this->bot->startConversation(new MainMenuConversation);
 
             return;
         }
@@ -40,7 +46,7 @@ class BranchComplaintConversation extends Conversation {
             ->addButtons($buttons);
 
         $this->ask($question, function (Answer $answer) {
-            if (!$answer->isInteractiveMessageReply()) {
+            if (! $answer->isInteractiveMessageReply()) {
                 return $this->askBranch();
             }
 
@@ -50,7 +56,8 @@ class BranchComplaintConversation extends Conversation {
         });
     }
 
-    protected function askName(): void {
+    protected function askName(): void
+    {
         $this->ask(__('chat.complaint.ask_name'), function (Answer $answer) {
             $this->name = trim($answer->getText());
 
@@ -58,7 +65,8 @@ class BranchComplaintConversation extends Conversation {
         });
     }
 
-    protected function askEmail(): void {
+    protected function askEmail(): void
+    {
         $this->ask(__('chat.complaint.ask_email'), function (Answer $answer) {
             $email = trim($answer->getText());
 
@@ -74,11 +82,12 @@ class BranchComplaintConversation extends Conversation {
         });
     }
 
-    protected function askMobile(): void {
+    protected function askMobile(): void
+    {
         $this->ask(__('chat.complaint.ask_mobile'), function (Answer $answer) {
             $mobile = trim($answer->getText());
 
-            if (!$this->isValidPhone($mobile)) {
+            if (! $this->isValidPhone($mobile)) {
                 $this->say(__('chat.complaint.mobile_invalid'));
 
                 return $this->askMobile();
@@ -90,7 +99,8 @@ class BranchComplaintConversation extends Conversation {
         });
     }
 
-    protected function askComplaint(): void {
+    protected function askComplaint(): void
+    {
         $this->ask(__('chat.complaint.ask_text'), function (Answer $answer) {
             $this->complaint = trim($answer->getText());
 
@@ -98,7 +108,8 @@ class BranchComplaintConversation extends Conversation {
         });
     }
 
-    protected function storeComplaint(): void {
+    protected function storeComplaint(): void
+    {
         Complaint::create([
             'branch_id' => $this->branchId,
             'name' => $this->name,
@@ -116,11 +127,10 @@ class BranchComplaintConversation extends Conversation {
     /**
      * Basic phone/mobile validation: at least 8 digits.
      */
-    protected function isValidPhone(string $value): bool {
+    protected function isValidPhone(string $value): bool
+    {
         $digits = preg_replace('/\D+/', '', $value);
 
         return strlen($digits) >= 8;
     }
 }
-
-

@@ -28,7 +28,7 @@ return [
             'redirect' => env('FIREWALL_BLOCK_REDIRECT', null),
             'abort' => env('FIREWALL_BLOCK_ABORT', false),
             'code' => env('FIREWALL_BLOCK_CODE', 403),
-            //'exception' => \Akaunting\Firewall\Exceptions\AccessDenied::class,
+            // 'exception' => \Akaunting\Firewall\Exceptions\AccessDenied::class,
         ],
 
     ],
@@ -67,7 +67,7 @@ return [
         'firewall.sqli',
         'firewall.swear',
         'firewall.xss',
-        //'App\Http\Middleware\YourCustomRule',
+        // 'App\Http\Middleware\YourCustomRule',
     ],
 
     'middleware' => [
@@ -417,7 +417,7 @@ return [
 
             'inputs' => [
                 'only' => [], // i.e. 'first_name'
-                'except' => ['content', 'description', 'body', 'text', 'message', 'html', 'title', 'slug', 'about_us_video', 'header_scripts', 'body_scripts', 'data.' ,  'data.about_us_video', 'data.header_scripts', 'data.body_scripts'], // Exclude content fields that may contain HTML or special characters (including nested array inputs)
+                'except' => ['content', 'description', 'body', 'text', 'message', 'html', 'title', 'slug', 'about_us_video', 'header_scripts', 'body_scripts', 'data.',  'data.about_us_video', 'data.header_scripts', 'data.body_scripts'], // Exclude content fields that may contain HTML or special characters (including nested array inputs)
             ],
 
             'patterns' => [
@@ -429,7 +429,7 @@ return [
                 '#-moz-binding[\x00-\x20]*:#u',
 
                 // Unneeded tags
-                '#</*(applet|meta|xml|blink|link|style|script|embed|object|iframe|frame|frameset|ilayer|layer|bgsound|title|base|img)[^>]*>?#i'
+                '#</*(applet|meta|xml|blink|link|style|script|embed|object|iframe|frame|frameset|ilayer|layer|bgsound|title|base|img)[^>]*>?#i',
             ],
 
             'auto_block' => [

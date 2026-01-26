@@ -50,7 +50,7 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::group([
             'prefix' => LaravelLocalization::setLocale(),
-            'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath' , 'visitor_tracking'],
+            'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'visitor_tracking'],
         ], static function () use ($name) {
             Route::middleware(['web', 'firewall.all'])->group(module_path($name, '/routes/web.php'));
         });

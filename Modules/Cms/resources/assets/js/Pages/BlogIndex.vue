@@ -62,7 +62,6 @@
                                 :locale="locale"
                                 :asset-path="asset_path"
                                 :image-fallback-index="1"
-                                :avatar-seed="0"
                             />
                         </div>
                     </template>

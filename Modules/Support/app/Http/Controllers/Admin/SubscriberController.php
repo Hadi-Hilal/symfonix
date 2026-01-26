@@ -28,7 +28,7 @@ class SubscriberController extends Controller
 
     public function export()
     {
-        return Excel::download(new SubscriberExport, 'subscribers_' . date('Y-m-d_His') . '.xlsx');
+        return Excel::download(new SubscriberExport, 'subscribers_'.date('Y-m-d_His').'.xlsx');
     }
 
     public function import(Request $request): RedirectResponse

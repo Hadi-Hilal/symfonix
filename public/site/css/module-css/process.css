@@ -195,7 +195,7 @@
 .process-one__process-list li:nth-child(2) .process-one__process-content::before {
     left: inherit;
     right: -85.5px;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
 }
 
 
@@ -283,7 +283,7 @@
     left: 50%;
     width: 80px;
     height: 80px;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     border-radius: 50%;
     font-size: 40px;
     line-height: 40px;

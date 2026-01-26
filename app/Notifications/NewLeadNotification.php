@@ -11,9 +11,7 @@ class NewLeadNotification extends Notification
 {
     use Queueable;
 
-    public function __construct(protected Lead $lead)
-    {
-    }
+    public function __construct(protected Lead $lead) {}
 
     public function via(object $notifiable): array
     {
@@ -29,22 +27,22 @@ class NewLeadNotification extends Notification
 
     public function toMail(object $notifiable): MailMessage
     {
-        return (new MailMessage())
+        return (new MailMessage)
             ->subject('New Lead Captured')
             ->line('A new lead was captured via the chatbot.')
-            ->line('Name: ' . ($this->lead->name ?? 'N/A'))
-            ->line('Email: ' . ($this->lead->email ?? 'N/A'))
-            ->line('Company: ' . ($this->lead->company_name ?? 'N/A'))
-            ->line('Budget: ' . ($this->lead->project_budget ?? 'N/A'))
-            ->line('Primary Service: ' . ($this->lead->service_interest ?? 'N/A'))
-            ->line('Problem: ' . ($this->lead->problem_statement ?? 'N/A'));
+            ->line('Name: '.($this->lead->name ?? 'N/A'))
+            ->line('Email: '.($this->lead->email ?? 'N/A'))
+            ->line('Company: '.($this->lead->company_name ?? 'N/A'))
+            ->line('Budget: '.($this->lead->project_budget ?? 'N/A'))
+            ->line('Primary Service: '.($this->lead->service_interest ?? 'N/A'))
+            ->line('Problem: '.($this->lead->problem_statement ?? 'N/A'));
     }
 
     public function toSlack(object $notifiable)
     {
         $slackMessageClass = \Illuminate\Notifications\Messages\SlackMessage::class;
 
-        return (new $slackMessageClass())
+        return (new $slackMessageClass)
             ->from(config('app.name'))
             ->content('New chatbot lead captured')
             ->attachment(function ($attachment) {

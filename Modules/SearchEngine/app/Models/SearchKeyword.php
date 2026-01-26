@@ -16,4 +16,3 @@ class SearchKeyword extends Model
         'count',
     ];
 }
-

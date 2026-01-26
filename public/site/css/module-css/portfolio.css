@@ -224,7 +224,7 @@
     justify-content: center;
     width: 48px;
     height: 48px;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     border-radius: 50%;
     font-size: 16px;
     color: var(--techguru-white);
@@ -280,7 +280,7 @@
     font-size: 24px;
     font-weight: 500;
     line-height: 24px;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
@@ -511,7 +511,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     border-radius: 50%;
     z-index: -1;
 }
@@ -660,7 +660,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     -webkit-text-fill-color: transparent;
     background-clip: text;
     -webkit-transition: all 500ms ease;
@@ -680,7 +680,7 @@
 
 .portfolio-two__carousel.owl-theme .owl-nav .owl-next:hover,
 .portfolio-two__carousel.owl-theme .owl-nav .owl-prev:hover {
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
 }
 
 .portfolio-two__carousel.owl-carousel .owl-dots {
@@ -960,7 +960,7 @@
 }
 
 .portfolio-details__get-touch a span {
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
@@ -971,7 +971,7 @@
     height: 68px;
     right: 0px;
     bottom: 0px;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     border-radius: 50%;
 }
 
@@ -1014,7 +1014,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     border-radius: 50%;
     z-index: -1;
 }
@@ -1054,7 +1054,7 @@
 .portfolio-details__portfolio-list li .content span {
     font-size: 16px;
     font-weight: 500;
-    background: linear-gradient(270deg, #5CB0E9 0%, #3D72FC 100%);
+       background: linear-gradient(0deg, rgba(127, 196, 87, 0) 0%, var(--techguru-base) 100%);
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }

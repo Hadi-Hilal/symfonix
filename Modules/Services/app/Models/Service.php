@@ -13,7 +13,7 @@ class Service extends Model
 
     protected $appends = ['image_link'];
 
-    protected $fillable = ['title', 'service_category_id' , 'slug', 'description', 'content', 'image', 'status', 'keywords', 'featured', 'visits'];
+    protected $fillable = ['title', 'service_category_id', 'slug', 'description', 'content', 'image', 'status', 'keywords', 'featured', 'visits'];
 
     public function category()
     {

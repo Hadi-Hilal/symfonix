@@ -23,7 +23,7 @@ class FirewallLogServiceProvider extends ServiceProvider
     {
         // Register observer for Firewall Log model to handle UTF-8 encoding
         Log::observe(FirewallLogObserver::class);
-        
+
         // Load firewall translations from resources/lang to override package translations
         $this->loadTranslationsFrom(resource_path('lang'), 'firewall');
     }
