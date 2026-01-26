@@ -1661,7 +1661,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
               backgroundImage: `url(${asset_path.value}images/home/banner-bg.jpg)`
             })}"${_scopeId}></div><div class="banner-one__shape-bg float-bob-y" style="${ssrRenderStyle({
               backgroundImage: `url(${asset_path.value}images/shapes/banner-one-shape-bg.png)`
-            })}"${_scopeId}></div><div class="container"${_scopeId}><div class="banner-one__inner"${_scopeId}><h2 class="banner-one__title px-3"${_scopeId}>${ssrInterpolate(trans("Crafting Intelligent Technologies for the Future"))} <br${_scopeId}><span${_scopeId}>${ssrInterpolate(trans("Balanced, modern, includes web, mobile, AI, and cloud"))}</span></h2><div class="banner-one__btn-box mb-5"${_scopeId}>`);
+            })}"${_scopeId}></div><div class="container"${_scopeId}><div class="banner-one__inner"${_scopeId}><h1 class="banner-one__title px-3"${_scopeId}>${ssrInterpolate(trans("Crafting Intelligent Technologies for the Future"))} <br${_scopeId}><span${_scopeId}>${ssrInterpolate(trans("Balanced, modern, includes web, mobile, AI, and cloud"))}</span></h1><div class="banner-one__btn-box mb-5"${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("contact-us"),
               class: "thm-btn"
@@ -1901,7 +1901,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
                 }, null, 4),
                 createVNode("div", { class: "container" }, [
                   createVNode("div", { class: "banner-one__inner" }, [
-                    createVNode("h2", { class: "banner-one__title px-3" }, [
+                    createVNode("h1", { class: "banner-one__title px-3" }, [
                       createTextVNode(toDisplayString(trans("Crafting Intelligent Technologies for the Future")) + " ", 1),
                       createVNode("br"),
                       createVNode("span", null, toDisplayString(trans("Balanced, modern, includes web, mobile, AI, and cloud")), 1)
