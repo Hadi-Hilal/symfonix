@@ -27,10 +27,6 @@ const _sfc_main$l = {
       type: Number,
       default: 1
     },
-    avatarSeed: {
-      type: Number,
-      default: 0
-    },
     showReadingTime: {
       type: Boolean,
       default: true
@@ -662,7 +658,7 @@ const _sfc_main$i = {
   __ssrInlineRender: true,
   setup(__props) {
     const page = usePage();
-    const settings = computed(() => page.props.settings);
+    const settings2 = computed(() => page.props.settings);
     const storage_path = computed(() => page.props.storage_path);
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<nav${ssrRenderAttrs(mergeProps({ class: "main-menu main-menu-two" }, _attrs))}><div class="main-menu-two__wrapper"><div class="main-menu-two__wrapper-inner"><div class="main-menu-two__left"><div class="main-menu-two__logo">`);
@@ -671,11 +667,11 @@ const _sfc_main$i = {
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<img${ssrRenderAttr("src", storage_path.value + settings.value.site_logo)} alt="logo"${_scopeId}>`);
+            _push2(`<img${ssrRenderAttr("src", storage_path.value + settings2.value.site_logo)} alt="logo"${_scopeId}>`);
           } else {
             return [
               createVNode("img", {
-                src: storage_path.value + settings.value.site_logo,
+                src: storage_path.value + settings2.value.site_logo,
                 alt: "logo"
               }, null, 8, ["src"])
             ];
@@ -701,7 +697,7 @@ const _sfc_main$h = {
   setup(__props) {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
-    const settings = computed(() => page.props.settings);
+    const settings2 = computed(() => page.props.settings);
     const storage_path = computed(() => page.props.storage_path);
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale);
@@ -850,11 +846,11 @@ const _sfc_main$h = {
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<img${ssrRenderAttr("src", storage_path.value + settings.value.site_logo)} alt="logo"${_scopeId}>`);
+            _push2(`<img${ssrRenderAttr("src", storage_path.value + settings2.value.site_logo)} alt="logo"${_scopeId}>`);
           } else {
             return [
               createVNode("img", {
-                src: storage_path.value + settings.value.site_logo,
+                src: storage_path.value + settings2.value.site_logo,
                 alt: "logo"
               }, null, 8, ["src"])
             ];
@@ -904,13 +900,13 @@ const _sfc_main$h = {
       } else {
         _push(`<!---->`);
       }
-      _push(`</form></div></div></div></div></div></div></div><div class="page-wrapper"><header class="main-header-two"><div class="main-menu-two__top"><div class="main-menu-two__top-inner"><p class="main-menu-two__top-text">${ssrInterpolate(trans("We Build Technology In Perfect Harmony"))}</p><ul class="list-unstyled main-menu-two__contact-list"><li><div class="icon"><i class="icon-pin"></i></div><div class="text"><p>${ssrInterpolate(settings.value.address)}</p></div></li><li><div class="icon"><i class="icon-search-mail"></i></div><div class="text"><p><a dir="ltr" href="mailto:{{settings.email}}">${ssrInterpolate(settings.value.email)}</a></p></div></li><li><div class="icon"><i class="icon-phone-call"></i></div><div class="text"><p><a dir="ltr" href="tel:{{settings.phone}}">${ssrInterpolate(settings.value.phone)}</a></p></div></li></ul></div></div>`);
+      _push(`</form></div></div></div></div></div></div></div><div class="page-wrapper"><header class="main-header-two"><div class="main-menu-two__top"><div class="main-menu-two__top-inner"><p class="main-menu-two__top-text">${ssrInterpolate(trans("We Build Technology In Perfect Harmony"))}</p><ul class="list-unstyled main-menu-two__contact-list"><li><div class="icon"><i class="icon-pin"></i></div><div class="text"><p>${ssrInterpolate(settings2.value.address)}</p></div></li><li><div class="icon"><i class="icon-search-mail"></i></div><div class="text"><p><a dir="ltr" href="mailto:{{settings.email}}">${ssrInterpolate(settings2.value.email)}</a></p></div></li><li><div class="icon"><i class="icon-phone-call"></i></div><div class="text"><p><a dir="ltr" href="tel:{{settings.phone}}">${ssrInterpolate(settings2.value.phone)}</a></p></div></li></ul></div></div>`);
       _push(ssrRenderComponent(_sfc_main$i, null, null, _parent));
       _push(`</header><div class="stricky-header stricked-menu main-menu main-menu-two"><div class="sticky-header__content">`);
       _push(ssrRenderComponent(_sfc_main$i, null, null, _parent));
-      _push(`</div></div><main>`);
+      _push(`</div></div>`);
       ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
-      _push(`</main><section class="newsletter-two"><div class="newsletter-two__shape-1"><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/newsletter-two-shape-1.png")}${ssrRenderAttr("alt", trans("Newsletter decoration"))}></div><div class="newsletter-two__shape-2 float-bob-x"><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/newsletter-two-shape-2.png")}${ssrRenderAttr("alt", trans("Newsletter decoration"))}></div><div class="container"><div class="newsletter-two__inner"><div class="newsletter-two__left"><h2 class="newsletter-two__title">${ssrInterpolate(trans("Subscribe to Our Newsletter"))}</h2><p class="newsletter-two__text">${ssrInterpolate(trans("Engineering insights, product updates, and practical tech lessons—delivered occasionally, not daily"))}</p></div><div class="newsletter-two__right"><form class="newsletter-two__form"><div class="newsletter-two__input"><input type="email" name="email"${ssrRenderAttr("value", unref(subscribeForm).email)}${ssrRenderAttr("placeholder", trans("Enter your email address"))}${ssrIncludeBooleanAttr(unref(subscribeForm).processing) ? " disabled" : ""} required="">`);
+      _push(`<section class="newsletter-two"><div class="newsletter-two__shape-1"><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/newsletter-two-shape-1.png")}${ssrRenderAttr("alt", trans("Newsletter decoration"))}></div><div class="newsletter-two__shape-2 float-bob-x"><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/newsletter-two-shape-2.png")}${ssrRenderAttr("alt", trans("Newsletter decoration"))}></div><div class="container"><div class="newsletter-two__inner"><div class="newsletter-two__left"><h2 class="newsletter-two__title">${ssrInterpolate(trans("Subscribe to Our Newsletter"))}</h2><p class="newsletter-two__text">${ssrInterpolate(trans("Engineering insights, product updates, and practical tech lessons—delivered occasionally, not daily"))}</p></div><div class="newsletter-two__right"><form class="newsletter-two__form"><div class="newsletter-two__input"><input type="email" name="email"${ssrRenderAttr("value", unref(subscribeForm).email)}${ssrRenderAttr("placeholder", trans("Enter your email address"))}${ssrIncludeBooleanAttr(unref(subscribeForm).processing) ? " disabled" : ""} required="">`);
       if (unref(subscribeForm).errors.email) {
         _push(`<div class="text-danger mt-1 small">${ssrInterpolate(unref(subscribeForm).errors.email)}</div>`);
       } else {
@@ -949,11 +945,11 @@ const _sfc_main$h = {
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<img${ssrRenderAttr("src", storage_path.value + settings.value.site_logo)} alt="logo"${_scopeId}>`);
+            _push2(`<img${ssrRenderAttr("src", storage_path.value + settings2.value.site_logo)} alt="logo"${_scopeId}>`);
           } else {
             return [
               createVNode("img", {
-                src: storage_path.value + settings.value.site_logo,
+                src: storage_path.value + settings2.value.site_logo,
                 alt: "logo"
               }, null, 8, ["src"])
             ];
@@ -961,7 +957,7 @@ const _sfc_main$h = {
         }),
         _: 1
       }, _parent));
-      _push(`</div><ul class="list-unstyled site-footer-two__contact-list"><li><div class="site-footer-two__contact-icon"><span class="icon-contact"></span></div><div class="site-footer-two__contact-content"><p class="site-footer-two__contact-info"><a${ssrRenderAttr("href", `mailto:${settings.value.email}`)} class="site-footer-two__contact-mail">${ssrInterpolate(settings.value.email)}</a><a${ssrRenderAttr("href", `tel:${settings.value.phone}`)} class="site-footer-two__contact-phone"><span dir="ltr">${ssrInterpolate(settings.value.phone)}</span></a></p></div></li><li><div class="site-footer-two__contact-icon"><span class="icon-pin"></span></div><div class="site-footer-two__contact-content"><p class="site-footer-two__contact-info">${ssrInterpolate(settings.value.address)}</p></div></li></ul></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms"><div class="footer-widget-two__quick-links"><h4 class="footer-widget-two__title">${ssrInterpolate(trans("Pages"))}</h4><ul class="footer-widget-two__quick-links-list list-unstyled"><li>`);
+      _push(`</div><ul class="list-unstyled site-footer-two__contact-list"><li><div class="site-footer-two__contact-icon"><span class="icon-contact"></span></div><div class="site-footer-two__contact-content"><p class="site-footer-two__contact-info"><a${ssrRenderAttr("href", `mailto:${settings2.value.email}`)} class="site-footer-two__contact-mail">${ssrInterpolate(settings2.value.email)}</a><a${ssrRenderAttr("href", `tel:${settings2.value.phone}`)} class="site-footer-two__contact-phone"><span dir="ltr">${ssrInterpolate(settings2.value.phone)}</span></a></p></div></li><li><div class="site-footer-two__contact-icon"><span class="icon-pin"></span></div><div class="site-footer-two__contact-content"><p class="site-footer-two__contact-info">${ssrInterpolate(settings2.value.address)}</p></div></li></ul></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms"><div class="footer-widget-two__quick-links"><h4 class="footer-widget-two__title">${ssrInterpolate(trans("Pages"))}</h4><ul class="footer-widget-two__quick-links-list list-unstyled"><li>`);
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("team")
       }, {
@@ -1171,23 +1167,23 @@ const _sfc_main$h = {
         _: 1
       }, _parent));
       _push(`</p></div><div class="site-footer-two__social-box"><h3 class="h4 site-footer-two__social-title">${ssrInterpolate(trans("Follow Us"))}:</h3><div class="site-footer-two__social-box-inner">`);
-      if (settings.value.whatsapp) {
-        _push(`<a${ssrRenderAttr("href", settings.value.whatsapp)} target="_blank" rel="noopener" aria-label="Whatsapp"><span class="icon-whatsapp"></span></a>`);
+      if (settings2.value.whatsapp) {
+        _push(`<a${ssrRenderAttr("href", settings2.value.whatsapp)} target="_blank" rel="noopener" aria-label="Whatsapp"><span class="icon-whatsapp"></span></a>`);
       } else {
         _push(`<!---->`);
       }
-      if (settings.value.facebook) {
-        _push(`<a${ssrRenderAttr("href", settings.value.facebook)} target="_blank" rel="noopener" aria-label="Facebook"><span class="icon-facebook"></span></a>`);
+      if (settings2.value.facebook) {
+        _push(`<a${ssrRenderAttr("href", settings2.value.facebook)} target="_blank" rel="noopener" aria-label="Facebook"><span class="icon-facebook"></span></a>`);
       } else {
         _push(`<!---->`);
       }
-      if (settings.value.instagram) {
-        _push(`<a${ssrRenderAttr("href", settings.value.instagram)} target="_blank" rel="noopener" aria-label="Instagram"><span class="fab fa-instagram"></span></a>`);
+      if (settings2.value.instagram) {
+        _push(`<a${ssrRenderAttr("href", settings2.value.instagram)} target="_blank" rel="noopener" aria-label="Instagram"><span class="fab fa-instagram"></span></a>`);
       } else {
         _push(`<!---->`);
       }
-      if (settings.value.linkedin) {
-        _push(`<a${ssrRenderAttr("href", settings.value.linkedin)} target="_blank" rel="noopener" aria-label="LinkedIn"><span class="icon-linkedin"></span></a>`);
+      if (settings2.value.linkedin) {
+        _push(`<a${ssrRenderAttr("href", settings2.value.linkedin)} target="_blank" rel="noopener" aria-label="LinkedIn"><span class="icon-linkedin"></span></a>`);
       } else {
         _push(`<!---->`);
       }
@@ -1198,11 +1194,11 @@ const _sfc_main$h = {
       }, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<img${ssrRenderAttr("src", storage_path.value + settings.value.site_logo)} alt="logo"${_scopeId}>`);
+            _push2(`<img${ssrRenderAttr("src", storage_path.value + settings2.value.site_logo)} alt="logo"${_scopeId}>`);
           } else {
             return [
               createVNode("img", {
-                src: storage_path.value + settings.value.site_logo,
+                src: storage_path.value + settings2.value.site_logo,
                 alt: "logo"
               }, null, 8, ["src"])
             ];
@@ -1212,29 +1208,29 @@ const _sfc_main$h = {
       }, _parent));
       _push(`</div><div class="mobile-nav__container">`);
       _push(ssrRenderComponent(_sfc_main$j, null, null, _parent));
-      _push(`</div><ul class="mobile-nav__contact list-unstyled"><li><i class="fa fa-envelope"></i><a${ssrRenderAttr("href", `mailto:${settings.value.email}`)}>${ssrInterpolate(settings.value.email)}</a></li><li><i class="fas fa-phone"></i><a${ssrRenderAttr("href", `tel:${settings.value.phone}`)}>${ssrInterpolate(settings.value.phone)}</a></li></ul><div class="mobile-nav__top"><div class="mobile-nav__social">`);
-      if (settings.value.twitter) {
-        _push(`<a${ssrRenderAttr("href", settings.value.twitter)} class="fab fa-twitter me-2" target="_blank" rel="noopener" aria-label="Twitter"></a>`);
+      _push(`</div><ul class="mobile-nav__contact list-unstyled"><li><i class="fa fa-envelope"></i><a${ssrRenderAttr("href", `mailto:${settings2.value.email}`)}>${ssrInterpolate(settings2.value.email)}</a></li><li><i class="fas fa-phone"></i><a${ssrRenderAttr("href", `tel:${settings2.value.phone}`)}>${ssrInterpolate(settings2.value.phone)}</a></li></ul><div class="mobile-nav__top"><div class="mobile-nav__social">`);
+      if (settings2.value.twitter) {
+        _push(`<a${ssrRenderAttr("href", settings2.value.twitter)} class="fab fa-twitter me-2" target="_blank" rel="noopener" aria-label="Twitter"></a>`);
       } else {
         _push(`<!---->`);
       }
-      if (settings.value.whatsapp) {
-        _push(`<a${ssrRenderAttr("href", settings.value.whatsapp)} class="fab fa-whatsapp me-2" target="_blank" rel="noopener" aria-label="Whatsapp"></a>`);
+      if (settings2.value.whatsapp) {
+        _push(`<a${ssrRenderAttr("href", settings2.value.whatsapp)} class="fab fa-whatsapp me-2" target="_blank" rel="noopener" aria-label="Whatsapp"></a>`);
       } else {
         _push(`<!---->`);
       }
-      if (settings.value.facebook) {
-        _push(`<a${ssrRenderAttr("href", settings.value.facebook)} class="fab fa-facebook me-2" target="_blank" rel="noopener" aria-label="Facebook"></a>`);
+      if (settings2.value.facebook) {
+        _push(`<a${ssrRenderAttr("href", settings2.value.facebook)} class="fab fa-facebook me-2" target="_blank" rel="noopener" aria-label="Facebook"></a>`);
       } else {
         _push(`<!---->`);
       }
-      if (settings.value.instagram) {
-        _push(`<a${ssrRenderAttr("href", settings.value.instagram)} class="fab fa-instagram me-2" target="_blank" rel="noopener" aria-label="Instagram"></a>`);
+      if (settings2.value.instagram) {
+        _push(`<a${ssrRenderAttr("href", settings2.value.instagram)} class="fab fa-instagram me-2" target="_blank" rel="noopener" aria-label="Instagram"></a>`);
       } else {
         _push(`<!---->`);
       }
-      if (settings.value.linkedin) {
-        _push(`<a${ssrRenderAttr("href", settings.value.linkedin)} class="fab fa-linkedin me-2" target="_blank" rel="noopener" aria-label="Linkedin"></a>`);
+      if (settings2.value.linkedin) {
+        _push(`<a${ssrRenderAttr("href", settings2.value.linkedin)} class="fab fa-linkedin me-2" target="_blank" rel="noopener" aria-label="Linkedin"></a>`);
       } else {
         _push(`<!---->`);
       }
@@ -1260,7 +1256,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
     const seo = computed(() => page.props.seo);
-    const settings = computed(() => page.props.settings || {});
+    const settings2 = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale);
     const posts = computed(() => page.props.posts || []);
@@ -1279,7 +1275,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
     });
     const metaImage = computed(() => {
       var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings2.value) == null ? void 0 : _e.meta_img) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "index, follow");
@@ -1680,7 +1676,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</div></div></div></section><section class="about-three"${_scopeId}><div class="container"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-6"${_scopeId}><div class="${ssrRenderClass(`about-three__left wow slideIn${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms"${_scopeId}><div class="about-three__img-box"${_scopeId}><div class="about-three__img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/about_us.jpg")}${ssrRenderAttr("alt", trans("About us"))}${_scopeId}></div></div></div></div><div class="col-xl-6"${_scopeId}><div class="about-three__right"${_scopeId}><p class="about-three__text"${_scopeId}>${ssrInterpolate(trans("Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today's digital landscape."))}</p><ul class="about-three__points list-unstyled"${_scopeId}><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-tick-inside-circle"${_scopeId}></span></div><div class="content"${_scopeId}><h2 class="h3"${_scopeId}>${ssrInterpolate(trans("Innovative IT Solutions Expert"))}</h2><p${_scopeId}>${ssrInterpolate(trans("Support & Consulting"))}</p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-tick-inside-circle"${_scopeId}></span></div><div class="content"${_scopeId}><h2 class="h3"${_scopeId}>${ssrInterpolate(trans("Cloud Solutions for Modern"))}</h2><p${_scopeId}>${ssrInterpolate(trans("Enterprises"))}</p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-tick-inside-circle"${_scopeId}></span></div><div class="content"${_scopeId}><h2 class="h3"${_scopeId}>${ssrInterpolate(trans("Seamless Digital Transformation"))}</h2><p${_scopeId}>${ssrInterpolate(trans("AI-Driven Business Automation"))}</p></div></li></ul><div class="about-three__btn-and-call-box"${_scopeId}><div class="about-three__btn-box"${_scopeId}><a${ssrRenderAttr("href", _ctx.route("about-us"))} class="thm-btn"${_scopeId}>${ssrInterpolate(trans("Get in Touch"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}"${_scopeId}></span></a></div><div class="about-three__call-box"${_scopeId}><div class="icon"${_scopeId}><span class="icon-customer-service-headset"${_scopeId}></span></div><div class="content"${_scopeId}><span${_scopeId}>${ssrInterpolate(trans("Call Any Time"))}</span><p${_scopeId}><a dir="ltr" href="tel:{{settings.phone}}"${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></div></div></div></div></div></div></section>`);
+            _push2(`</div></div></div></section><section class="about-three"${_scopeId}><div class="container"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-6"${_scopeId}><div class="${ssrRenderClass(`about-three__left wow slideIn${locale.value !== "ar" ? "Left" : "Right"}`)}" data-wow-delay="100ms" data-wow-duration="2500ms"${_scopeId}><div class="about-three__img-box"${_scopeId}><div class="about-three__img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/about_us.jpg")}${ssrRenderAttr("alt", trans("About us"))}${_scopeId}></div></div></div></div><div class="col-xl-6"${_scopeId}><div class="about-three__right"${_scopeId}><p class="about-three__text"${_scopeId}>${ssrInterpolate(trans("Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today's digital landscape."))}</p><ul class="about-three__points list-unstyled"${_scopeId}><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-tick-inside-circle"${_scopeId}></span></div><div class="content"${_scopeId}><h2 class="h3"${_scopeId}>${ssrInterpolate(trans("Innovative IT Solutions Expert"))}</h2><p${_scopeId}>${ssrInterpolate(trans("Support & Consulting"))}</p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-tick-inside-circle"${_scopeId}></span></div><div class="content"${_scopeId}><h2 class="h3"${_scopeId}>${ssrInterpolate(trans("Cloud Solutions for Modern"))}</h2><p${_scopeId}>${ssrInterpolate(trans("Enterprises"))}</p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-tick-inside-circle"${_scopeId}></span></div><div class="content"${_scopeId}><h2 class="h3"${_scopeId}>${ssrInterpolate(trans("Seamless Digital Transformation"))}</h2><p${_scopeId}>${ssrInterpolate(trans("AI-Driven Business Automation"))}</p></div></li></ul><div class="about-three__btn-and-call-box"${_scopeId}><div class="about-three__btn-box"${_scopeId}><a${ssrRenderAttr("href", _ctx.route("about-us"))} class="thm-btn"${_scopeId}>${ssrInterpolate(trans("Get in Touch"))} <span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow `)}"${_scopeId}></span></a></div><div class="about-three__call-box"${_scopeId}><div class="icon"${_scopeId}><span class="icon-customer-service-headset"${_scopeId}></span></div><div class="content"${_scopeId}><span${_scopeId}>${ssrInterpolate(trans("Call Any Time"))}</span><p${_scopeId}><a dir="ltr" href="tel:{{settings.phone}}"${_scopeId}>${ssrInterpolate(settings2.value.phone)}</a></p></div></div></div></div></div></div></div></section>`);
             if (servicesCategories.value && servicesCategories.value.length) {
               _push2(`<section class="services-three"${_scopeId}><div class="container"${_scopeId}><div class="section-title text-center sec-title-animation animation-style1"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Our Services"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div><h2 class="section-title__title title-animation core-services-title"${_scopeId}>${ssrInterpolate(trans("What We Do"))}! <span${_scopeId}>${ssrInterpolate(trans("Core Services"))}</span></h2></div><div class="services-three__carousel owl-theme owl-carousel"${_scopeId}><!--[-->`);
               ssrRenderList(servicesCategories.value, (servicesCategory) => {
@@ -1762,7 +1758,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<section class="feature-one"${_scopeId}><div class="feature-one__shape-2 float-bob-y"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/feature-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))}${_scopeId}></div><div class="container"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms"${_scopeId}><div class="feature-one__single"${_scopeId}><div class="feature-one__img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/website.png")}${ssrRenderAttr("alt", trans("Web Development"))}${_scopeId}></div><h3 class="feature-one__title"${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(trans("Web Development"))}</a></h3><p class="feature-one__text"${_scopeId}>${ssrInterpolate(trans("Custom web solutions built with cutting-edge technology to drive your business forward."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms"${_scopeId}><div class="feature-one__single"${_scopeId}><div class="feature-one__img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/app-development.png")}${ssrRenderAttr("alt", trans("Mobile Development"))}${_scopeId}></div><h3 class="feature-one__title"${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(trans("Mobile Development"))}</a></h3><p class="feature-one__text"${_scopeId}>${ssrInterpolate(trans("Native and cross-platform mobile applications that deliver exceptional user experiences."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="500ms"${_scopeId}><div class="feature-one__single"${_scopeId}><div class="feature-one__img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/microchip.png")}${ssrRenderAttr("alt", trans("AI Agents & Automation"))}${_scopeId}></div><h3 class="feature-one__title"${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(trans("AI Agents & Automation"))}</a></h3><p class="feature-one__text"${_scopeId}>${ssrInterpolate(trans("Intelligent automation solutions powered by AI to streamline your business processes."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="700ms"${_scopeId}><div class="feature-one__single"${_scopeId}><div class="feature-one__img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/cloud.png")}${ssrRenderAttr("alt", trans("Cloud & Infrastructure"))}${_scopeId}></div><h3 class="feature-one__title"${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(trans("Cloud & Infrastructure"))}</a></h3><p class="feature-one__text"${_scopeId}>${ssrInterpolate(trans("Secure, scalable, and efficient cloud services to power your growth and digital transformation."))}</p></div></div></div></div></section><section class="cta-one"${_scopeId}><div class="cta-one__shape-bg float-bob-y" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}site/images/shapes/cta-one-shape-bg.png)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="cta-one__inner"${_scopeId}><h3 class="cta-one__title"${_scopeId}>${ssrInterpolate(trans("To make requests for further information, contact us"))}</h3><div class="cta-one__contact-info"${_scopeId}><div class="cta-one__contact-icon"${_scopeId}><span class="icon-customer-service-headset"${_scopeId}></span></div><div class="cta-one__contact-details"${_scopeId}><p${_scopeId}>${ssrInterpolate(trans("Call Us For Any inquiry"))}</p><h4${_scopeId}><a dir="ltr" href="tel:{{settings.phone}}"${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></h4></div></div></div></div></section>`);
+            _push2(`<section class="feature-one"${_scopeId}><div class="feature-one__shape-2 float-bob-y"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/feature-one-shape-2.png")}${ssrRenderAttr("alt", trans("Decorative shape"))}${_scopeId}></div><div class="container"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms"${_scopeId}><div class="feature-one__single"${_scopeId}><div class="feature-one__img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/website.png")}${ssrRenderAttr("alt", trans("Web Development"))}${_scopeId}></div><h3 class="feature-one__title"${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(trans("Web Development"))}</a></h3><p class="feature-one__text"${_scopeId}>${ssrInterpolate(trans("Custom web solutions built with cutting-edge technology to drive your business forward."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms"${_scopeId}><div class="feature-one__single"${_scopeId}><div class="feature-one__img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/app-development.png")}${ssrRenderAttr("alt", trans("Mobile Development"))}${_scopeId}></div><h3 class="feature-one__title"${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(trans("Mobile Development"))}</a></h3><p class="feature-one__text"${_scopeId}>${ssrInterpolate(trans("Native and cross-platform mobile applications that deliver exceptional user experiences."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="500ms"${_scopeId}><div class="feature-one__single"${_scopeId}><div class="feature-one__img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/microchip.png")}${ssrRenderAttr("alt", trans("AI Agents & Automation"))}${_scopeId}></div><h3 class="feature-one__title"${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(trans("AI Agents & Automation"))}</a></h3><p class="feature-one__text"${_scopeId}>${ssrInterpolate(trans("Intelligent automation solutions powered by AI to streamline your business processes."))}</p></div></div><div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="700ms"${_scopeId}><div class="feature-one__single"${_scopeId}><div class="feature-one__img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/home/cloud.png")}${ssrRenderAttr("alt", trans("Cloud & Infrastructure"))}${_scopeId}></div><h3 class="feature-one__title"${_scopeId}><a href="#"${_scopeId}>${ssrInterpolate(trans("Cloud & Infrastructure"))}</a></h3><p class="feature-one__text"${_scopeId}>${ssrInterpolate(trans("Secure, scalable, and efficient cloud services to power your growth and digital transformation."))}</p></div></div></div></div></section><section class="cta-one"${_scopeId}><div class="cta-one__shape-bg float-bob-y" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}site/images/shapes/cta-one-shape-bg.png)` })}"${_scopeId}></div><div class="container"${_scopeId}><div class="cta-one__inner"${_scopeId}><h3 class="cta-one__title"${_scopeId}>${ssrInterpolate(trans("To make requests for further information, contact us"))}</h3><div class="cta-one__contact-info"${_scopeId}><div class="cta-one__contact-icon"${_scopeId}><span class="icon-customer-service-headset"${_scopeId}></span></div><div class="cta-one__contact-details"${_scopeId}><p${_scopeId}>${ssrInterpolate(trans("Call Us For Any inquiry"))}</p><h4${_scopeId}><a dir="ltr" href="tel:{{settings.phone}}"${_scopeId}>${ssrInterpolate(settings2.value.phone)}</a></h4></div></div></div></div></section>`);
             if (testimonials.value && testimonials.value.length) {
               _push2(`<section class="testimonial-one pb-5"${_scopeId}><div class="container"${_scopeId}><div class="section-title text-center sec-title-animation animation-style1"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Testimonials"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div><h2 class="section-title__title title-animation"${_scopeId}>${ssrInterpolate(trans("Customer Experiences"))} <br${_scopeId}> ${ssrInterpolate(trans("That"))} <span${_scopeId}>${ssrInterpolate(trans("Speak Volumes"))}</span></h2></div><div class="testimonial-two__carousel owl-theme owl-carousel"${_scopeId}><!--[-->`);
               ssrRenderList(testimonials.value, (testimonial) => {
@@ -1800,8 +1796,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
                   variant: "featured",
                   locale: locale.value,
                   "asset-path": asset_path.value,
-                  "image-fallback-index": 1,
-                  "avatar-seed": 0
+                  "image-fallback-index": 1
                 }, null, _parent2, _scopeId));
                 _push2(`</div>`);
               } else {
@@ -1816,7 +1811,6 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
                   locale: locale.value,
                   "asset-path": asset_path.value,
                   "image-fallback-index": idx + 2,
-                  "avatar-seed": idx + 1,
                   "animation-class": idx % 2 === 0 ? "fadeInLeft" : "fadeInRight",
                   "animation-delay": `${(idx + 1) * 100}ms`
                 }, null, _parent2, _scopeId));
@@ -1826,18 +1820,18 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
               _push2(`<!---->`);
             }
             _push2(`<section class="contact-two"${_scopeId}><div class="contact-two__sliding-text-list marquee_mode-2"${_scopeId}><div class="contact-two__sliding-text-item"${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title"${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div><div class="contact-two__sliding-text-item"${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title"${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div><div class="contact-two__sliding-text-item"${_scopeId}><h2 data-hover="Branding" class="contact-two__sliding-text-title"${_scopeId}>${ssrInterpolate(trans("GET IN TOUCH *"))}</h2></div></div><div class="contact-two__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}site/images/backgrounds/contact-two-bg.jpg)` })}"${_scopeId}></div><div class="contact-two__shape-1 float-bob-y"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "site/images/shapes/contact-two-shape-1.png")}${ssrRenderAttr("alt", trans("Decorative shape"))}${_scopeId}></div><div class="container"${_scopeId}><div class="row"${_scopeId}><div class="col-xl-6"${_scopeId}><div class="contact-two__left"${_scopeId}><div class="section-title text-left sec-title-animation animation-style2"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Get In Touch"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div><h2 class="section-title__title title-animation"${_scopeId}>${ssrInterpolate(trans("Contact Us"))}</h2></div><p class="contact-two__text"${_scopeId}>${ssrInterpolate(trans("Fill out the form below and we'll get back to you as soon as possible"))}</p><ul class="contact-two__contact-list list-unstyled"${_scopeId}>`);
-            if (settings.value.email) {
-              _push2(`<li${_scopeId}><div class="icon"${_scopeId}><span class="icon-mail"${_scopeId}></span></div><div class="content"${_scopeId}><h3 class="h4"${_scopeId}>${ssrInterpolate(trans("Email"))}</h3><p${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `mailto:${settings.value.email}`)}${_scopeId}>${ssrInterpolate(settings.value.email)}</a></p></div></li>`);
+            if (settings2.value.email) {
+              _push2(`<li${_scopeId}><div class="icon"${_scopeId}><span class="icon-mail"${_scopeId}></span></div><div class="content"${_scopeId}><h3 class="h4"${_scopeId}>${ssrInterpolate(trans("Email"))}</h3><p${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `mailto:${settings2.value.email}`)}${_scopeId}>${ssrInterpolate(settings2.value.email)}</a></p></div></li>`);
             } else {
               _push2(`<!---->`);
             }
-            if (settings.value.phone) {
-              _push2(`<li${_scopeId}><div class="icon"${_scopeId}><span class="icon-phone-call"${_scopeId}></span></div><div class="content"${_scopeId}><h3 class="h4"${_scopeId}>${ssrInterpolate(trans("Phone"))}</h3><p${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.phone}`)}${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></li>`);
+            if (settings2.value.phone) {
+              _push2(`<li${_scopeId}><div class="icon"${_scopeId}><span class="icon-phone-call"${_scopeId}></span></div><div class="content"${_scopeId}><h3 class="h4"${_scopeId}>${ssrInterpolate(trans("Phone"))}</h3><p${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings2.value.phone}`)}${_scopeId}>${ssrInterpolate(settings2.value.phone)}</a></p></div></li>`);
             } else {
               _push2(`<!---->`);
             }
-            if (settings.value.address) {
-              _push2(`<li${_scopeId}><div class="icon"${_scopeId}><span class="icon-pin"${_scopeId}></span></div><div class="content"${_scopeId}><h3 class="h4"${_scopeId}>${ssrInterpolate(trans("Our Location"))}</h3><p${_scopeId}>${ssrInterpolate(settings.value.address)}</p></div></li>`);
+            if (settings2.value.address) {
+              _push2(`<li${_scopeId}><div class="icon"${_scopeId}><span class="icon-pin"${_scopeId}></span></div><div class="content"${_scopeId}><h3 class="h4"${_scopeId}>${ssrInterpolate(trans("Our Location"))}</h3><p${_scopeId}>${ssrInterpolate(settings2.value.address)}</p></div></li>`);
             } else {
               _push2(`<!---->`);
             }
@@ -1996,7 +1990,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
                                 createVNode("a", {
                                   dir: "ltr",
                                   href: "tel:{{settings.phone}}"
-                                }, toDisplayString(settings.value.phone), 1)
+                                }, toDisplayString(settings2.value.phone), 1)
                               ])
                             ])
                           ])
@@ -2321,7 +2315,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
                           createVNode("a", {
                             dir: "ltr",
                             href: "tel:{{settings.phone}}"
-                          }, toDisplayString(settings.value.phone), 1)
+                          }, toDisplayString(settings2.value.phone), 1)
                         ])
                       ])
                     ])
@@ -2429,8 +2423,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
                             variant: "featured",
                             locale: locale.value,
                             "asset-path": asset_path.value,
-                            "image-fallback-index": 1,
-                            "avatar-seed": 0
+                            "image-fallback-index": 1
                           }, null, 8, ["post", "locale", "asset-path"])
                         ])) : createCommentVNode("", true)
                       ], 2)
@@ -2445,10 +2438,9 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
                             locale: locale.value,
                             "asset-path": asset_path.value,
                             "image-fallback-index": idx + 2,
-                            "avatar-seed": idx + 1,
                             "animation-class": idx % 2 === 0 ? "fadeInLeft" : "fadeInRight",
                             "animation-delay": `${(idx + 1) * 100}ms`
-                          }, null, 8, ["post", "locale", "asset-path", "image-fallback-index", "avatar-seed", "animation-class", "animation-delay"]);
+                          }, null, 8, ["post", "locale", "asset-path", "image-fallback-index", "animation-class", "animation-delay"]);
                         }), 128))
                       ])
                     ])
@@ -2500,7 +2492,7 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
                         ]),
                         createVNode("p", { class: "contact-two__text" }, toDisplayString(trans("Fill out the form below and we'll get back to you as soon as possible")), 1),
                         createVNode("ul", { class: "contact-two__contact-list list-unstyled" }, [
-                          settings.value.email ? (openBlock(), createBlock("li", { key: 0 }, [
+                          settings2.value.email ? (openBlock(), createBlock("li", { key: 0 }, [
                             createVNode("div", { class: "icon" }, [
                               createVNode("span", { class: "icon-mail" })
                             ]),
@@ -2509,12 +2501,12 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
                               createVNode("p", null, [
                                 createVNode("a", {
                                   dir: "ltr",
-                                  href: `mailto:${settings.value.email}`
-                                }, toDisplayString(settings.value.email), 9, ["href"])
+                                  href: `mailto:${settings2.value.email}`
+                                }, toDisplayString(settings2.value.email), 9, ["href"])
                               ])
                             ])
                           ])) : createCommentVNode("", true),
-                          settings.value.phone ? (openBlock(), createBlock("li", { key: 1 }, [
+                          settings2.value.phone ? (openBlock(), createBlock("li", { key: 1 }, [
                             createVNode("div", { class: "icon" }, [
                               createVNode("span", { class: "icon-phone-call" })
                             ]),
@@ -2523,18 +2515,18 @@ const _sfc_main$g = /* @__PURE__ */ Object.assign(__default__$c, {
                               createVNode("p", null, [
                                 createVNode("a", {
                                   dir: "ltr",
-                                  href: `tel:${settings.value.phone}`
-                                }, toDisplayString(settings.value.phone), 9, ["href"])
+                                  href: `tel:${settings2.value.phone}`
+                                }, toDisplayString(settings2.value.phone), 9, ["href"])
                               ])
                             ])
                           ])) : createCommentVNode("", true),
-                          settings.value.address ? (openBlock(), createBlock("li", { key: 2 }, [
+                          settings2.value.address ? (openBlock(), createBlock("li", { key: 2 }, [
                             createVNode("div", { class: "icon" }, [
                               createVNode("span", { class: "icon-pin" })
                             ]),
                             createVNode("div", { class: "content" }, [
                               createVNode("h3", { class: "h4" }, toDisplayString(trans("Our Location")), 1),
-                              createVNode("p", null, toDisplayString(settings.value.address), 1)
+                              createVNode("p", null, toDisplayString(settings2.value.address), 1)
                             ])
                           ])) : createCommentVNode("", true)
                         ])
@@ -2728,7 +2720,6 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
     const seo = computed(() => page.props.seo);
-    const settings = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale);
     const teams = computed(() => page.props.teams || []);
@@ -2870,7 +2861,7 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
       _push(ssrRenderComponent(unref(Head), null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")}${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/about.css")}${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/why-choose.css")}${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/team.css")}${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/testimonial.css")}${_scopeId}>`);
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")}${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/counter.css")}${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/about.css")}${_scopeId}>`);
             if (locale.value === "ar") {
               _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/rtl.css")}${_scopeId}>`);
             } else {
@@ -2907,19 +2898,11 @@ const _sfc_main$f = /* @__PURE__ */ Object.assign(__default__$b, {
               }, null, 8, ["href"]),
               createVNode("link", {
                 rel: "stylesheet",
+                href: asset_path.value + "site/css/module-css/counter.css"
+              }, null, 8, ["href"]),
+              createVNode("link", {
+                rel: "stylesheet",
                 href: asset_path.value + "site/css/module-css/about.css"
-              }, null, 8, ["href"]),
-              createVNode("link", {
-                rel: "stylesheet",
-                href: asset_path.value + "site/css/module-css/why-choose.css"
-              }, null, 8, ["href"]),
-              createVNode("link", {
-                rel: "stylesheet",
-                href: asset_path.value + "site/css/module-css/team.css"
-              }, null, 8, ["href"]),
-              createVNode("link", {
-                rel: "stylesheet",
-                href: asset_path.value + "site/css/module-css/testimonial.css"
               }, null, 8, ["href"]),
               locale.value === "ar" ? (openBlock(), createBlock("link", {
                 key: 0,
@@ -3597,7 +3580,7 @@ const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$a, {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
     const seo = computed(() => page.props.seo);
-    const settings = computed(() => page.props.settings || {});
+    const settings2 = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale || "en");
     const blogs = computed(() => page.props.blogs);
@@ -3613,7 +3596,7 @@ const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$a, {
     });
     const metaImage = computed(() => {
       var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings2.value) == null ? void 0 : _e.meta_img) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "index, follow");
@@ -3742,8 +3725,7 @@ const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$a, {
                   variant: "featured",
                   locale: locale.value,
                   "asset-path": asset_path.value,
-                  "image-fallback-index": 1,
-                  "avatar-seed": 0
+                  "image-fallback-index": 1
                 }, null, _parent2, _scopeId));
                 _push2(`</div>`);
               });
@@ -3887,8 +3869,7 @@ const _sfc_main$e = /* @__PURE__ */ Object.assign(__default__$a, {
                           variant: "featured",
                           locale: locale.value,
                           "asset-path": asset_path.value,
-                          "image-fallback-index": 1,
-                          "avatar-seed": 0
+                          "image-fallback-index": 1
                         }, null, 8, ["post", "locale", "asset-path"])
                       ]);
                     }), 128)) : (openBlock(), createBlock("div", {
@@ -3990,7 +3971,6 @@ const _sfc_main$d = /* @__PURE__ */ Object.assign(__default__$9, {
   setup(__props) {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
-    computed(() => page.props.seo);
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale || "en");
     const blog = computed(() => page.props.blog);
@@ -4010,7 +3990,6 @@ const _sfc_main$d = /* @__PURE__ */ Object.assign(__default__$9, {
     const getShareUrl = (platform) => {
       const url = encodeURIComponent(window.location.href);
       const title = encodeURIComponent(blog.value.title);
-      encodeURIComponent(blog.value.description || blog.value.title);
       switch (platform) {
         case "twitter":
           return `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
@@ -4231,8 +4210,7 @@ const _sfc_main$d = /* @__PURE__ */ Object.assign(__default__$9, {
                   variant: "featured",
                   locale: locale.value,
                   "asset-path": asset_path.value,
-                  "image-fallback-index": 1,
-                  "avatar-seed": 0
+                  "image-fallback-index": 1
                 }, null, _parent2, _scopeId));
                 _push2(`</div>`);
               });
@@ -4534,8 +4512,7 @@ const _sfc_main$d = /* @__PURE__ */ Object.assign(__default__$9, {
                             variant: "featured",
                             locale: locale.value,
                             "asset-path": asset_path.value,
-                            "image-fallback-index": 1,
-                            "avatar-seed": 0
+                            "image-fallback-index": 1
                           }, null, 8, ["post", "locale", "asset-path"])
                         ]);
                       }), 128))
@@ -4574,31 +4551,15 @@ const _sfc_main$c = /* @__PURE__ */ Object.assign(__default__$8, {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
     const seo = computed(() => page.props.seo);
-    const settings = computed(() => page.props.settings || {});
     const custom_page = computed(() => page.props.custom_page);
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale || "en");
     const banner = computed(() => page.props.banner);
-    const meta = computed(() => page.props.meta || {});
     const metaTitle = computed(() => {
       var _a, _b;
       const pageTitle = ((_b = (_a = custom_page.value) == null ? void 0 : _a.title) == null ? void 0 : _b[locale.value]) || "";
       return `${pageTitle} | ${seo.value.website_name || ""}`.trim();
     });
-    computed(() => {
-      var _a;
-      return meta.value.description || ((_a = custom_page.value) == null ? void 0 : _a.description) || seo.value.website_desc || "";
-    });
-    computed(() => {
-      var _a;
-      return meta.value.keywords || ((_a = custom_page.value) == null ? void 0 : _a.keywords) || seo.value.website_keywords || "";
-    });
-    computed(() => {
-      var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || banner.value || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
-    });
-    computed(() => meta.value.canonical || "");
-    computed(() => meta.value.robots || "index, follow");
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), null, {
@@ -4723,7 +4684,7 @@ const _sfc_main$b = /* @__PURE__ */ Object.assign(__default__$7, {
     const trans = (key) => page.props.translations[key] || key;
     const seo = computed(() => page.props.seo);
     const asset_path = computed(() => page.props.asset_path || "");
-    const settings = computed(() => page.props.settings || {});
+    const settings2 = computed(() => page.props.settings || {});
     const locale = computed(() => page.props.locale);
     const meta = computed(() => page.props.meta || {});
     const metaTitle = computed(() => {
@@ -4737,7 +4698,7 @@ const _sfc_main$b = /* @__PURE__ */ Object.assign(__default__$7, {
     });
     const metaImage = computed(() => {
       var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings2.value) == null ? void 0 : _e.meta_img) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "index, follow");
@@ -4861,7 +4822,7 @@ const _sfc_main$b = /* @__PURE__ */ Object.assign(__default__$7, {
             } else {
               _push2(`<a${ssrRenderAttr("href", `/${locale.value === "ar" ? "ar" : ""}`)} data-v-b99b5a4e${_scopeId}><i class="fas fa-home" data-v-b99b5a4e${_scopeId}></i>${ssrInterpolate(trans("Home"))}</a>`);
             }
-            _push2(`</li><li data-v-b99b5a4e${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-b99b5a4e${_scopeId}></span></li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Privacy Policy"))}</li></ul></div></div></div></section><section class="privacy-policy my-5" data-v-b99b5a4e${_scopeId}><div class="container" data-v-b99b5a4e${_scopeId}><div class="row" data-v-b99b5a4e${_scopeId}><div class="col-xl-12" data-v-b99b5a4e${_scopeId}><div class="privacy-policy__content" data-v-b99b5a4e${_scopeId}><div class="privacy-policy__text" data-v-b99b5a4e${_scopeId}><p class="privacy-policy__last-updated" data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Last Updated:"))}</strong> ${ssrInterpolate((/* @__PURE__ */ new Date()).toLocaleDateString())}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("1. Introduction"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Welcome to our Privacy Policy. This document explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("2. Information We Collect"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We may collect information about you in a variety of ways. The information we may collect on the site includes:"))}</p><ul data-v-b99b5a4e${_scopeId}><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Personal Data"))}</strong>: ${ssrInterpolate(trans("Personally identifiable information, such as your name, email address, phone number, and demographic information that you voluntarily give to us when you register with the site or when you choose to participate in various activities related to the site."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Derivative Data"))}</strong>: ${ssrInterpolate(trans("Information our servers automatically collect when you access the site, such as your IP address, your browser type, your operating system, your access times, and the pages you have viewed directly before and after accessing the site."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Financial Data"))}</strong>: ${ssrInterpolate(trans("Financial information, such as data related to your payment method (e.g., valid credit card number, card brand, expiration date) that we may collect when you purchase, order, return, exchange, or request information about our services from the site."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Mobile Device Data"))}</strong>: ${ssrInterpolate(trans("Device information, such as your mobile device ID, model, and manufacturer, and information about the location of your device, if you access the site from a mobile device."))}</li></ul><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("3. How We Use Your Information"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we may use information collected about you via the site to:"))}</p><ul data-v-b99b5a4e${_scopeId}><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Create and manage your account"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Process your transactions and send you related information"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Email you regarding your account or order"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Fulfill and manage purchases, orders, payments, and other transactions related to the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Generate a personal profile about you to make future visits more personalized"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Increase the efficiency and operation of the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Monitor and analyze usage and trends to improve your experience with the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Notify you of updates to the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Perform other business activities as needed"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Request feedback and contact you about your use of the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Resolve disputes and troubleshoot problems"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Respond to product and customer service requests"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Send you a newsletter"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Solicit support for the site"))}</li></ul><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("4. Disclosure of Your Information"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We may share information we have collected about you in certain situations. Your information may be disclosed as follows:"))}</p><ul data-v-b99b5a4e${_scopeId}><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("By Law or to Protect Rights"))}</strong>: ${ssrInterpolate(trans("If we believe the release of information about you is necessary to respond to legal process, to investigate or remedy potential violations of our policies, or to protect the rights, property, and safety of others, we may share your information as permitted or required by any applicable law, rule, or regulation."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Third-Party Service Providers"))}</strong>: ${ssrInterpolate(trans("We may share your information with third parties that perform services for us or on our behalf, including payment processing, data analysis, email delivery, hosting services, customer service, and marketing assistance."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Business Transfers"))}</strong>: ${ssrInterpolate(trans("We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Affiliates"))}</strong>: ${ssrInterpolate(trans("We may share your information with our affiliates, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include our parent company and any subsidiaries, joint venture partners, or other companies that we control or that are under common control with us."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Business Partners"))}</strong>: ${ssrInterpolate(trans("We may share your information with our business partners to offer you certain products, services, or promotions."))}</li></ul><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("5. Security of Your Information"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We use administrative, technical, and physical security measures to help protect your personal information. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data transmission can be guaranteed against any interception or other type of misuse. Any information disclosed online is vulnerable to interception and misuse by unauthorized parties. Therefore, we cannot guarantee complete security if you provide personal information."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("6. Policy for Children"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We do not knowingly solicit information from or market to children under the age of 13. If we learn that we have collected personal information from a child under age 13 without verification of parental consent, we will delete that information as quickly as possible. If you become aware of any data we have collected from children under age 13, please contact us."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("7. Your Rights"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Depending on your location, you may have the following rights regarding your personal information:"))}</p><ul data-v-b99b5a4e${_scopeId}><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to access – You have the right to request copies of your personal data"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to rectification – You have the right to request that we correct any information you believe is inaccurate"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to erasure – You have the right to request that we erase your personal data, under certain conditions"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to object to processing – You have the right to object to our processing of your personal data, under certain conditions"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to data portability – You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions"))}</li></ul><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("8. Cookies and Tracking Technologies"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We may use cookies, web beacons, tracking pixels, and other tracking technologies on the site to help customize the site and improve your experience. When you access the site, your personal information is not collected through the use of tracking technology. Most browsers are set to accept cookies by default. You can remove or reject cookies, but be aware that such action could affect the availability and functionality of the site."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("9. Third-Party Websites"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The site may contain links to third-party websites and applications of interest, including advertisements and external services, that are not affiliated with us. Once you have used these links to leave the site, any information you provide to these third parties is not covered by this Privacy Policy, and we cannot guarantee the safety and privacy of your information. Before visiting and providing any information to any third-party websites, you should inform yourself of the privacy policies and practices (if any) of the third party responsible for that website, and should take those steps necessary to, in your discretion, protect the privacy of your information."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("10. Changes to This Privacy Policy"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans('We may update this Privacy Policy from time to time in order to reflect, for example, changes to our practices or for other operational, legal, or regulatory reasons. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date. You are advised to review this Privacy Policy periodically for any changes.'))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("11. Contact Us"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("If you have questions or comments about this Privacy Policy, please contact us at:"))}</p><p data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Email:"))}</strong> ${ssrInterpolate((_a = settings.value) == null ? void 0 : _a.email)}<br data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Phone:"))}</strong> ${ssrInterpolate((_b = settings.value) == null ? void 0 : _b.phone)}<br data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Address:"))}</strong> ${ssrInterpolate((_c = settings.value) == null ? void 0 : _c.address)}</p></div></div></div></div></div></section>`);
+            _push2(`</li><li data-v-b99b5a4e${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-b99b5a4e${_scopeId}></span></li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Privacy Policy"))}</li></ul></div></div></div></section><section class="privacy-policy my-5" data-v-b99b5a4e${_scopeId}><div class="container" data-v-b99b5a4e${_scopeId}><div class="row" data-v-b99b5a4e${_scopeId}><div class="col-xl-12" data-v-b99b5a4e${_scopeId}><div class="privacy-policy__content" data-v-b99b5a4e${_scopeId}><div class="privacy-policy__text" data-v-b99b5a4e${_scopeId}><p class="privacy-policy__last-updated" data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Last Updated:"))}</strong> ${ssrInterpolate((/* @__PURE__ */ new Date()).toLocaleDateString())}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("1. Introduction"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Welcome to our Privacy Policy. This document explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("2. Information We Collect"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We may collect information about you in a variety of ways. The information we may collect on the site includes:"))}</p><ul data-v-b99b5a4e${_scopeId}><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Personal Data"))}</strong>: ${ssrInterpolate(trans("Personally identifiable information, such as your name, email address, phone number, and demographic information that you voluntarily give to us when you register with the site or when you choose to participate in various activities related to the site."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Derivative Data"))}</strong>: ${ssrInterpolate(trans("Information our servers automatically collect when you access the site, such as your IP address, your browser type, your operating system, your access times, and the pages you have viewed directly before and after accessing the site."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Financial Data"))}</strong>: ${ssrInterpolate(trans("Financial information, such as data related to your payment method (e.g., valid credit card number, card brand, expiration date) that we may collect when you purchase, order, return, exchange, or request information about our services from the site."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Mobile Device Data"))}</strong>: ${ssrInterpolate(trans("Device information, such as your mobile device ID, model, and manufacturer, and information about the location of your device, if you access the site from a mobile device."))}</li></ul><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("3. How We Use Your Information"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we may use information collected about you via the site to:"))}</p><ul data-v-b99b5a4e${_scopeId}><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Create and manage your account"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Process your transactions and send you related information"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Email you regarding your account or order"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Fulfill and manage purchases, orders, payments, and other transactions related to the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Generate a personal profile about you to make future visits more personalized"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Increase the efficiency and operation of the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Monitor and analyze usage and trends to improve your experience with the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Notify you of updates to the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Perform other business activities as needed"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Request feedback and contact you about your use of the site"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Resolve disputes and troubleshoot problems"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Respond to product and customer service requests"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Send you a newsletter"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Solicit support for the site"))}</li></ul><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("4. Disclosure of Your Information"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We may share information we have collected about you in certain situations. Your information may be disclosed as follows:"))}</p><ul data-v-b99b5a4e${_scopeId}><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("By Law or to Protect Rights"))}</strong>: ${ssrInterpolate(trans("If we believe the release of information about you is necessary to respond to legal process, to investigate or remedy potential violations of our policies, or to protect the rights, property, and safety of others, we may share your information as permitted or required by any applicable law, rule, or regulation."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Third-Party Service Providers"))}</strong>: ${ssrInterpolate(trans("We may share your information with third parties that perform services for us or on our behalf, including payment processing, data analysis, email delivery, hosting services, customer service, and marketing assistance."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Business Transfers"))}</strong>: ${ssrInterpolate(trans("We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Affiliates"))}</strong>: ${ssrInterpolate(trans("We may share your information with our affiliates, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include our parent company and any subsidiaries, joint venture partners, or other companies that we control or that are under common control with us."))}</li><li data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Business Partners"))}</strong>: ${ssrInterpolate(trans("We may share your information with our business partners to offer you certain products, services, or promotions."))}</li></ul><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("5. Security of Your Information"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We use administrative, technical, and physical security measures to help protect your personal information. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data transmission can be guaranteed against any interception or other type of misuse. Any information disclosed online is vulnerable to interception and misuse by unauthorized parties. Therefore, we cannot guarantee complete security if you provide personal information."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("6. Policy for Children"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We do not knowingly solicit information from or market to children under the age of 13. If we learn that we have collected personal information from a child under age 13 without verification of parental consent, we will delete that information as quickly as possible. If you become aware of any data we have collected from children under age 13, please contact us."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("7. Your Rights"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Depending on your location, you may have the following rights regarding your personal information:"))}</p><ul data-v-b99b5a4e${_scopeId}><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to access – You have the right to request copies of your personal data"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to rectification – You have the right to request that we correct any information you believe is inaccurate"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to erasure – You have the right to request that we erase your personal data, under certain conditions"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to object to processing – You have the right to object to our processing of your personal data, under certain conditions"))}</li><li data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The right to data portability – You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions"))}</li></ul><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("8. Cookies and Tracking Technologies"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("We may use cookies, web beacons, tracking pixels, and other tracking technologies on the site to help customize the site and improve your experience. When you access the site, your personal information is not collected through the use of tracking technology. Most browsers are set to accept cookies by default. You can remove or reject cookies, but be aware that such action could affect the availability and functionality of the site."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("9. Third-Party Websites"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("The site may contain links to third-party websites and applications of interest, including advertisements and external services, that are not affiliated with us. Once you have used these links to leave the site, any information you provide to these third parties is not covered by this Privacy Policy, and we cannot guarantee the safety and privacy of your information. Before visiting and providing any information to any third-party websites, you should inform yourself of the privacy policies and practices (if any) of the third party responsible for that website, and should take those steps necessary to, in your discretion, protect the privacy of your information."))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("10. Changes to This Privacy Policy"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans('We may update this Privacy Policy from time to time in order to reflect, for example, changes to our practices or for other operational, legal, or regulatory reasons. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date. You are advised to review this Privacy Policy periodically for any changes.'))}</p><h3 class="privacy-policy__heading" data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("11. Contact Us"))}</h3><p data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("If you have questions or comments about this Privacy Policy, please contact us at:"))}</p><p data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Email:"))}</strong> ${ssrInterpolate((_a = settings2.value) == null ? void 0 : _a.email)}<br data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Phone:"))}</strong> ${ssrInterpolate((_b = settings2.value) == null ? void 0 : _b.phone)}<br data-v-b99b5a4e${_scopeId}><strong data-v-b99b5a4e${_scopeId}>${ssrInterpolate(trans("Address:"))}</strong> ${ssrInterpolate((_c = settings2.value) == null ? void 0 : _c.address)}</p></div></div></div></div></div></section>`);
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -5001,13 +4962,13 @@ const _sfc_main$b = /* @__PURE__ */ Object.assign(__default__$7, {
                           createVNode("p", null, toDisplayString(trans("If you have questions or comments about this Privacy Policy, please contact us at:")), 1),
                           createVNode("p", null, [
                             createVNode("strong", null, toDisplayString(trans("Email:")), 1),
-                            createTextVNode(" " + toDisplayString((_d = settings.value) == null ? void 0 : _d.email), 1),
+                            createTextVNode(" " + toDisplayString((_d = settings2.value) == null ? void 0 : _d.email), 1),
                             createVNode("br"),
                             createVNode("strong", null, toDisplayString(trans("Phone:")), 1),
-                            createTextVNode(" " + toDisplayString((_e = settings.value) == null ? void 0 : _e.phone), 1),
+                            createTextVNode(" " + toDisplayString((_e = settings2.value) == null ? void 0 : _e.phone), 1),
                             createVNode("br"),
                             createVNode("strong", null, toDisplayString(trans("Address:")), 1),
-                            createTextVNode(" " + toDisplayString((_f = settings.value) == null ? void 0 : _f.address), 1)
+                            createTextVNode(" " + toDisplayString((_f = settings2.value) == null ? void 0 : _f.address), 1)
                           ])
                         ])
                       ])
@@ -5047,7 +5008,7 @@ const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$6, {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
     const seo = computed(() => page.props.seo);
-    const settings = computed(() => page.props.settings || {});
+    const settings2 = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale);
     const teams = computed(() => page.props.teams || []);
@@ -5063,7 +5024,7 @@ const _sfc_main$a = /* @__PURE__ */ Object.assign(__default__$6, {
     });
     const metaImage = computed(() => {
       var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings2.value) == null ? void 0 : _e.meta_img) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "index, follow");
@@ -5391,7 +5352,7 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
     const seo = computed(() => page.props.seo);
-    const settings = computed(() => page.props.settings || {});
+    const settings2 = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale);
     const testimonials = computed(() => page.props.testimonials || []);
@@ -5407,7 +5368,7 @@ const _sfc_main$9 = /* @__PURE__ */ Object.assign(__default__$5, {
     });
     const metaImage = computed(() => {
       var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings2.value) == null ? void 0 : _e.meta_img) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "index, follow");
@@ -5682,7 +5643,7 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
     const seo = computed(() => page.props.seo);
-    const settings = computed(() => page.props.settings || {});
+    const settings2 = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale || "en");
     const categories = computed(() => page.props.categories || []);
@@ -5699,12 +5660,10 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
     });
     const metaImage = computed(() => {
       var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings2.value) == null ? void 0 : _e.meta_img) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "index, follow");
-    ref(filters.value.search || "");
-    ref(filters.value.category || "");
     const services = computed(() => {
       const source = page.props.services || { data: [], links: [], last_page: 1 };
       const data = Array.isArray(source.data) ? source.data.filter((service) => service && service.id) : [];
@@ -5793,26 +5752,26 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
       _push(ssrRenderComponent(unref(Head), null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-1a1728dc${_scopeId}><title data-v-1a1728dc${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-1a1728dc${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-1a1728dc${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-1a1728dc${_scopeId}>`);
+            _push2(`<link rel="stylesheet"${ssrRenderAttr("href", asset_path.value + "site/css/module-css/page-header.css")} data-v-a28a8ac6${_scopeId}><title data-v-a28a8ac6${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-a28a8ac6${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-a28a8ac6${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-a28a8ac6${_scopeId}>`);
             if (metaCanonical.value) {
-              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-1a1728dc${_scopeId}>`);
+              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-a28a8ac6${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-1a1728dc${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-1a1728dc${_scopeId}>`);
+            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-a28a8ac6${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-a28a8ac6${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-1a1728dc${_scopeId}>`);
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-a28a8ac6${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
             if (metaCanonical.value) {
-              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-1a1728dc${_scopeId}>`);
+              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-a28a8ac6${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:type" content="website" data-v-1a1728dc${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-1a1728dc${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-1a1728dc${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-1a1728dc${_scopeId}>`);
+            _push2(`<meta property="og:type" content="website" data-v-a28a8ac6${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-a28a8ac6${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-a28a8ac6${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-a28a8ac6${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-1a1728dc${_scopeId}>`);
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-a28a8ac6${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
@@ -5887,13 +5846,13 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
       _push(ssrRenderComponent(_sfc_main$h, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<div class="page-header" data-v-1a1728dc${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/services-bg.jpg)` })}" data-v-1a1728dc${_scopeId}></div><div class="container" data-v-1a1728dc${_scopeId}><div class="page-header__inner" data-v-1a1728dc${_scopeId}><h2 data-v-1a1728dc${_scopeId}>${ssrInterpolate(trans("Our Services"))}</h2><div class="thm-breadcrumb__box" data-v-1a1728dc${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-1a1728dc${_scopeId}><li data-v-1a1728dc${_scopeId}>`);
+            _push2(`<div class="page-header" data-v-a28a8ac6${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${asset_path.value}images/backgrounds/services-bg.jpg)` })}" data-v-a28a8ac6${_scopeId}></div><div class="container" data-v-a28a8ac6${_scopeId}><div class="page-header__inner" data-v-a28a8ac6${_scopeId}><h2 data-v-a28a8ac6${_scopeId}>${ssrInterpolate(trans("Our Services"))}</h2><div class="thm-breadcrumb__box" data-v-a28a8ac6${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-a28a8ac6${_scopeId}><li data-v-a28a8ac6${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("home")
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<i class="fas fa-home" data-v-1a1728dc${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
+                  _push3(`<i class="fas fa-home" data-v-a28a8ac6${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
                   return [
                     createVNode("i", { class: "fas fa-home" }),
@@ -5903,9 +5862,9 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</li><li data-v-1a1728dc${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-1a1728dc${_scopeId}></span></li><li data-v-1a1728dc${_scopeId}>${ssrInterpolate(trans("Our Services"))}</li></ul></div></div></div></div><section class="services-two" data-v-1a1728dc${_scopeId}><div class="container" data-v-1a1728dc${_scopeId}><div class="services-two__top" data-v-1a1728dc${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-1a1728dc${_scopeId}><div class="section-title__tagline-box" data-v-1a1728dc${_scopeId}><div class="section-title__tagline-shape-1" data-v-1a1728dc${_scopeId}></div><span class="section-title__tagline" data-v-1a1728dc${_scopeId}>${ssrInterpolate(trans("Our Services"))}</span></div><h2 class="section-title__title title-animation" data-v-1a1728dc${_scopeId}>${ssrInterpolate(trans("Scale Your Business Smarter with Next-Gen IT Solutions"))} <span data-v-1a1728dc${_scopeId}></span></h2></div></div><div class="services-two__bottom" data-v-1a1728dc${_scopeId}><div class="row" data-v-1a1728dc${_scopeId}><div class="col-xl-8" data-v-1a1728dc${_scopeId}><div class="services-two__services-list" data-v-1a1728dc${_scopeId}><!--[-->`);
+            _push2(`</li><li data-v-a28a8ac6${_scopeId}><span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-a28a8ac6${_scopeId}></span></li><li data-v-a28a8ac6${_scopeId}>${ssrInterpolate(trans("Our Services"))}</li></ul></div></div></div></div><section class="services-two" data-v-a28a8ac6${_scopeId}><div class="container" data-v-a28a8ac6${_scopeId}><div class="services-two__top" data-v-a28a8ac6${_scopeId}><div class="section-title text-left sec-title-animation animation-style2" data-v-a28a8ac6${_scopeId}><div class="section-title__tagline-box" data-v-a28a8ac6${_scopeId}><div class="section-title__tagline-shape-1" data-v-a28a8ac6${_scopeId}></div><span class="section-title__tagline" data-v-a28a8ac6${_scopeId}>${ssrInterpolate(trans("Our Services"))}</span></div><h2 class="section-title__title title-animation" data-v-a28a8ac6${_scopeId}>${ssrInterpolate(trans("Scale Your Business Smarter with Next-Gen IT Solutions"))} <span data-v-a28a8ac6${_scopeId}></span></h2></div></div><div class="services-two__bottom" data-v-a28a8ac6${_scopeId}><div class="row" data-v-a28a8ac6${_scopeId}><div class="col-xl-8" data-v-a28a8ac6${_scopeId}><div class="services-two__services-list" data-v-a28a8ac6${_scopeId}><!--[-->`);
             ssrRenderList(services.value.data, (serviceItem, index) => {
-              _push2(`<div class="services-two__services-list-single" data-v-1a1728dc${_scopeId}><div class="services-two__count-and-title" data-v-1a1728dc${_scopeId}><div class="services-two__count" data-v-1a1728dc${_scopeId}></div><h3 class="services-two__title" data-v-1a1728dc${_scopeId}>`);
+              _push2(`<div class="services-two__services-list-single" data-v-a28a8ac6${_scopeId}><div class="services-two__count-and-title" data-v-a28a8ac6${_scopeId}><div class="services-two__count" data-v-a28a8ac6${_scopeId}></div><h3 class="services-two__title" data-v-a28a8ac6${_scopeId}>`);
               _push2(ssrRenderComponent(unref(Link), {
                 href: getServiceUrl(serviceItem)
               }, {
@@ -5920,17 +5879,17 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
                 }),
                 _: 2
               }, _parent2, _scopeId));
-              _push2(`</h3></div><div class="services-two__service-list-box" data-v-1a1728dc${_scopeId}><ul class="services-two__services-list-inner list-unstyled" data-v-1a1728dc${_scopeId}><!--[-->`);
+              _push2(`</h3></div><div class="services-two__service-list-box" data-v-a28a8ac6${_scopeId}><ul class="services-two__services-list-inner list-unstyled" data-v-a28a8ac6${_scopeId}><!--[-->`);
               ssrRenderList(chunkHighlights(getServiceHighlights(serviceItem)), (chunk, chunkIndex) => {
-                _push2(`<li data-v-1a1728dc${_scopeId}><!--[-->`);
+                _push2(`<li data-v-a28a8ac6${_scopeId}><!--[-->`);
                 ssrRenderList(chunk, (item, itemIndex) => {
-                  _push2(`<p data-v-1a1728dc${_scopeId}><span class="icon-plus" data-v-1a1728dc${_scopeId}></span>${ssrInterpolate(item)}</p>`);
+                  _push2(`<p data-v-a28a8ac6${_scopeId}><span class="icon-plus" data-v-a28a8ac6${_scopeId}></span>${ssrInterpolate(item)}</p>`);
                 });
                 _push2(`<!--]--></li>`);
               });
               _push2(`<!--]--></ul></div>`);
               if (serviceItem.image_link) {
-                _push2(`<div class="services-two__hover-img" data-v-1a1728dc${_scopeId}><img${ssrRenderAttr("src", serviceItem.image_link)}${ssrRenderAttr("alt", getServiceTitle(serviceItem))} data-v-1a1728dc${_scopeId}></div>`);
+                _push2(`<div class="services-two__hover-img" data-v-a28a8ac6${_scopeId}><img${ssrRenderAttr("src", serviceItem.image_link)}${ssrRenderAttr("alt", getServiceTitle(serviceItem))} data-v-a28a8ac6${_scopeId}></div>`);
               } else {
                 _push2(`<!---->`);
               }
@@ -5938,22 +5897,22 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
             });
             _push2(`<!--]-->`);
             if (!services.value.data.length) {
-              _push2(`<div class="text-center py-5" data-v-1a1728dc${_scopeId}><h3 class="text-muted" data-v-1a1728dc${_scopeId}>${ssrInterpolate(trans("No services found"))}</h3></div>`);
+              _push2(`<div class="text-center py-5" data-v-a28a8ac6${_scopeId}><h3 class="text-muted" data-v-a28a8ac6${_scopeId}>${ssrInterpolate(trans("No services found"))}</h3></div>`);
             } else {
               _push2(`<!---->`);
             }
             _push2(`</div>`);
             if (services.value.last_page > 1) {
-              _push2(`<div class="blog-page__pagination services-pagination" data-v-1a1728dc${_scopeId}><ul class="pg-pagination list-unstyled" data-v-1a1728dc${_scopeId}>`);
+              _push2(`<div class="blog-page__pagination services-pagination" data-v-a28a8ac6${_scopeId}><ul class="pg-pagination list-unstyled" data-v-a28a8ac6${_scopeId}>`);
               if (services.value.prev_page_url) {
-                _push2(`<li class="prev" data-v-1a1728dc${_scopeId}>`);
+                _push2(`<li class="prev" data-v-a28a8ac6${_scopeId}>`);
                 _push2(ssrRenderComponent(unref(Link), {
                   href: services.value.prev_page_url,
                   "aria-label": "prev"
                 }, {
                   default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
-                      _push3(`<span class="icon-left-arrow-1" data-v-1a1728dc${_scopeId2}></span>`);
+                      _push3(`<span class="icon-left-arrow-1" data-v-a28a8ac6${_scopeId2}></span>`);
                     } else {
                       return [
                         createVNode("span", { class: "icon-left-arrow-1" })
@@ -5970,7 +5929,7 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
               ssrRenderList(services.value.links, (link, linkIndex) => {
                 _push2(`<!--[-->`);
                 if (link.url && linkIndex > 0 && linkIndex < services.value.links.length - 1) {
-                  _push2(`<li class="${ssrRenderClass(["count", link.active ? "active" : ""])}" data-v-1a1728dc${_scopeId}>`);
+                  _push2(`<li class="${ssrRenderClass(["count", link.active ? "active" : ""])}" data-v-a28a8ac6${_scopeId}>`);
                   _push2(ssrRenderComponent(unref(Link), {
                     href: link.url
                   }, {
@@ -5993,14 +5952,14 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
               });
               _push2(`<!--]-->`);
               if (services.value.next_page_url) {
-                _push2(`<li class="next" data-v-1a1728dc${_scopeId}>`);
+                _push2(`<li class="next" data-v-a28a8ac6${_scopeId}>`);
                 _push2(ssrRenderComponent(unref(Link), {
                   href: services.value.next_page_url,
                   "aria-label": "Next"
                 }, {
                   default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                     if (_push3) {
-                      _push3(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-1a1728dc${_scopeId2}></span>`);
+                      _push3(`<span class="${ssrRenderClass(`icon-${locale.value === "ar" ? "left" : "right"}-arrow-1`)}" data-v-a28a8ac6${_scopeId2}></span>`);
                     } else {
                       return [
                         createVNode("span", {
@@ -6019,14 +5978,14 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</div><div class="col-xl-4" data-v-1a1728dc${_scopeId}><div class="services-index__sidebar" data-v-1a1728dc${_scopeId}><div class="services-details__services-list-box" data-v-1a1728dc${_scopeId}><h3 class="services-details__services-list-title" data-v-1a1728dc${_scopeId}>${ssrInterpolate(trans("Service Categories"))}</h3><ul class="services-details__services-list list-unstyled" data-v-1a1728dc${_scopeId}><li data-v-1a1728dc${_scopeId}>`);
+            _push2(`</div><div class="col-xl-4" data-v-a28a8ac6${_scopeId}><div class="services-index__sidebar" data-v-a28a8ac6${_scopeId}><div class="services-details__services-list-box" data-v-a28a8ac6${_scopeId}><h3 class="services-details__services-list-title" data-v-a28a8ac6${_scopeId}>${ssrInterpolate(trans("Service Categories"))}</h3><ul class="services-details__services-list list-unstyled" data-v-a28a8ac6${_scopeId}><li data-v-a28a8ac6${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: _ctx.route("services.index"),
               class: { "active": !filters.value.category }
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`${ssrInterpolate(trans("All Services"))} <span class="icon-right-arrow-2" data-v-1a1728dc${_scopeId2}></span>`);
+                  _push3(`${ssrInterpolate(trans("All Services"))} <span class="icon-right-arrow-2" data-v-a28a8ac6${_scopeId2}></span>`);
                 } else {
                   return [
                     createTextVNode(toDisplayString(trans("All Services")) + " ", 1),
@@ -6038,14 +5997,14 @@ const _sfc_main$8 = /* @__PURE__ */ Object.assign(__default__$4, {
             }, _parent2, _scopeId));
             _push2(`</li><!--[-->`);
             ssrRenderList(categories.value, (category) => {
-              _push2(`<li data-v-1a1728dc${_scopeId}>`);
+              _push2(`<li data-v-a28a8ac6${_scopeId}>`);
               _push2(ssrRenderComponent(unref(Link), {
                 href: _ctx.route("services.index", { category: category.slug }),
                 class: { "active": filters.value.category === category.slug }
               }, {
                 default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                   if (_push3) {
-                    _push3(`${ssrInterpolate(getCategoryName(category))} <span class="icon-right-arrow-2" data-v-1a1728dc${_scopeId2}></span>`);
+                    _push3(`${ssrInterpolate(getCategoryName(category))} <span class="icon-right-arrow-2" data-v-a28a8ac6${_scopeId2}></span>`);
                   } else {
                     return [
                       createTextVNode(toDisplayString(getCategoryName(category)) + " ", 1),
@@ -6275,7 +6234,7 @@ _sfc_main$8.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/Services/resources/assets/js/Pages/ServiceIndex.vue");
   return _sfc_setup$8 ? _sfc_setup$8(props, ctx) : void 0;
 };
-const ServiceIndex = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-1a1728dc"]]);
+const ServiceIndex = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-a28a8ac6"]]);
 const __vite_glob_0_8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: ServiceIndex
@@ -6292,7 +6251,7 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
     const seo = computed(() => page.props.seo);
-    const settings = computed(() => page.props.settings || {});
+    const settings2 = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale || "en");
     const service = computed(() => page.props.service);
@@ -6312,7 +6271,7 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
     });
     computed(() => {
       var _a, _b, _c, _d, _e, _f;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = service.value) == null ? void 0 : _e.image_link) || ((_f = settings.value) == null ? void 0 : _f.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = service.value) == null ? void 0 : _e.image_link) || ((_f = settings2.value) == null ? void 0 : _f.meta_img) || "";
     });
     computed(() => meta.value.canonical || "");
     computed(() => meta.value.robots || "index, follow");
@@ -6513,7 +6472,7 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
               }, _parent2, _scopeId));
               _push2(`</li>`);
             });
-            _push2(`<!--]--></ul></div><div class="services-details__need-help"${_scopeId}><div class="services-details__need-help-img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/need_help.jpg")}${ssrRenderAttr("alt", trans("Need help"))}${_scopeId}><div class="services-details__need-help-content"${_scopeId}><div class="services-details__need-help-bdr"${_scopeId}></div><h3 class="services-details__need-help-title"${_scopeId}>${ssrInterpolate(trans("Need Help?"))}</h3><p class="services-details__need-help-number"${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings.value.website_phone || settings.value.phone}`)}${_scopeId}>${ssrInterpolate(settings.value.website_phone || settings.value.phone || "+12 (00) 345 789034")}</a></p></div></div></div></div></div><div class="col-xl-8 col-lg-7"${_scopeId}><div class="services-details__right"${_scopeId}><h3 class="services-details__title-1"${_scopeId}>${ssrInterpolate(getServiceTitle(service.value))}</h3><div class="services-details__bdr"${_scopeId}></div>`);
+            _push2(`<!--]--></ul></div><div class="services-details__need-help"${_scopeId}><div class="services-details__need-help-img"${_scopeId}><img${ssrRenderAttr("src", asset_path.value + "images/need_help.jpg")}${ssrRenderAttr("alt", trans("Need help"))}${_scopeId}><div class="services-details__need-help-content"${_scopeId}><div class="services-details__need-help-bdr"${_scopeId}></div><h3 class="services-details__need-help-title"${_scopeId}>${ssrInterpolate(trans("Need Help?"))}</h3><p class="services-details__need-help-number"${_scopeId}><a dir="ltr"${ssrRenderAttr("href", `tel:${settings2.value.website_phone || settings2.value.phone}`)}${_scopeId}>${ssrInterpolate(settings2.value.website_phone || settings2.value.phone || "+12 (00) 345 789034")}</a></p></div></div></div></div></div><div class="col-xl-8 col-lg-7"${_scopeId}><div class="services-details__right"${_scopeId}><h3 class="services-details__title-1"${_scopeId}>${ssrInterpolate(getServiceTitle(service.value))}</h3><div class="services-details__bdr"${_scopeId}></div>`);
             if (service.value.reading_time) {
               _push2(`<ul class="blog-details__meta list-unstyled"${_scopeId}><li${_scopeId}>`);
               _push2(ssrRenderComponent(unref(Link), null, {
@@ -6658,8 +6617,8 @@ const _sfc_main$7 = /* @__PURE__ */ Object.assign(__default__$3, {
                               createVNode("p", { class: "services-details__need-help-number" }, [
                                 createVNode("a", {
                                   dir: "ltr",
-                                  href: `tel:${settings.value.website_phone || settings.value.phone}`
-                                }, toDisplayString(settings.value.website_phone || settings.value.phone || "+12 (00) 345 789034"), 9, ["href"])
+                                  href: `tel:${settings2.value.website_phone || settings2.value.phone}`
+                                }, toDisplayString(settings2.value.website_phone || settings2.value.phone || "+12 (00) 345 789034"), 9, ["href"])
                               ])
                             ])
                           ])
@@ -6832,7 +6791,7 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
     const page = usePage();
     const trans = (key) => page.props.translations[key] || key;
     const seo = computed(() => page.props.seo);
-    const settings = computed(() => page.props.settings || {});
+    const settings2 = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
     const locale = computed(() => page.props.locale || "en");
     const meta = computed(() => page.props.meta || {});
@@ -6847,7 +6806,7 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
     });
     const metaImage = computed(() => {
       var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings2.value) == null ? void 0 : _e.meta_img) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "index, follow");
@@ -7057,7 +7016,7 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`</form></div></div><div class="col-xl-6 col-lg-6"${_scopeId}><div class="contact-one__right"${_scopeId}><div class="section-title text-left sec-title-animation animation-style2"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Get In Touch"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div><h2 class="section-title__title title-animation"${_scopeId}>${trans("Start the Conversation") + "<span>–</span><br><span>" + trans("Reach Out Anytime") + "</span>"}</h2></div><p class="contact-one__text"${_scopeId}>${ssrInterpolate(trans("We're here to listen! Whether you have questions, feedback, or just want to say hello, feel free to reach out"))}</p><ul class="contact-one__list list-unstyled"${_scopeId}><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-pin"${_scopeId}></span></div><div class="content"${_scopeId}><h4${_scopeId}>${ssrInterpolate(trans("Our Location"))}</h4><p${_scopeId}>${ssrInterpolate(settings.value.address)}</p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-mail"${_scopeId}></span></div><div class="content"${_scopeId}><h4${_scopeId}>${ssrInterpolate(trans("Email"))}</h4><p${_scopeId}><a dir="ltr" href="mailto:{{settings.email}}"${_scopeId}>${ssrInterpolate(settings.value.email)}</a></p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-phone-call"${_scopeId}></span></div><div class="content"${_scopeId}><h4${_scopeId}>${ssrInterpolate(trans("Phone"))}</h4><p${_scopeId}><a dir="ltr" href="tel:{{settings.phone}}"${_scopeId}>${ssrInterpolate(settings.value.phone)}</a></p></div></li></ul></div></div></div></div></section>`);
+            _push2(`</form></div></div><div class="col-xl-6 col-lg-6"${_scopeId}><div class="contact-one__right"${_scopeId}><div class="section-title text-left sec-title-animation animation-style2"${_scopeId}><div class="section-title__tagline-box"${_scopeId}><div class="section-title__tagline-shape-1"${_scopeId}></div><span class="section-title__tagline"${_scopeId}>${ssrInterpolate(trans("Get In Touch"))}</span><div class="section-title__tagline-shape-2"${_scopeId}></div></div><h2 class="section-title__title title-animation"${_scopeId}>${trans("Start the Conversation") + "<span>–</span><br><span>" + trans("Reach Out Anytime") + "</span>"}</h2></div><p class="contact-one__text"${_scopeId}>${ssrInterpolate(trans("We're here to listen! Whether you have questions, feedback, or just want to say hello, feel free to reach out"))}</p><ul class="contact-one__list list-unstyled"${_scopeId}><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-pin"${_scopeId}></span></div><div class="content"${_scopeId}><h4${_scopeId}>${ssrInterpolate(trans("Our Location"))}</h4><p${_scopeId}>${ssrInterpolate(settings2.value.address)}</p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-mail"${_scopeId}></span></div><div class="content"${_scopeId}><h4${_scopeId}>${ssrInterpolate(trans("Email"))}</h4><p${_scopeId}><a dir="ltr" href="mailto:{{settings.email}}"${_scopeId}>${ssrInterpolate(settings2.value.email)}</a></p></div></li><li${_scopeId}><div class="icon"${_scopeId}><span class="icon-phone-call"${_scopeId}></span></div><div class="content"${_scopeId}><h4${_scopeId}>${ssrInterpolate(trans("Phone"))}</h4><p${_scopeId}><a dir="ltr" href="tel:{{settings.phone}}"${_scopeId}>${ssrInterpolate(settings2.value.phone)}</a></p></div></li></ul></div></div></div></div></section>`);
           } else {
             return [
               createVNode("section", { class: "page-header" }, [
@@ -7276,7 +7235,7 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
                             ]),
                             createVNode("div", { class: "content" }, [
                               createVNode("h4", null, toDisplayString(trans("Our Location")), 1),
-                              createVNode("p", null, toDisplayString(settings.value.address), 1)
+                              createVNode("p", null, toDisplayString(settings2.value.address), 1)
                             ])
                           ]),
                           createVNode("li", null, [
@@ -7289,7 +7248,7 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
                                 createVNode("a", {
                                   dir: "ltr",
                                   href: "mailto:{{settings.email}}"
-                                }, toDisplayString(settings.value.email), 1)
+                                }, toDisplayString(settings2.value.email), 1)
                               ])
                             ])
                           ]),
@@ -7303,7 +7262,7 @@ const _sfc_main$6 = /* @__PURE__ */ Object.assign(__default__$2, {
                                 createVNode("a", {
                                   dir: "ltr",
                                   href: "tel:{{settings.phone}}"
-                                }, toDisplayString(settings.value.phone), 1)
+                                }, toDisplayString(settings2.value.phone), 1)
                               ])
                             ])
                           ])
@@ -7345,7 +7304,7 @@ const _sfc_main$5 = {
     const page = usePage();
     const locale = computed(() => page.props.locale);
     const seo = computed(() => page.props.seo);
-    const settings = computed(() => page.props.settings || {});
+    const settings2 = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path);
     const meta = computed(() => page.props.meta || {});
     const trans = (key) => {
@@ -7365,7 +7324,7 @@ const _sfc_main$5 = {
     });
     const metaImage = computed(() => {
       var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings2.value) == null ? void 0 : _e.meta_img) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "noindex, nofollow");
@@ -7651,7 +7610,7 @@ const _sfc_main$4 = {
     const page = usePage();
     const locale = computed(() => page.props.locale);
     const seo = computed(() => page.props.seo);
-    const settings = computed(() => page.props.settings || {});
+    const settings2 = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
     const meta = computed(() => page.props.meta || {});
     const trans = (key) => {
@@ -7671,7 +7630,7 @@ const _sfc_main$4 = {
     });
     const metaImage = computed(() => {
       var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings2.value) == null ? void 0 : _e.meta_img) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "noindex, nofollow");
@@ -8031,7 +7990,7 @@ const _sfc_main$3 = {
     const page = usePage();
     const locale = computed(() => page.props.locale);
     const seo = computed(() => page.props.seo);
-    const settings = computed(() => page.props.settings || {});
+    const settings2 = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path);
     const meta = computed(() => page.props.meta || {});
     const trans = (key) => {
@@ -8051,7 +8010,7 @@ const _sfc_main$3 = {
     });
     const metaImage = computed(() => {
       var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings2.value) == null ? void 0 : _e.meta_img) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "noindex, nofollow");
@@ -8085,26 +8044,26 @@ function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(ssrRenderComponent(_component_Head, null, {
     default: withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(`<link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/page-header.css")} data-v-c6c2b804${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/shop.css")} data-v-c6c2b804${_scopeId}><title data-v-c6c2b804${_scopeId}>${ssrInterpolate($setup.metaTitle)}</title><meta name="description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-c6c2b804${_scopeId}><meta name="keywords"${ssrRenderAttr("content", $setup.metaKeywords)} data-v-c6c2b804${_scopeId}><meta name="robots"${ssrRenderAttr("content", $setup.metaRobots)} data-v-c6c2b804${_scopeId}>`);
+        _push2(`<link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/page-header.css")} data-v-daff4a9e${_scopeId}><link rel="stylesheet"${ssrRenderAttr("href", $setup.asset_path + "site/css/module-css/shop.css")} data-v-daff4a9e${_scopeId}><title data-v-daff4a9e${_scopeId}>${ssrInterpolate($setup.metaTitle)}</title><meta name="description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-daff4a9e${_scopeId}><meta name="keywords"${ssrRenderAttr("content", $setup.metaKeywords)} data-v-daff4a9e${_scopeId}><meta name="robots"${ssrRenderAttr("content", $setup.metaRobots)} data-v-daff4a9e${_scopeId}>`);
         if ($setup.metaCanonical) {
-          _push2(`<link rel="canonical"${ssrRenderAttr("href", $setup.metaCanonical)} data-v-c6c2b804${_scopeId}>`);
+          _push2(`<link rel="canonical"${ssrRenderAttr("href", $setup.metaCanonical)} data-v-daff4a9e${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`<meta property="og:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-c6c2b804${_scopeId}><meta property="og:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-c6c2b804${_scopeId}>`);
+        _push2(`<meta property="og:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-daff4a9e${_scopeId}><meta property="og:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-daff4a9e${_scopeId}>`);
         if ($setup.metaImage) {
-          _push2(`<meta property="og:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-c6c2b804${_scopeId}>`);
+          _push2(`<meta property="og:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-daff4a9e${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
         if ($setup.metaCanonical) {
-          _push2(`<meta property="og:url"${ssrRenderAttr("content", $setup.metaCanonical)} data-v-c6c2b804${_scopeId}>`);
+          _push2(`<meta property="og:url"${ssrRenderAttr("content", $setup.metaCanonical)} data-v-daff4a9e${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`<meta property="og:type" content="website" data-v-c6c2b804${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-c6c2b804${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-c6c2b804${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-c6c2b804${_scopeId}>`);
+        _push2(`<meta property="og:type" content="website" data-v-daff4a9e${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-daff4a9e${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", $setup.metaTitle)} data-v-daff4a9e${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", $setup.metaDescription)} data-v-daff4a9e${_scopeId}>`);
         if ($setup.metaImage) {
-          _push2(`<meta name="twitter:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-c6c2b804${_scopeId}>`);
+          _push2(`<meta name="twitter:image"${ssrRenderAttr("content", $setup.metaImage)} data-v-daff4a9e${_scopeId}>`);
         } else {
           _push2(`<!---->`);
         }
@@ -8183,43 +8142,43 @@ function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $
   _push(ssrRenderComponent(_component_app_layout, null, {
     default: withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
-        _push2(`<section class="page-header" data-v-c6c2b804${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${$setup.asset_path}images/backgrounds/login-bg.jpg)` })}" data-v-c6c2b804${_scopeId}></div><div class="container" data-v-c6c2b804${_scopeId}><div class="page-header__inner" data-v-c6c2b804${_scopeId}><h2 data-v-c6c2b804${_scopeId}>${ssrInterpolate($setup.trans("Register"))}</h2><div class="thm-breadcrumb__box" data-v-c6c2b804${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-c6c2b804${_scopeId}><li data-v-c6c2b804${_scopeId}><a href="/" data-v-c6c2b804${_scopeId}><i class="fas fa-home" data-v-c6c2b804${_scopeId}></i>${ssrInterpolate($setup.trans("Home"))}</a></li><li data-v-c6c2b804${_scopeId}><span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow-1`)}" data-v-c6c2b804${_scopeId}></span></li><li data-v-c6c2b804${_scopeId}>${ssrInterpolate($setup.trans("Register"))}</li></ul></div></div></div></section><section class="sign-up-one" data-v-c6c2b804${_scopeId}><div class="container" data-v-c6c2b804${_scopeId}><div class="sign-up-one__form" data-v-c6c2b804${_scopeId}><div class="inner-title text-center" data-v-c6c2b804${_scopeId}><h2 data-v-c6c2b804${_scopeId}>${ssrInterpolate($setup.trans("Register"))}</h2></div><form id="sign-up-one__form" name="sign-up-one_form" action="#" method="post" data-v-c6c2b804${_scopeId}><div class="row" data-v-c6c2b804${_scopeId}><div class="col-xl-12" data-v-c6c2b804${_scopeId}><div class="form-group" data-v-c6c2b804${_scopeId}><div class="input-box" data-v-c6c2b804${_scopeId}><input id="formName"${ssrRenderAttr("value", $setup.form.name)} type="text" name="form_name"${ssrRenderAttr("placeholder", $setup.trans("Name"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-c6c2b804${_scopeId}></div>`);
+        _push2(`<section class="page-header" data-v-daff4a9e${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ backgroundImage: `url(${$setup.asset_path}images/backgrounds/login-bg.jpg)` })}" data-v-daff4a9e${_scopeId}></div><div class="container" data-v-daff4a9e${_scopeId}><div class="page-header__inner" data-v-daff4a9e${_scopeId}><h2 data-v-daff4a9e${_scopeId}>${ssrInterpolate($setup.trans("Register"))}</h2><div class="thm-breadcrumb__box" data-v-daff4a9e${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-daff4a9e${_scopeId}><li data-v-daff4a9e${_scopeId}><a href="/" data-v-daff4a9e${_scopeId}><i class="fas fa-home" data-v-daff4a9e${_scopeId}></i>${ssrInterpolate($setup.trans("Home"))}</a></li><li data-v-daff4a9e${_scopeId}><span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow-1`)}" data-v-daff4a9e${_scopeId}></span></li><li data-v-daff4a9e${_scopeId}>${ssrInterpolate($setup.trans("Register"))}</li></ul></div></div></div></section><section class="sign-up-one" data-v-daff4a9e${_scopeId}><div class="container" data-v-daff4a9e${_scopeId}><div class="sign-up-one__form" data-v-daff4a9e${_scopeId}><div class="inner-title text-center" data-v-daff4a9e${_scopeId}><h2 data-v-daff4a9e${_scopeId}>${ssrInterpolate($setup.trans("Register"))}</h2></div><form id="sign-up-one__form" name="sign-up-one_form" action="#" method="post" data-v-daff4a9e${_scopeId}><div class="row" data-v-daff4a9e${_scopeId}><div class="col-xl-12" data-v-daff4a9e${_scopeId}><div class="form-group" data-v-daff4a9e${_scopeId}><div class="input-box" data-v-daff4a9e${_scopeId}><input id="formName"${ssrRenderAttr("value", $setup.form.name)} type="text" name="form_name"${ssrRenderAttr("placeholder", $setup.trans("Name"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-daff4a9e${_scopeId}></div>`);
         if ($props.errors.name) {
-          _push2(`<div class="text-danger mt-1 small" data-v-c6c2b804${_scopeId}>${ssrInterpolate($props.errors.name)}</div>`);
+          _push2(`<div class="text-danger mt-1 small" data-v-daff4a9e${_scopeId}>${ssrInterpolate($props.errors.name)}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-c6c2b804${_scopeId}><div class="form-group" data-v-c6c2b804${_scopeId}><div class="input-box" data-v-c6c2b804${_scopeId}><input id="formEmail"${ssrRenderAttr("value", $setup.form.email)} type="email" name="form_email"${ssrRenderAttr("placeholder", $setup.trans("Email"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-c6c2b804${_scopeId}></div>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-daff4a9e${_scopeId}><div class="form-group" data-v-daff4a9e${_scopeId}><div class="input-box" data-v-daff4a9e${_scopeId}><input id="formEmail"${ssrRenderAttr("value", $setup.form.email)} type="email" name="form_email"${ssrRenderAttr("placeholder", $setup.trans("Email"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-daff4a9e${_scopeId}></div>`);
         if ($props.errors.email) {
-          _push2(`<div class="text-danger mt-1 small" data-v-c6c2b804${_scopeId}>${ssrInterpolate($props.errors.email)}</div>`);
+          _push2(`<div class="text-danger mt-1 small" data-v-daff4a9e${_scopeId}>${ssrInterpolate($props.errors.email)}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-c6c2b804${_scopeId}><div class="form-group" data-v-c6c2b804${_scopeId}><div class="input-box" data-v-c6c2b804${_scopeId}><input id="formPhone"${ssrRenderAttr("value", $setup.form.mobile)} type="text" name="form_phone"${ssrRenderAttr("placeholder", $setup.trans("Phone"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-c6c2b804${_scopeId}></div>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-daff4a9e${_scopeId}><div class="form-group" data-v-daff4a9e${_scopeId}><div class="input-box" data-v-daff4a9e${_scopeId}><input id="formPhone"${ssrRenderAttr("value", $setup.form.mobile)} type="text" name="form_phone"${ssrRenderAttr("placeholder", $setup.trans("Phone"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-daff4a9e${_scopeId}></div>`);
         if ($props.errors.mobile) {
-          _push2(`<div class="text-danger mt-1 small" data-v-c6c2b804${_scopeId}>${ssrInterpolate($props.errors.mobile)}</div>`);
+          _push2(`<div class="text-danger mt-1 small" data-v-daff4a9e${_scopeId}>${ssrInterpolate($props.errors.mobile)}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-c6c2b804${_scopeId}><div class="form-group" data-v-c6c2b804${_scopeId}><div class="input-box" data-v-c6c2b804${_scopeId}><input id="formPassword"${ssrRenderAttr("value", $setup.form.password)} type="password" name="form_password"${ssrRenderAttr("placeholder", $setup.trans("Password"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-c6c2b804${_scopeId}></div>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-daff4a9e${_scopeId}><div class="form-group" data-v-daff4a9e${_scopeId}><div class="input-box" data-v-daff4a9e${_scopeId}><input id="formPassword"${ssrRenderAttr("value", $setup.form.password)} type="password" name="form_password"${ssrRenderAttr("placeholder", $setup.trans("Password"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-daff4a9e${_scopeId}></div>`);
         if ($props.errors.password) {
-          _push2(`<div class="text-danger mt-1 small" data-v-c6c2b804${_scopeId}>${ssrInterpolate($props.errors.password)}</div>`);
+          _push2(`<div class="text-danger mt-1 small" data-v-daff4a9e${_scopeId}>${ssrInterpolate($props.errors.password)}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-c6c2b804${_scopeId}><div class="form-group" data-v-c6c2b804${_scopeId}><div class="input-box" data-v-c6c2b804${_scopeId}><input id="formPasswordConfirm"${ssrRenderAttr("value", $setup.form.password_confirmation)} type="password" name="password_confirmation"${ssrRenderAttr("placeholder", $setup.trans("Confirm Password"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-c6c2b804${_scopeId}></div>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-daff4a9e${_scopeId}><div class="form-group" data-v-daff4a9e${_scopeId}><div class="input-box" data-v-daff4a9e${_scopeId}><input id="formPasswordConfirm"${ssrRenderAttr("value", $setup.form.password_confirmation)} type="password" name="password_confirmation"${ssrRenderAttr("placeholder", $setup.trans("Confirm Password"))}${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} required="" data-v-daff4a9e${_scopeId}></div>`);
         if ($props.errors.password_confirmation) {
-          _push2(`<div class="text-danger mt-1 small" data-v-c6c2b804${_scopeId}>${ssrInterpolate($props.errors.password_confirmation)}</div>`);
+          _push2(`<div class="text-danger mt-1 small" data-v-daff4a9e${_scopeId}>${ssrInterpolate($props.errors.password_confirmation)}</div>`);
         } else {
           _push2(`<!---->`);
         }
-        _push2(`</div></div><div class="col-xl-12" data-v-c6c2b804${_scopeId}><div class="form-group" data-v-c6c2b804${_scopeId}><button type="submit" data-loading-text="Please wait..."${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": $setup.form.processing }, "thm-btn"])}" data-v-c6c2b804${_scopeId}>`);
+        _push2(`</div></div><div class="col-xl-12" data-v-daff4a9e${_scopeId}><div class="form-group" data-v-daff4a9e${_scopeId}><button type="submit" data-loading-text="Please wait..."${ssrIncludeBooleanAttr($setup.form.processing) ? " disabled" : ""} class="${ssrRenderClass([{ "opacity-50": $setup.form.processing }, "thm-btn"])}" data-v-daff4a9e${_scopeId}>`);
         if ($setup.form.processing) {
-          _push2(`<span data-v-c6c2b804${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-c6c2b804${_scopeId}></i>${ssrInterpolate($setup.trans("Registering..."))}</span>`);
+          _push2(`<span data-v-daff4a9e${_scopeId}><i class="fa-solid fa-spinner fa-spin me-2" data-v-daff4a9e${_scopeId}></i>${ssrInterpolate($setup.trans("Registering..."))}</span>`);
         } else {
-          _push2(`<span data-v-c6c2b804${_scopeId}>${ssrInterpolate($setup.trans("Register"))} <span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow `)}" data-v-c6c2b804${_scopeId}></span></span>`);
+          _push2(`<span data-v-daff4a9e${_scopeId}>${ssrInterpolate($setup.trans("Register"))} <span class="${ssrRenderClass(`icon-${$setup.locale === "ar" ? "left" : "right"}-arrow `)}" data-v-daff4a9e${_scopeId}></span></span>`);
         }
-        _push2(`</button></div></div></div><div class="create-account text-center" data-v-c6c2b804${_scopeId}><p data-v-c6c2b804${_scopeId}>${ssrInterpolate($setup.trans("Already Have An Account?"))} `);
+        _push2(`</button></div></div></div><div class="create-account text-center" data-v-daff4a9e${_scopeId}><p data-v-daff4a9e${_scopeId}>${ssrInterpolate($setup.trans("Already Have An Account?"))} `);
         _push2(ssrRenderComponent(_component_Link, {
           href: _ctx.route("login")
         }, {
@@ -8434,7 +8393,7 @@ _sfc_main$3.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("Modules/User/resources/assets/js/Pages/Auth/Register.vue");
   return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
 };
-const Register = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["ssrRender", _sfc_ssrRender$1], ["__scopeId", "data-v-c6c2b804"]]);
+const Register = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["ssrRender", _sfc_ssrRender$1], ["__scopeId", "data-v-daff4a9e"]]);
 const __vite_glob_0_13 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Register
@@ -8452,7 +8411,7 @@ const _sfc_main$2 = {
     const page = usePage();
     const locale = computed(() => page.props.locale);
     const seo = computed(() => page.props.seo);
-    const settings = computed(() => page.props.settings || {});
+    const settings2 = computed(() => page.props.settings || {});
     const asset_path = computed(() => page.props.asset_path || "");
     const meta = computed(() => page.props.meta || {});
     const trans = (key) => {
@@ -8472,7 +8431,7 @@ const _sfc_main$2 = {
     });
     const metaImage = computed(() => {
       var _a, _b, _c, _d, _e;
-      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings.value) == null ? void 0 : _e.meta_img) || "";
+      return ((_b = (_a = meta.value) == null ? void 0 : _a.og) == null ? void 0 : _b.image) || ((_d = (_c = meta.value) == null ? void 0 : _c.twitter) == null ? void 0 : _d.image) || ((_e = settings2.value) == null ? void 0 : _e.meta_img) || "";
     });
     const metaCanonical = computed(() => meta.value.canonical || "");
     const metaRobots = computed(() => meta.value.robots || "noindex, nofollow");
@@ -8825,7 +8784,6 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
       }
     };
     const seo = computed(() => page.props.seo || { website_name: "Sham Vision" });
-    computed(() => page.props.asset_path || "/");
     const meta = computed(() => page.props.meta || {});
     const metaTitle = computed(() => `${trans("404 Error")} | ${seo.value.website_name || ""}`.trim());
     const metaDescription = computed(() => {
@@ -8852,26 +8810,26 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
       _push(ssrRenderComponent(unref(Head), null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<title data-v-d1f19088${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-d1f19088${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-d1f19088${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-d1f19088${_scopeId}>`);
+            _push2(`<title data-v-417e1791${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-417e1791${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-417e1791${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-417e1791${_scopeId}>`);
             if (metaCanonical.value) {
-              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-d1f19088${_scopeId}>`);
+              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-417e1791${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-d1f19088${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-d1f19088${_scopeId}>`);
+            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-417e1791${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-417e1791${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-d1f19088${_scopeId}>`);
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-417e1791${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
             if (metaCanonical.value) {
-              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-d1f19088${_scopeId}>`);
+              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-417e1791${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:type" content="website" data-v-d1f19088${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-d1f19088${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-d1f19088${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-d1f19088${_scopeId}>`);
+            _push2(`<meta property="og:type" content="website" data-v-417e1791${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-417e1791${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-417e1791${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-417e1791${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-d1f19088${_scopeId}>`);
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-417e1791${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
@@ -8942,13 +8900,13 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
       _push(ssrRenderComponent(_sfc_main$h, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<section class="page-header" data-v-d1f19088${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ "background-image": "url(assets/images/backgrounds/page-header-bg.jpg)" })}" data-v-d1f19088${_scopeId}></div><div class="container" data-v-d1f19088${_scopeId}><div class="page-header__inner" data-v-d1f19088${_scopeId}><h2 data-v-d1f19088${_scopeId}>${ssrInterpolate(trans("404 Error"))}</h2><div class="thm-breadcrumb__box" data-v-d1f19088${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-d1f19088${_scopeId}><li data-v-d1f19088${_scopeId}>`);
+            _push2(`<section class="page-header" data-v-417e1791${_scopeId}><div class="page-header__bg" style="${ssrRenderStyle({ "background-image": "url(assets/images/backgrounds/page-header-bg.jpg)" })}" data-v-417e1791${_scopeId}></div><div class="container" data-v-417e1791${_scopeId}><div class="page-header__inner" data-v-417e1791${_scopeId}><h2 data-v-417e1791${_scopeId}>${ssrInterpolate(trans("404 Error"))}</h2><div class="thm-breadcrumb__box" data-v-417e1791${_scopeId}><ul class="thm-breadcrumb list-unstyled" data-v-417e1791${_scopeId}><li data-v-417e1791${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: getHomeUrl()
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`<i class="fas fa-home" data-v-d1f19088${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
+                  _push3(`<i class="fas fa-home" data-v-417e1791${_scopeId2}></i>${ssrInterpolate(trans("Home"))}`);
                 } else {
                   return [
                     createVNode("i", { class: "fas fa-home" }),
@@ -8958,14 +8916,14 @@ const _sfc_main$1 = /* @__PURE__ */ Object.assign(__default__$1, {
               }),
               _: 1
             }, _parent2, _scopeId));
-            _push2(`</li><li data-v-d1f19088${_scopeId}><span class="icon-right-arrow-1" data-v-d1f19088${_scopeId}></span></li><li data-v-d1f19088${_scopeId}>${ssrInterpolate(trans("404 Error"))}</li></ul></div></div></div></section><section class="error-page" data-v-d1f19088${_scopeId}><div class="container" data-v-d1f19088${_scopeId}><div class="error-page__inner text-center" data-v-d1f19088${_scopeId}><div class="error-page__img float-bob-y" data-v-d1f19088${_scopeId}></div><div class="error-page__content" data-v-d1f19088${_scopeId}><h2 data-v-d1f19088${_scopeId}>${ssrInterpolate(trans("Oops! Page Not Found!"))}</h2><p data-v-d1f19088${_scopeId}>${ssrInterpolate(trans("The page you are looking for does not exist. It might have been moved or deleted."))}</p><div class="btn-box" data-v-d1f19088${_scopeId}>`);
+            _push2(`</li><li data-v-417e1791${_scopeId}><span class="icon-right-arrow-1" data-v-417e1791${_scopeId}></span></li><li data-v-417e1791${_scopeId}>${ssrInterpolate(trans("404 Error"))}</li></ul></div></div></div></section><section class="error-page" data-v-417e1791${_scopeId}><div class="container" data-v-417e1791${_scopeId}><div class="error-page__inner text-center" data-v-417e1791${_scopeId}><div class="error-page__img float-bob-y" data-v-417e1791${_scopeId}></div><div class="error-page__content" data-v-417e1791${_scopeId}><h2 data-v-417e1791${_scopeId}>${ssrInterpolate(trans("Oops! Page Not Found!"))}</h2><p data-v-417e1791${_scopeId}>${ssrInterpolate(trans("The page you are looking for does not exist. It might have been moved or deleted."))}</p><div class="btn-box" data-v-417e1791${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               class: "thm-btn",
               href: getHomeUrl()
             }, {
               default: withCtx((_2, _push3, _parent3, _scopeId2) => {
                 if (_push3) {
-                  _push3(`${ssrInterpolate(trans("Back To Home"))} <span class="${ssrRenderClass(`icon-${_ctx.locale === "ar" ? "left" : "right"}-arrow `)}" data-v-d1f19088${_scopeId2}></span>`);
+                  _push3(`${ssrInterpolate(trans("Back To Home"))} <span class="${ssrRenderClass(`icon-${_ctx.locale === "ar" ? "left" : "right"}-arrow `)}" data-v-417e1791${_scopeId2}></span>`);
                 } else {
                   return [
                     createTextVNode(toDisplayString(trans("Back To Home")) + " ", 1),
@@ -9050,7 +9008,7 @@ _sfc_main$1.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Error404.vue");
   return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
 };
-const Error404 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-d1f19088"]]);
+const Error404 = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-417e1791"]]);
 const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Error404
@@ -9074,7 +9032,6 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
       }
     };
     const seo = computed(() => page.props.seo || { website_name: "Sham Vision" });
-    computed(() => page.props.asset_path || "/");
     const appEnv = computed(() => page.props.app_env || "production");
     const isNonProduction = computed(() => appEnv.value !== "production");
     const meta = computed(() => page.props.meta || {});
@@ -9103,26 +9060,26 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
       _push(ssrRenderComponent(unref(Head), null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<title data-v-f2d29d8a${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-f2d29d8a${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-f2d29d8a${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-f2d29d8a${_scopeId}>`);
+            _push2(`<title data-v-f2dfa1b1${_scopeId}>${ssrInterpolate(metaTitle.value)}</title><meta name="description"${ssrRenderAttr("content", metaDescription.value)} data-v-f2dfa1b1${_scopeId}><meta name="keywords"${ssrRenderAttr("content", metaKeywords.value)} data-v-f2dfa1b1${_scopeId}><meta name="robots"${ssrRenderAttr("content", metaRobots.value)} data-v-f2dfa1b1${_scopeId}>`);
             if (metaCanonical.value) {
-              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-f2d29d8a${_scopeId}>`);
+              _push2(`<link rel="canonical"${ssrRenderAttr("href", metaCanonical.value)} data-v-f2dfa1b1${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-f2d29d8a${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-f2d29d8a${_scopeId}>`);
+            _push2(`<meta property="og:title"${ssrRenderAttr("content", metaTitle.value)} data-v-f2dfa1b1${_scopeId}><meta property="og:description"${ssrRenderAttr("content", metaDescription.value)} data-v-f2dfa1b1${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-f2d29d8a${_scopeId}>`);
+              _push2(`<meta property="og:image"${ssrRenderAttr("content", metaImage.value)} data-v-f2dfa1b1${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
             if (metaCanonical.value) {
-              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-f2d29d8a${_scopeId}>`);
+              _push2(`<meta property="og:url"${ssrRenderAttr("content", metaCanonical.value)} data-v-f2dfa1b1${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<meta property="og:type" content="website" data-v-f2d29d8a${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-f2d29d8a${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-f2d29d8a${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-f2d29d8a${_scopeId}>`);
+            _push2(`<meta property="og:type" content="website" data-v-f2dfa1b1${_scopeId}><meta name="twitter:card" content="summary_large_image" data-v-f2dfa1b1${_scopeId}><meta name="twitter:title"${ssrRenderAttr("content", metaTitle.value)} data-v-f2dfa1b1${_scopeId}><meta name="twitter:description"${ssrRenderAttr("content", metaDescription.value)} data-v-f2dfa1b1${_scopeId}>`);
             if (metaImage.value) {
-              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-f2d29d8a${_scopeId}>`);
+              _push2(`<meta name="twitter:image"${ssrRenderAttr("content", metaImage.value)} data-v-f2dfa1b1${_scopeId}>`);
             } else {
               _push2(`<!---->`);
             }
@@ -9194,16 +9151,16 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p;
           if (_push2) {
-            _push2(`<div class="breadcrumb__area breadcrumb-space overflow-hidden banner-home-bg" data-v-f2d29d8a${_scopeId}><div class="banner-home__middel-shape inner-top-shape" data-v-f2d29d8a${_scopeId}></div></div><section class="error section-space" data-v-f2d29d8a${_scopeId}><div class="container" data-v-f2d29d8a${_scopeId}><div class="row" data-v-f2d29d8a${_scopeId}><div class="col-12" data-v-f2d29d8a${_scopeId}><div class="error__content" data-v-f2d29d8a${_scopeId}><div class="section__title-wrapper text-center" data-v-f2d29d8a${_scopeId}><h3 class="section__title mb-15 mb-xs-10 wow fadeIn animated" data-wow-delay=".3s" data-v-f2d29d8a${_scopeId}>${ssrInterpolate(trans("Internal Server Error"))}</h3><p class="mb-40 mb-sm-25 mb-xs-20 wow fadeIn animated" data-wow-delay=".5s" data-v-f2d29d8a${_scopeId}>${ssrInterpolate(trans("We're sorry, but something went wrong on our end. Please try again later or contact support if the problem persists."))}</p>`);
+            _push2(`<div class="breadcrumb__area breadcrumb-space overflow-hidden banner-home-bg" data-v-f2dfa1b1${_scopeId}><div class="banner-home__middel-shape inner-top-shape" data-v-f2dfa1b1${_scopeId}></div></div><section class="error section-space" data-v-f2dfa1b1${_scopeId}><div class="container" data-v-f2dfa1b1${_scopeId}><div class="row" data-v-f2dfa1b1${_scopeId}><div class="col-12" data-v-f2dfa1b1${_scopeId}><div class="error__content" data-v-f2dfa1b1${_scopeId}><div class="section__title-wrapper text-center" data-v-f2dfa1b1${_scopeId}><h3 class="section__title mb-15 mb-xs-10 wow fadeIn animated" data-wow-delay=".3s" data-v-f2dfa1b1${_scopeId}>${ssrInterpolate(trans("Internal Server Error"))}</h3><p class="mb-40 mb-sm-25 mb-xs-20 wow fadeIn animated" data-wow-delay=".5s" data-v-f2dfa1b1${_scopeId}>${ssrInterpolate(trans("We're sorry, but something went wrong on our end. Please try again later or contact support if the problem persists."))}</p>`);
             if (isNonProduction.value && (((_b = (_a = unref(page)) == null ? void 0 : _a.props) == null ? void 0 : _b.error) || ((_d = (_c = unref(page)) == null ? void 0 : _c.props) == null ? void 0 : _d.trace))) {
-              _push2(`<div class="alert alert-danger text-start mb-40" style="${ssrRenderStyle({ "white-space": "pre-wrap", "word-break": "break-word" })}" data-v-f2d29d8a${_scopeId}><strong data-v-f2d29d8a${_scopeId}>Debug Error:</strong>`);
+              _push2(`<div class="alert alert-danger text-start mb-40" style="${ssrRenderStyle({ "white-space": "pre-wrap", "word-break": "break-word" })}" data-v-f2dfa1b1${_scopeId}><strong data-v-f2dfa1b1${_scopeId}>Debug Error:</strong>`);
               if ((_f = (_e = unref(page)) == null ? void 0 : _e.props) == null ? void 0 : _f.error) {
-                _push2(`<div data-v-f2d29d8a${_scopeId}>${ssrInterpolate(unref(page).props.error)}</div>`);
+                _push2(`<div data-v-f2dfa1b1${_scopeId}>${ssrInterpolate(unref(page).props.error)}</div>`);
               } else {
                 _push2(`<!---->`);
               }
               if ((_h = (_g = unref(page)) == null ? void 0 : _g.props) == null ? void 0 : _h.trace) {
-                _push2(`<details class="mt-3" data-v-f2d29d8a${_scopeId}><summary data-v-f2d29d8a${_scopeId}>Stack trace</summary><pre class="mt-2" data-v-f2d29d8a${_scopeId}>${ssrInterpolate(unref(page).props.trace)}</pre></details>`);
+                _push2(`<details class="mt-3" data-v-f2dfa1b1${_scopeId}><summary data-v-f2dfa1b1${_scopeId}>Stack trace</summary><pre class="mt-2" data-v-f2dfa1b1${_scopeId}>${ssrInterpolate(unref(page).props.trace)}</pre></details>`);
               } else {
                 _push2(`<!---->`);
               }
@@ -9211,7 +9168,7 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
             } else {
               _push2(`<!---->`);
             }
-            _push2(`<div class="error-btn-wrap" data-v-f2d29d8a${_scopeId}>`);
+            _push2(`<div class="error-btn-wrap" data-v-f2dfa1b1${_scopeId}>`);
             _push2(ssrRenderComponent(unref(Link), {
               href: getHomeUrl(),
               class: "error-btn wow fadeIn animated",
@@ -9296,7 +9253,7 @@ _sfc_main.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Error500.vue");
   return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
 };
-const Error500 = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-f2d29d8a"]]);
+const Error500 = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-f2dfa1b1"]]);
 const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Error500
