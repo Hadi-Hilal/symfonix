@@ -98,7 +98,7 @@ Developed By: Hadi Hilal
 
 
     <style>
-      
+
         #symfonixbot-launcher-wrap {
             position: fixed;
             bottom: 20px;
